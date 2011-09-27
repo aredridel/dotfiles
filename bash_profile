@@ -1,7 +1,7 @@
-if [ -f ~/.bash_prompt ]; then 
+if [ -r ~/.bash_prompt ]; then 
     . ~/.bash_prompt
 fi
 
-if [ -f ~/.bash_profile.local ]; then 
+if [ -r ~/.bash_profile.local ]; then 
     . ~/.bash_profile.local
 fi
