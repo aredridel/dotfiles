@@ -162,3 +162,11 @@ dvcs_function="
 
 PS1="\u@\h:\W\$(${dvcs_function})\[$COLOR_RESET\]\$ "
 
+case $TERM in
+    gnome*|nxterm|xterm*|rxvt*|konsole*)
+        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+        ;;
+    *)
+        ;;
+esac
+
