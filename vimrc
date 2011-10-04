@@ -25,3 +25,6 @@ if has('syntax')
 
 	colorscheme desert
 endif
+
+call pathogen#infect() 
+
