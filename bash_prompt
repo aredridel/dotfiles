@@ -2,8 +2,8 @@
 # http://andrewray.me/bash-prompt-builder/index.html#git=1&color-git=3&color-git-prefix=3&git-ahead=1&color-git-ahead=6b&git-modified=1&color-git-modified=3&git-conflicted=1&color-git-conflicted=1&git-revno=1&color-git-revno=3&git-bisect=1&color-git-bisect=5&option-submodule=1&color-option-submodule=5&git-ontag=1&color-git-ontag=3&color-hg=5&color-hg-prefix=5&color-hg-modified=5&color-hg-conflicted=1&color-hg-revno=5&color-hg-bisect=3&color-hg-patches=3&svn=1&color-svn=6&svn-modified=1&color-svn-modified=6&svn-revno=1&color-svn-revno=6&option-modified=%E2%96%B3&option-conflict=%E2%98%A2&color-option-conflict=3&max-conflicted-files=2&option-nobranch=no%20branch!&color-option-nobranch=1&bisecting-text=bisecting&submodule-text=%5Bsubmodule%5D%20
 
 MAX_CONFLICTED_FILES=2
-DELTA_CHAR="△"
-CONFLICT_CHAR="☢"
+DELTA_CHAR="dirty"
+CONFLICT_CHAR="conflict!"
 BISECTING_TEXT="bisecting"
 NOBRANCH_TEXT="no branch!"
 SUBMODULE_TEXT="[submodule] "
