@@ -2,11 +2,11 @@
 # http://andrewray.me/bash-prompt-builder/index.html#git=1&color-git=3&color-git-prefix=3&git-ahead=1&color-git-ahead=6b&git-modified=1&color-git-modified=3&git-conflicted=1&color-git-conflicted=1&git-revno=1&color-git-revno=3&git-bisect=1&color-git-bisect=5&option-submodule=1&color-option-submodule=5&git-ontag=1&color-git-ontag=3&color-hg=5&color-hg-prefix=5&color-hg-modified=5&color-hg-conflicted=1&color-hg-revno=5&color-hg-bisect=3&color-hg-patches=3&svn=1&color-svn=6&svn-modified=1&color-svn-modified=6&svn-revno=1&color-svn-revno=6&option-modified=%E2%96%B3&option-conflict=%E2%98%A2&color-option-conflict=3&max-conflicted-files=2&option-nobranch=no%20branch!&color-option-nobranch=1&bisecting-text=bisecting&submodule-text=%5Bsubmodule%5D%20
 
 MAX_CONFLICTED_FILES=2
-DELTA_CHAR="dirty"
-CONFLICT_CHAR="conflict!"
+DELTA_CHAR="Δ"
+CONFLICT_CHAR="☢"
 BISECTING_TEXT="bisecting"
-NOBRANCH_TEXT="no branch!"
-SUBMODULE_TEXT="[submodule] "
+NOBRANCH_TEXT="⁉"
+SUBMODULE_TEXT="⊂"
 
 # Colors for prompt
 COLOR_RED=$(tput sgr0 && tput setaf 1)
@@ -98,7 +98,7 @@ dvcs_function="
         # changed *tracked* files in local directory?
         gitChange=\$(echo \$gitStatus | ack 'modified:|deleted:|new file:')
         if [ -n \"\$gitChange\" ]; then
-            gitChange=\"\\[\$COLOR_YELLOW\\] \\[`tput sc`\\]  \\[`tput rc`\\]\\[\$DELTA_CHAR\\] \"
+            gitChange=\"\\[\$COLOR_YELLOW\\] \\[`tput sc`\\]  \\[`tput rc`\\]\$DELTA_CHAR \"
         fi
 
         # output the branch and changed character if present
@@ -138,13 +138,13 @@ dvcs_function="
         # changed files in local directory? NOTE: This command is the slowest of the bunch
         svnChange=\$(svn status | ack \"^M|^!\" | wc -l)
         if [[ \"\$svnChange\" != \"       0\" ]]; then
-            svnChange=\"\\[\$COLOR_CYAN\\] \\[`tput sc`\\]  \\[`tput rc`\\]\\[\$DELTA_CHAR\\] \"
+            svnChange=\"\\[\$COLOR_CYAN\\] \\[`tput sc`\\]  \\[`tput rc`\\]\$DELTA_CHAR \"
         else
             svnChange=\"\"
         fi
 
         # revision number (instead of branch name, silly svn)
-        revNo=\`svnversion --no-newline\`
+        revNo=\`svnversion --no-newline | sed -e 's/M$//' \`
         prompt=\$prompt\"\\[\$COLOR_CYAN\\] (svn\"
         prompt=\$prompt\"\\[\$COLOR_CYAN\\] :\$revNo\\[\$COLOR_CYAN\\] \"
         prompt=\$prompt\"\$svnChange)\\[\$COLOR_RESET\\]\"
@@ -153,7 +153,7 @@ dvcs_function="
     # Show conflicted files if any
     if [ -n \"\$files\" ]; then
         prompt=\$prompt\" \\[\$COLOR_RED\\](\\[\$COLOR_YELLOW\\]\"
-        prompt=\$prompt\"\\[`tput sc`\\]  \\[`tput rc`\\]\\[\$COLOR_YELLOW\\]\\[\$CONFLICT_CHAR\\] \"
+        prompt=\$prompt\"\\[`tput sc`\\]  \\[`tput rc`\\]\\[\$COLOR_YELLOW\\]\$CONFLICT_CHAR \"
         prompt=\$prompt\"\\[\$COLOR_RED\\] \${files})\"
     fi
 
