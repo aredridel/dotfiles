@@ -87,12 +87,12 @@ dvcs_function="
         if [ -z \"\$gitBranch\" ]; then
             bisect=\$(git rev-list --bisect 2> /dev/null | cut -c1-7)
             if [ -z \"\$bisect\" ]; then
-            noBranch=True
-            gitBranch=\"\\[\$COLOR_RED\\]\$NOBRANCH_TEXT\\[\$COLOR_YELLOW\\]\"
-        else
-            bisecting=\"\\[\$COLOR_MAGENTA\\]\$BISECTING_TEXT:\"\$bisect\"\\[\$COLOR_YELLOW\\]\"
-            gitBranch=\"\"
-        fi
+                noBranch=True
+                gitBranch=\"\\[\$COLOR_RED\\]\$NOBRANCH_TEXT\\[\$COLOR_YELLOW\\]\"
+            else
+                bisecting=\"\\[\$COLOR_MAGENTA\\]\$BISECTING_TEXT:\"\$bisect\"\\[\$COLOR_YELLOW\\]\"
+                gitBranch=\"\"
+            fi
         fi
 
         # changed *tracked* files in local directory?
@@ -122,7 +122,7 @@ dvcs_function="
         prompt=\$prompt\"\$gitChange\\[\$COLOR_YELLOW\\])\\[\$COLOR_RESET\\]\"
 
         # How many local commits do you have ahead of origin?
-        num=\$(echo \$gitStatus | grep \"Your branch is ahead of\" | awk '{split(\$0,a,\" \"); print a[13];}') || return
+        num=\$(echo \$gitStatus | ack \"Your branch is ahead of\" | awk '{split(\$0,a,\" \"); print a[13];}') || return
         if [ -n \"\$num\" ]; then
             prompt=\$prompt\"\\[\$COLOR_CYAN\\] +\$num\"
         fi
@@ -136,7 +136,7 @@ dvcs_function="
     if [ -n \"\$_svn_dir\" ]; then
 
         # changed files in local directory? NOTE: This command is the slowest of the bunch
-        svnChange=\$(svn status | ack \"^M|^!\" | wc -l)
+        svnChange=\$(svn status | grep \"^M|^!\" | wc -l)
         if [[ \"\$svnChange\" != \"       0\" ]]; then
             svnChange=\"\\[\$COLOR_CYAN\\] \\[`tput sc`\\]  \\[`tput rc`\\]\$DELTA_CHAR \"
         else

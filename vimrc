@@ -35,3 +35,5 @@ if has('syntax')
 endif
 
 call pathogen#infect() 
+
+set so=5
