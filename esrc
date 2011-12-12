@@ -125,7 +125,7 @@ fn dvcs_function {
         # How many local commits do you have ahead of origin?
         num=`{echo $gitStatus | ack 'Your branch is ahead of' | awk '{ print $13 }' }
         if { ~ $num () } {} {
-            output=$^output $^COLOR_CYAN +$num
+            output=$^output$^COLOR_CYAN +$num$^COLOR_RESET
         }
 
         files=`{git ls-files -u | cut -f 2 | sort -u }
