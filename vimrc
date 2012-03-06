@@ -36,7 +36,9 @@ endif
 
 call pathogen#infect() 
 
-set so=5
+set scrolloff=5
+set shiftround
+set backspace=indent
 
 autocmd BufNewFile,BufRead $HOME/Projects/html5/* set tabstop=4 shiftwidth=4 noet
 
