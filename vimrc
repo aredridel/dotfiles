@@ -32,19 +32,19 @@ if has('syntax')
     endif
 
     colorscheme desert
-endif
 
-call pathogen#infect() 
+    call pathogen#infect() 
+
+    let g:Gitv_OpenHorizontal = 'auto'
+
+    autocmd BufNewFile,BufRead $HOME/Projects/html5/* set tabstop=4 shiftwidth=4 noet
+endif
 
 set scrolloff=5
 set shiftround
 set backspace=indent
 
-autocmd BufNewFile,BufRead $HOME/Projects/html5/* set tabstop=4 shiftwidth=4 noet
-
 noremap <Up> <nop>
 noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
-
-let g:Gitv_OpenHorizontal = 'auto'
