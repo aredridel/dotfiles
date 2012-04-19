@@ -6,6 +6,8 @@ set si
 set nocompatible
 set ruler
 
+call pathogen#infect() 
+
 if has('syntax')
     set winheight=40
     set ch=3
@@ -31,10 +33,8 @@ if has('syntax')
         cmap <Esc>[201~ <nop>
     endif
 
-    colorscheme desert
+    colorscheme molokai
 endif
-
-call pathogen#infect() 
 
 set scrolloff=5
 set shiftround
