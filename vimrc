@@ -1,16 +1,24 @@
-set ts=4
-set et
-set sw=4
-set si
+set expandtab
+set shiftwidth=4
+set tabstop=4
 
 set nocompatible
 set ruler
 
+" Set autoindenting and handle doxygen style comments
+set smarttab
+set cindent
+set formatoptions+=ro
+
 call pathogen#infect() 
 
 if has('syntax')
+    let g:load_doxygen_syntax=1
     set winheight=40
-    set ch=3
+    set cmdheight=3
+
+    set list
+    set lcs=tab:>-,nbsp:.,trail:.
     filetype plugin indent on
     syntax enable
 
