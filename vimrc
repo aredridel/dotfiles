@@ -1,3 +1,4 @@
+" Spaces, not tabs.
 set expandtab
 set shiftwidth=4
 set tabstop=4
@@ -5,9 +6,15 @@ set tabstop=4
 set nocompatible
 set ruler
 
+" Keep lines on screen
+set scrolloff=5
+
+set shiftround
+
 " Set autoindenting and handle doxygen style comments
 set smarttab
 set cindent
+set backspace=indent
 set formatoptions+=ro
 
 call pathogen#infect() 
@@ -17,8 +24,9 @@ if has('syntax')
     set winheight=40
     set cmdheight=3
 
-    set list
-    set lcs=tab:>-,nbsp:.,trail:.
+    " set list
+    "set lcs=tab:>-,nbsp:.,trail:.
+
     filetype plugin indent on
     syntax enable
 
@@ -39,19 +47,25 @@ if has('syntax')
         imap <expr> <Esc>[201~ XTermPasteEnd("")
         cmap <Esc>[200~ <nop>
         cmap <Esc>[201~ <nop>
+
+        if &term =~ "xterm-265.*"
+            set t_AB=<Esc>[48;5;%dm
+            set t_AF=<Esc>[38;5;%dm
+        endif
     endif
 
-    colorscheme molokai
+    "colorscheme molokai
+    colorscheme desert
 
     let g:Gitv_OpenHorizontal = 'auto'
 
     autocmd BufNewFile,BufRead $HOME/Projects/html5/* set tabstop=4 shiftwidth=4 noet
+    autocmd BufNewFile,BufRead xliff.csv set noexpandtab
+
+    syntax enable
 endif
 
-set scrolloff=5
-set shiftround
-set backspace=indent
-
+" Force ourselves to use home-row motion keybindings
 noremap <Up> <nop>
 noremap <Down> <nop>
 noremap <Left> <nop>
