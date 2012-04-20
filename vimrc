@@ -28,7 +28,7 @@ if has('syntax')
         endfunction
         map <expr> <Esc>[200~ XTermPasteBegin("i")
         imap <expr> <Esc>[200~ XTermPasteBegin("")
-"        imap <expr> <Esc>[201~ XTermPasteEnd("")
+        imap <expr> <Esc>[201~ XTermPasteEnd("")
         cmap <Esc>[200~ <nop>
         cmap <Esc>[201~ <nop>
     endif
