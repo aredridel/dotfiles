@@ -1,0 +1,165 @@
+fn dvcs_function {
+
+    let (
+    MAX_CONFLICTED_FILES=2
+    DELTA_CHAR=Δ
+    CONFLICT_CHAR=☢
+    BISECTING_TEXT=bisecting
+    NOBRANCH_TEXT=⁉
+    SUBMODULE_TEXT=⊂
+
+    # Colors for prompt
+    COLOR_RED=`{tput sgr0 && tput setaf 1}
+    COLOR_GREEN=`{tput sgr0 && tput setaf 2}
+    COLOR_YELLOW=`{tput sgr0 && tput setaf 3}
+    COLOR_BLUE=`{tput sgr0 && tput setaf 4}
+    COLOR_MAGENTA=`{tput sgr0 && tput setaf 5}
+    COLOR_CYAN=`{tput sgr0 && tput setaf 6}
+    COLOR_GRAY=`{tput sgr0 && tput setaf 7}
+    COLOR_WHITE=`{tput sgr0 && tput setaf 7 && tput bold}
+    COLOR_LIGHTRED=`{tput sgr0 && tput setaf 1 && tput bold}
+    COLOR_LIGHTGREEN=`{tput sgr0 && tput setaf 2 && tput bold}
+    COLOR_LIGHTYELLOW=`{tput sgr0 && tput setaf 3 && tput bold}
+    COLOR_LIGHTBLUE=`{tput sgr0 && tput setaf 4 && tput bold}
+    COLOR_LIGHTMAGENTA=`{tput sgr0 && tput setaf 5 && tput bold}
+    COLOR_LIGHTCYAN=`{tput sgr0 && tput setaf 6 && tput bold}
+
+    COLOR_RESET=`{tput sgr0}
+
+    _svn_dir=
+    _git_dir=
+    output=
+    ) {
+
+    fn _svn_check {
+        parent=
+        grandparent=.
+
+        while { test -d $grandparent/.svn } {
+            parent=$grandparent
+            grandparent=$parent/..
+        }
+
+        if { ~ $parent () } {
+            return 1
+        } {
+            _svn_dir=`{cd $^parent; pwd}
+            return 0
+        }
+    }
+
+    fn _git_check {
+        _git_dir=`{git rev-parse --show-toplevel >[2=] }
+        if {~ $_git_dir ()} {
+            return 1
+        } {
+            return 0
+        }
+    }
+
+    fn is_submodule {
+        let (parent_git=`{cd $^_git_dir/.. && git rev-parse --show-toplevel >[2=]}) {
+            if { ~ $parent_git () } {} {
+                let (submodules=`{cd $^parent_git && git submodule --quiet foreach 'echo $path' >[2=] }) {
+                    for (line = $submodules) {
+                        cd $^parent_git/$^line
+                        if {~ `pwd $^_git_dir} { return 0 }
+                    }
+                }
+            }
+            return 1
+        }
+    }
+
+    # Figure out what repo we are in
+    _git_check || _svn_check
+
+    # If we are in git ...
+    if { ~ $_git_dir () } {} {
+        # find current branch
+        gitBranch=`{git symbolic-ref HEAD >[2] /dev/null}
+        gitStatus=`{git status}
+
+        # Figure out current branch, or if we are bisecting, or lost in space
+        bisecting=
+        noBranch=
+        if { ~ $gitBranch () } {
+            bisect=`{git rev-list --bisect >[2] /dev/null | cut -c1-7}
+            if { ~ $bisect () } {
+                noBranch=True
+                gitBranch=$^COLOR_RED$^NOBRANCH_TEXT$^COLOR_YELLOW
+            } {
+                bisecting=$^COLOR_MAGENTA$^BISECTING_TEXT:$^bisect$^COLOR_YELLOW
+                gitBranch=
+            }
+        }
+
+        # changed *tracked* files in local directory?
+        gitChange=`{echo $gitStatus | ack 'modified:|deleted:|new file:'}
+        if { ~ $gitChange ?* } {
+            gitChange=$^COLOR_YELLOW`{tput sc}`{tput rc}$^DELTA_CHAR
+        }
+
+        # output the branch and changed character if present
+        output=$^output$^COLOR_YELLOW\(
+
+        if { is_submodule } {
+            output=$^output$^COLOR_MAGENTA$^SUBMODULE_TEXT$^COLOR_YELLOW
+        }
+
+        output=$^output<={~~ $^gitBranch refs/heads/*}$^bisecting
+
+        revNo=`{git rev-parse HEAD >[2] /dev/null | cut -c1-7}
+
+        # If bisecting don't output revno
+        if { ~ $bisecting () && ~ $noBranch () } {
+            output=$^output:$^revNo
+        }
+
+        tag=`{git describe --tags --exact >[2=]}
+        if { ~ $tag () } {} {
+            output=$^output $^COLOR_YELLOW $tag $^COLOR_YELLOW
+        }
+        output=$^output$^gitChange$^COLOR_YELLOW\)$^COLOR_RESET
+
+        # How many local commits do you have ahead of origin?
+        num=`{echo $gitStatus | ack 'Your branch is ahead of' | awk '{ print $13 }' }
+        if { ~ $num () } {} {
+            output=$^output$^COLOR_CYAN +$num$^COLOR_RESET
+        }
+
+        files=`{git ls-files -u | cut -f 2 | sort -u }
+    }
+
+
+    # If we are in subversion ...
+    if { ~ $_svn_dir () } {} {
+        # changed files in local directory? NOTE: This command is the slowest of the bunch
+        svnChange=`{svn status >[2=] | grep '^M|^!' | wc -l}
+        if { ~ $svnChange 0 } {
+            svnChange=
+        } {
+            svnChange=$^COLOR_CYAN `{tput sc}  `{tput rc}$^DELTA_CHAR
+        }
+
+        # revision number (instead of branch name, silly svn)
+        revNo=`{svnversion --no-newline | sed -e 's/M$//' }
+        output=$^output$^COLOR_CYAN\(svn
+        output=$^output$^COLOR_CYAN:$^revNo$^COLOR_CYAN 
+        output=$^output$^svnChange\)$^COLOR_RESET
+    }
+
+    # Show conflicted files if any
+    if { ~ $files () } { } {
+        output=$^output $^COLOR_RED\($^COLOR_YELLOW
+        output=$^output`{tput sc}`{tput rc}$^COLOR_YELLOW$^CONFLICT_CHAR
+        output=$^output$^COLOR_RED${files}\)
+    }
+
+    echo $output
+    }
+}
+
+fn %prompt {
+    echo $USER\@`{hostname} `pwd `dvcs_function $^COLOR_RESET
+}
