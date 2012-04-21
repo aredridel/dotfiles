@@ -1,3 +1,6 @@
+export EDITOR=vi
+export VISUAL=vi
+
 if [ -r ~/.bash_prompt ]; then 
     . ~/.bash_prompt
 fi
