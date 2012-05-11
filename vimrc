@@ -62,6 +62,7 @@ if has('syntax')
 
     autocmd BufNewFile,BufRead $HOME/Projects/html5/* set tabstop=4 shiftwidth=4 noet
     autocmd BufNewFile,BufRead xliff.csv set noexpandtab
+    autocmd BufNewFile,BufRead *.yml set tabstop=2 shiftwidth=2
 
     syntax enable
 endif
