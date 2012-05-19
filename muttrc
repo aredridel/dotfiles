@@ -1,0 +1,126 @@
+source ~/.muttrc.local
+
+set autoedit=yes
+set edit_headers=yes
+
+set use_domain=yes
+
+# Mmhm.  UTF.  Candy.
+set charset="UTF-8"
+set send_charset="US-ASCII:ISO-8859-1:ISO-8859-2:UTF8"
+
+# General Schtuff
+set nohelp
+set quit=yes
+set read_inc=5
+set write_inc=5
+set reply_to=yes
+set reverse_alias
+set record="=Sent"
+set save_name	# Save copies by name.
+set nobeep
+set index_format="%4C %Z %{%b %d} %-15.15L %3N (%4l) %s"
+set sort=threads
+set sort_aux=date-received
+set wait_key=yes
+#set implicit_autoview
+
+# Even better: Plain text emails!
+auto_view text/html
+alternative_order application/pgp text/plain text/html text/enriched
+
+# Message Display
+ignore 		*
+unignore	from to cc bcc subject resent-by date authenticated-sender
+unignore	apparently-from x-address x-organisation reply-to
+unignore	x-spammer x-url delivered-to
+
+hdr_order	From From: Resent-By: Reply-To: X-Organisation: \
+		X-Address: To: Cc: Bcc: \
+		Date: Subject:
+
+# Purge without asking.  I'm a careful human.
+set delete=yes
+unset confirmappend
+
+# Message Composition
+set followup_to
+set include=yes
+set signature=~/.signature
+set sig_dashes
+set	abort_nosubject=no
+my_hdr X-Arbitrary-Number-Of-The-Day: 42
+
+# PGP Options
+set pgp_replyencrypt			# Encrypt when replying to encrypted messages.
+set pgp_replysignencrypted
+set pgp_replysign
+set	pgp_autosign				# autosign all outgoing mails
+set pgp_show_unusable="no"		# Don't display unusable keys.
+set pgp_sort_keys="address"		# Sort keys by key ID
+set pgp_timeout=3600			# Forget the PGP passphrase after an hour.
+#set	pgp_sort_keys=trust			# sort order
+#set	pgp_sign_as=0x2964BF46			# primary keyid
+set pipe_decode			# Decode messages I pipe to commands, typically to patch(1).
+
+set	pgp_decode_command="gpg %?p?--passphrase-fd 0? --no-verbose --batch --output - %f"
+set	pgp_verify_command="gpg --no-verbose --batch --output - --verify %s %f"
+set	pgp_decrypt_command="gpg --passphrase-fd 0 --no-verbose --batch --output - %f"
+set	pgp_sign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 \
+	--armor --detach-sign --textmode %?a?-u %a? %f"
+set	pgp_clearsign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 \
+	--armor --textmode --clearsign %?a?-u %a? %f"
+	# create a pgp/mime encrypted attachment
+#set	pgp_encrypt_only_command=\
+#	"pgpewrap gpg -v --batch --output - --encrypt --textmode \
+#	--armor --always-trust -- -r %r -- %f"
+#	# create a pgp/mime encrypted and signed attachment
+#set	pgp_encrypt_sign_command=\
+#	"pgpewrap gpg --passphrase-fd 0 -v --batch --output - --encrypt \
+#	--sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
+set	pgp_import_command="gpg --no-verbose --import -v %f"
+set	pgp_export_command="gpg --no-verbose --export --armor %r"
+set	pgp_verify_key_command="gpg --no-verbose --batch --fingerprint --check-sigs %r"
+set	pgp_list_pubring_command="gpg --no-verbose --batch --with-colons --list-keys %r" 
+set	pgp_list_secring_command="gpg --no-verbose --batch --with-colons --list-secret-keys %r" 
+set	pgp_getkeys_command=""
+
+# Pager setup
+set prompt_after=no
+unset pager_format
+set pager_stop=yes
+
+# EXIM Workaround
+set write_bcc=no
+
+# Color
+color	hdrdefault	green default
+color	quoted		yellow default
+color	signature	red default
+color	indicator	white blue
+color	attachment	magenta default
+color	error		red default
+color	status		white blue
+color	tree		yellow default
+color	normal		white default
+color	body		cyan default	(http|ftp)://[_a-zA-Z0-9\./~\-]+
+# gnupg coloring (source: kris kennaway <kris@obsecurity.org>)
+color	body	green default		"^gpg: Good signature from"
+color	body	brightred default		"^gpg: Bad signature from"
+color	body	brightred default		"^gpg: BAD signature from"
+color	body	brightred default		"^gpg: Note: This key has expired!"
+color	body	brightyellow default	"^gpg: WARNING: This key is not certified with a trusted signature!"
+color	body	brightyellow default	"^gpg:          There is no indication that the signature belongs to the owner."
+color	body	brightyellow default	"^gpg: can't handle these multiple signatures"
+color	body	brightyellow default	"^gpg: signature verification suppressed"
+color	body	brightyellow default	"^gpg: invalid node with packet of type"
+# index coloring based on score
+#color	index	white black
+color	index	red default		'~n -9'
+color	index	green default		'~n 10-19'
+color	index	brightcyan default		'~n 20-29'
+color	index	brightyellow default	'~n 30-'
+#color	index	brightyellow default	'~p'
+
+set score_threshold_delete=0
+set markers=no
