@@ -59,7 +59,7 @@ if has('syntax')
 
     let g:Gitv_OpenHorizontal = 'auto'
 
-    autocmd BufNewFile,BufRead $HOME/Projects/html5/* set tabstop=4 shiftwidth=4 noet
+    autocmd BufNewFile,BufRead $HOME/Projects/html5/* set tabstop=4 shiftwidth=4 noexpandtab
     autocmd BufNewFile,BufRead xliff.csv set noexpandtab
 
     syntax enable
