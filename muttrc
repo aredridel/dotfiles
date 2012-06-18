@@ -16,7 +16,6 @@ set read_inc=5
 set write_inc=5
 set reply_to=yes
 set reverse_alias
-set record="=Sent"
 set save_name	# Save copies by name.
 set nobeep
 set index_format="%4C %Z %{%b %d} %-15.15L %3N (%4l) %s"
