@@ -126,9 +126,15 @@ dvcs_function="
         if [ -n \"\$num\" ]; then
             prompt=\$prompt\"\\[\$COLOR_CYAN\\] +\$num\"
         else
-            num=\$(echo \$gitStatus | ack \"and have ([0-9]+) and ([0-9]+) different commits each\" --output=\"+\\\$1/-\\\$2\") 
+            num=\$(echo \$gitStatus | ack \"Your branch is behind .* by ([0-9]+) commits\" --output=\"-\\\$1\")
+
             if [ -n \"\$num\" ]; then
                 prompt=\$prompt\"\\[\$COLOR_CYAN\\] \$num\"
+            else
+                num=\$(echo \$gitStatus | ack \"and have ([0-9]+) and ([0-9]+) different commits? each\" --output=\"+\\\$1/-\\\$2\") 
+                if [ -n \"\$num\" ]; then
+                    prompt=\$prompt\"\\[\$COLOR_CYAN\\] \$num\"
+                fi
             fi
         fi
 

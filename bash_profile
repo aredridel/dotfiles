@@ -8,3 +8,5 @@ fi
 if [ -r ~/.bash_profile.local ]; then 
     . ~/.bash_profile.local
 fi
+
+alias less='less -R'
