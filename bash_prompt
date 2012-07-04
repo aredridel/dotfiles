@@ -122,9 +122,20 @@ dvcs_function="
         prompt=\$prompt\"\$gitChange\\[\$COLOR_YELLOW\\])\\[\$COLOR_RESET\\]\"
 
         # How many local commits do you have ahead of origin?
-        num=\$(echo \$gitStatus | ack \"Your branch is ahead of\" | awk '{split(\$0,a,\" \"); print a[13];}') || return
+        num=\$(echo \$gitStatus | ack \"Your branch is ahead of\" | awk '{split(\$0,a,\" \"); print a[13];}')
         if [ -n \"\$num\" ]; then
             prompt=\$prompt\"\\[\$COLOR_CYAN\\] +\$num\"
+        else
+            num=\$(echo \$gitStatus | ack \"Your branch is behind .* by ([0-9]+) commits\" --output=\"-\\\$1\")
+
+            if [ -n \"\$num\" ]; then
+                prompt=\$prompt\"\\[\$COLOR_CYAN\\] \$num\"
+            else
+                num=\$(echo \$gitStatus | ack \"and have ([0-9]+) and ([0-9]+) different commits? each\" --output=\"+\\\$1/-\\\$2\") 
+                if [ -n \"\$num\" ]; then
+                    prompt=\$prompt\"\\[\$COLOR_CYAN\\] \$num\"
+                fi
+            fi
         fi
 
         # any conflicts? (sed madness is to remove line breaks)
