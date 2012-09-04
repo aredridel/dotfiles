@@ -66,6 +66,7 @@ if has('syntax')
     autocmd BufNewFile,BufRead *.yml set tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.js set foldmethod=indent
     autocmd BufNewFile,BufRead *.sql set foldmethod=indent
+    autocmd BufNewFile,BufRead *.txt set textwidth=76 noautoindent
 
     syntax enable
 endif
