@@ -18,9 +18,8 @@ set cindent
 set backspace=indent
 set formatoptions+=ro
 
-call pathogen#infect() 
-
 if has('syntax')
+    call pathogen#infect() 
     let g:load_doxygen_syntax=1
     let g:sql_type_default="mysql"
     set winheight=40
