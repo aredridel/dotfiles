@@ -122,8 +122,5 @@ color	index	brightyellow default	'~n 30-'
 color	index	brightyellow default	'~F'
 #color	index	brightyellow default	'~p'
 
-score ~f mikomi.org 30
-score ~f kyroraz 30
-
 set score_threshold_delete=0
 set markers=no
