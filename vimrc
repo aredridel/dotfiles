@@ -64,8 +64,23 @@ if has('syntax')
     autocmd BufNewFile,BufRead xliff.csv set noexpandtab
     autocmd BufNewFile,BufRead *.yml set tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.txt set textwidth=76 noautoindent
+    autocmd BufNewFile,BufRead *.us set syntax=html
 
     syntax enable
+    function HtmlEscape()
+        silent s/&/\&amp;/eg
+        silent s/</\&lt;/eg
+        silent s/>/\&gt;/eg
+    endfunction
+
+    function HtmlUnEscape()
+        silent s/&lt;/</eg
+        silent s/&gt;/>/eg
+        silent s/&amp;/\&/eg
+    endfunction
+
+    autocmd BufNewFile,BufRead *.html nnoremap <Leader>h :call HtmlEscape()<CR>
+    autocmd BufNewFile,BufRead *.html nnoremap <Leader>H :call HtmlUnEscape()<CR>
 endif
 
 " Force ourselves to use home-row motion keybindings
