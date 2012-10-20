@@ -8,23 +8,28 @@ BISECTING_TEXT="bisecting"
 NOBRANCH_TEXT="⁉"
 SUBMODULE_TEXT="⊂"
 
-# Colors for prompt
-COLOR_RED=$(tput sgr0 && tput setaf 1)
-COLOR_GREEN=$(tput sgr0 && tput setaf 2)
-COLOR_YELLOW=$(tput sgr0 && tput setaf 3)
-COLOR_BLUE=$(tput sgr0 && tput setaf 4)
-COLOR_MAGENTA=$(tput sgr0 && tput setaf 5)
-COLOR_CYAN=$(tput sgr0 && tput setaf 6)
-COLOR_GRAY=$(tput sgr0 && tput setaf 7)
-COLOR_WHITE=$(tput sgr0 && tput setaf 7 && tput bold)
-COLOR_LIGHTRED=$(tput sgr0 && tput setaf 1 && tput bold)
-COLOR_LIGHTGREEN=$(tput sgr0 && tput setaf 2 && tput bold)
-COLOR_LIGHTYELLOW=$(tput sgr0 && tput setaf 3 && tput bold)
-COLOR_LIGHTBLUE=$(tput sgr0 && tput setaf 4 && tput bold)
-COLOR_LIGHTMAGENTA=$(tput sgr0 && tput setaf 5 && tput bold)
-COLOR_LIGHTCYAN=$(tput sgr0 && tput setaf 6 && tput bold)
+if [ -n "$TERM" ]; then
+    # Colors for prompt
+    COLOR_RED=$(tput sgr0 && tput setaf 1)
+    COLOR_GREEN=$(tput sgr0 && tput setaf 2)
+    COLOR_YELLOW=$(tput sgr0 && tput setaf 3)
+    COLOR_BLUE=$(tput sgr0 && tput setaf 4)
+    COLOR_MAGENTA=$(tput sgr0 && tput setaf 5)
+    COLOR_CYAN=$(tput sgr0 && tput setaf 6)
+    COLOR_GRAY=$(tput sgr0 && tput setaf 7)
+    COLOR_WHITE=$(tput sgr0 && tput setaf 7 && tput bold)
+    COLOR_LIGHTRED=$(tput sgr0 && tput setaf 1 && tput bold)
+    COLOR_LIGHTGREEN=$(tput sgr0 && tput setaf 2 && tput bold)
+    COLOR_LIGHTYELLOW=$(tput sgr0 && tput setaf 3 && tput bold)
+    COLOR_LIGHTBLUE=$(tput sgr0 && tput setaf 4 && tput bold)
+    COLOR_LIGHTMAGENTA=$(tput sgr0 && tput setaf 5 && tput bold)
+    COLOR_LIGHTCYAN=$(tput sgr0 && tput setaf 6 && tput bold)
 
-COLOR_RESET=$(tput sgr0)
+    COLOR_RESET=$(tput sgr0)
+
+    TPUT_RC="$(tput rc)"
+    TPUT_SC="$(tput sc)"
+fi
 
 
 _svn_dir=""
@@ -98,7 +103,7 @@ dvcs_function="
         # changed *tracked* files in local directory?
         gitChange=\$(echo \$gitStatus | ack 'modified:|deleted:|new file:')
         if [ -n \"\$gitChange\" ]; then
-            gitChange=\"\\[\$COLOR_YELLOW\\] \\[`tput sc`\\]  \\[`tput rc`\\]\$DELTA_CHAR \"
+            gitChange=\"\\[\$COLOR_YELLOW\\] \\[$TPUT_SC\\]  \\[$TPUT_RC\\]\$DELTA_CHAR \"
         fi
 
         # output the branch and changed character if present
@@ -149,7 +154,7 @@ dvcs_function="
         # changed files in local directory? NOTE: This command is the slowest of the bunch
         svnChange=\$(svn status | grep \"^M|^!\" | wc -l)
         if [[ \"\$svnChange\" != \"       0\" ]]; then
-            svnChange=\"\\[\$COLOR_CYAN\\] \\[`tput sc`\\]  \\[`tput rc`\\]\$DELTA_CHAR \"
+            svnChange=\"\\[\$COLOR_CYAN\\] \\[$TPUT_SC\\]  \\[$TPUT_RC\\]\$DELTA_CHAR \"
         else
             svnChange=\"\"
         fi
@@ -164,7 +169,7 @@ dvcs_function="
     # Show conflicted files if any
     if [ -n \"\$files\" ]; then
         prompt=\$prompt\" \\[\$COLOR_RED\\](\\[\$COLOR_YELLOW\\]\"
-        prompt=\$prompt\"\\[`tput sc`\\]  \\[`tput rc`\\]\\[\$COLOR_YELLOW\\]\$CONFLICT_CHAR \"
+        prompt=\$prompt\"\\[$TPUT_SC\\]  \\[$TPUT_RC\\]\\[\$COLOR_YELLOW\\]\$CONFLICT_CHAR \"
         prompt=\$prompt\"\\[\$COLOR_RED\\] \${files})\"
     fi
 
