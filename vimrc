@@ -18,10 +18,10 @@ set cindent
 set backspace=indent
 set formatoptions+=ro
 
-call pathogen#infect() 
-
 if has('syntax')
+    call pathogen#infect() 
     let g:load_doxygen_syntax=1
+    let g:sql_type_default="mysql"
     set winheight=40
     set cmdheight=3
 
@@ -63,6 +63,8 @@ if has('syntax')
     autocmd BufNewFile,BufRead $HOME/Projects/html5/* set tabstop=4 shiftwidth=4 noexpandtab
     autocmd BufNewFile,BufRead xliff.csv set noexpandtab
     autocmd BufNewFile,BufRead *.yml set tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.js set foldmethod=indent
+    autocmd BufNewFile,BufRead *.sql set foldmethod=indent
     autocmd BufNewFile,BufRead *.txt set textwidth=76 noautoindent
     autocmd BufNewFile,BufRead *.us set syntax=html
 
