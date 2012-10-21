@@ -68,6 +68,7 @@ if has('syntax')
     autocmd BufNewFile,BufRead *.txt set textwidth=76 noautoindent
     autocmd BufNewFile,BufRead *.us set syntax=html
     autocmd BufNewFile,BufRead *.hjs set syntax=mustache
+    autocmd BufNewFile,BufRead *.mmm set syntax=mustache
 
     syntax enable
     function HtmlEscape()
