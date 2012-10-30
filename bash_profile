@@ -9,4 +9,6 @@ if [ -r ~/.bash_profile.local ]; then
     . ~/.bash_profile.local
 fi
 
+PATH="$HOME/bin:$PATH"
+
 alias less='less -R'
