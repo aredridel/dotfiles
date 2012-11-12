@@ -18,9 +18,8 @@ set cindent
 set backspace=indent
 set formatoptions+=ro
 
-call pathogen#infect() 
-
 if has('syntax')
+    call pathogen#infect() 
     let g:load_doxygen_syntax=1
     let g:sql_type_default="mysql"
     set winheight=40
@@ -68,8 +67,25 @@ if has('syntax')
     autocmd BufNewFile,BufRead *.js set foldmethod=indent foldlevel=3
     autocmd BufNewFile,BufRead *.sql set foldmethod=indent foldlevel=3
     autocmd BufNewFile,BufRead *.txt set textwidth=76 noautoindent
+    autocmd BufNewFile,BufRead *.us set syntax=html
+    autocmd BufNewFile,BufRead *.hjs set syntax=mustache
+    autocmd BufNewFile,BufRead *.mmm set syntax=mustache
 
     syntax enable
+    function HtmlEscape()
+        silent s/&/\&amp;/eg
+        silent s/</\&lt;/eg
+        silent s/>/\&gt;/eg
+    endfunction
+
+    function HtmlUnEscape()
+        silent s/&lt;/</eg
+        silent s/&gt;/>/eg
+        silent s/&amp;/\&/eg
+    endfunction
+
+    autocmd BufNewFile,BufRead *.html nnoremap <Leader>h :call HtmlEscape()<CR>
+    autocmd BufNewFile,BufRead *.html nnoremap <Leader>H :call HtmlUnEscape()<CR>
 endif
 
 " Force ourselves to use home-row motion keybindings
