@@ -60,12 +60,13 @@ if has('syntax')
     colorscheme desert
 
     let g:Gitv_OpenHorizontal = 'auto'
+    let g:syntastic_phpcs_conf = '--standard=PSR1'
 
     autocmd BufNewFile,BufRead $HOME/Projects/html5/* set tabstop=4 shiftwidth=4 noexpandtab
     autocmd BufNewFile,BufRead xliff.csv set noexpandtab
     autocmd BufNewFile,BufRead *.yml set tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.js set foldmethod=indent
-    autocmd BufNewFile,BufRead *.sql set foldmethod=indent
+    autocmd BufNewFile,BufRead *.js set foldmethod=indent foldlevel=3
+    autocmd BufNewFile,BufRead *.sql set foldmethod=indent foldlevel=3
     autocmd BufNewFile,BufRead *.txt set textwidth=76 noautoindent
 
     syntax enable
