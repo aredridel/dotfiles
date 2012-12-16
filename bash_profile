@@ -13,4 +13,8 @@ fi
 
 PATH="$HOME/bin:$PATH"
 
+if which vim >/dev/null 2>&1; then
+    alias vi=vim
+fi
+
 alias less='less -R'
