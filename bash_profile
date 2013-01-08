@@ -18,3 +18,13 @@ if which vim >/dev/null 2>&1; then
 fi
 
 alias less='less -R'
+
+if which -s brew; then
+    if [ -f $(brew --prefix)/etc/bash_completion ]; then
+        . $(brew --prefix)/etc/bash_completion
+    fi
+
+    if brew --prefix josegonzalez/php/php54 >/dev/null; then
+        PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
+    fi
+fi
