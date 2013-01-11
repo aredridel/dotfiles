@@ -124,3 +124,5 @@ color	index	brightyellow default	'~F'
 
 set score_threshold_delete=0
 set markers=no
+
+macro index A <save-message>=Archive<enter>
