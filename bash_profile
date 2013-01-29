@@ -19,7 +19,7 @@ fi
 
 alias less='less -R'
 
-if which -s brew; then
+if which brew >/dev/null 2>&1; then
     PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
     if [ -f $(brew --prefix)/etc/bash_completion ]; then
