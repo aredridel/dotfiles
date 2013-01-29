@@ -86,6 +86,9 @@ if has('syntax')
 
     autocmd BufNewFile,BufRead *.html nnoremap <Leader>h :call HtmlEscape()<CR>
     autocmd BufNewFile,BufRead *.html nnoremap <Leader>H :call HtmlUnEscape()<CR>
+    set list listchars=tab:\ \ ,trail:·
+
+    set laststatus=2
 endif
 
 " Force ourselves to use home-row motion keybindings
