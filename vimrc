@@ -70,6 +70,7 @@ if has('syntax')
     autocmd BufNewFile,BufRead *.us set syntax=html
     autocmd BufNewFile,BufRead *.hjs set syntax=mustache
     autocmd BufNewFile,BufRead *.mmm set syntax=mustache
+    autocmd BufNewFile,BufRead *.coffee set ts=2 sw=2
 
     syntax enable
     function HtmlEscape()
