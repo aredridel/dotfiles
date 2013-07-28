@@ -1,7 +1,6 @@
 export EDITOR=vi
 export VISUAL=vi
 
-export PATH=/usr/local/share/npm/bin:$PATH:node_modules/.bin/
 
 if [ -r ~/.bash_prompt ]; then 
     . ~/.bash_prompt
@@ -10,8 +9,6 @@ fi
 if [ -r ~/.bash_profile.local ]; then 
     . ~/.bash_profile.local
 fi
-
-PATH="$HOME/bin:$PATH"
 
 if which vim >/dev/null 2>&1; then
     alias vi=vim
@@ -30,3 +27,11 @@ if which brew >/dev/null 2>&1; then
         PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
     fi
 fi
+
+if [ -d ~/Library/Perl/5/lib/perl5/ ]; then
+    eval $(perl -I ~/Library/Perl/5/lib/perl5/ -Mlocal::lib)
+fi
+
+export PLAN9=/usr/local/plan9
+PATH=$PATH:$PLAN9/bin
+export PATH=$HOME/bin:/usr/local/share/npm/bin:$PATH:node_modules/.bin/
