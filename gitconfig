@@ -18,6 +18,7 @@
 [pretty]
 	damn-awesome = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
 [core]
+	pager = less -r
 	quotepath = false
 [log]
 	date = local
@@ -27,3 +28,12 @@
 	keepBackup = true
 [merge]
 	conflictstyle = diff3
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+    ui = true
