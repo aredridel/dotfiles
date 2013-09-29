@@ -24,9 +24,8 @@ if has('syntax')
     let g:sql_type_default="mysql"
     set winheight=40
     set cmdheight=3
-
-    " set list
-    "set lcs=tab:>-,nbsp:.,trail:.
+    set list listchars=tab:\ \ ,trail:·
+    set laststatus=2
 
     filetype plugin indent on
     syntax enable
@@ -87,9 +86,8 @@ if has('syntax')
 
     autocmd BufNewFile,BufRead *.html nnoremap <Leader>h :call HtmlEscape()<CR>
     autocmd BufNewFile,BufRead *.html nnoremap <Leader>H :call HtmlUnEscape()<CR>
-    set list listchars=tab:\ \ ,trail:·
 
-    set laststatus=2
+    autocmd BufNewFile,BufRead *.js nnoremap <Leader>j :%!js-beautify -f - --good-parts -j -k -s 4<CR>
 endif
 
 " Force ourselves to use home-row motion keybindings
