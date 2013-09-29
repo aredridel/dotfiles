@@ -1,0 +1,29 @@
+[include]
+    path = .gitconfig.local
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = auto
+[rerere]
+	enabled = true
+[gist]
+	private = yes
+[diff]
+	noprefix = on
+[branch]
+	autosetupmerge = on
+[alias]
+	graph = log --format=damn-awesome --graph
+[pretty]
+	damn-awesome = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
+[core]
+	quotepath = false
+[log]
+	date = local
+[push]
+	default = simple
+[mergetool]
+	keepBackup = true
+[merge]
+	conflictstyle = diff3
