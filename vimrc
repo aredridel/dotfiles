@@ -58,8 +58,8 @@ if has('syntax')
     colorscheme desert
 
     let g:Gitv_OpenHorizontal = 'auto'
-    let g:syntastic_phpcs_conf = '--standard=PSR1'
-
+    let g:syntastic_php_phpcs_args = '--standard=PSR1'
+:
     autocmd BufNewFile,BufRead $HOME/Projects/html5/* set tabstop=4 shiftwidth=4 noexpandtab
     autocmd BufNewFile,BufRead xliff.csv set noexpandtab
     autocmd BufNewFile,BufRead *.yml set tabstop=2 shiftwidth=2
