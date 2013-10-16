@@ -4,11 +4,65 @@
 "Author:      Parantapa Bhattacharya <parantapa at gmail dot com>
 "
 "============================================================================
-function! SyntaxCheckers_python_GetLocList()
-    let makeprg = 'pylint '.g:syntastic_python_checker_args.' -f parseable -r n -i y ' .
-                \ shellescape(expand('%')) .
-                \ ' 2>&1 \| sed ''s_: \[\([RCW]\)_: \[W] \[\1_''' .
-                \ ' \| sed ''s_: \[\([FE]\)_:\ \[E] \[\1_'''
-    let errorformat = '%f:%l: [%t] %m,%Z,%-GNo config %m'
-    return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
+if exists("g:loaded_syntastic_python_pylint_checker")
+    finish
+endif
+let g:loaded_syntastic_python_pylint_checker = 1
+
+let s:pylint_new = -1
+
+function! SyntaxCheckers_python_pylint_IsAvailable()
+    let s:pylint_new = executable('pylint') ? s:PylintNew() : -1
+    return s:pylint_new >= 0
 endfunction
+
+function! SyntaxCheckers_python_pylint_GetLocList()
+    let makeprg = syntastic#makeprg#build({
+        \ 'exe': 'pylint',
+        \ 'args': (s:pylint_new ? '--msg-template="{path}:{line}: [{msg_id}] {msg}" -r n' : '-f parseable -r n -i y'),
+        \ 'filetype': 'python',
+        \ 'subchecker': 'pylint' })
+
+    let errorformat =
+        \ '%A%f:%l: %m,' .
+        \ '%A%f:(%l): %m,' .
+        \ '%-Z%p^%.%#,' .
+        \ '%-G%.%#'
+
+    let loclist=SyntasticMake({
+        \ 'makeprg': makeprg,
+        \ 'errorformat': errorformat,
+        \ 'postprocess': ['sort'] })
+
+    for n in range(len(loclist))
+        let type = loclist[n]['text'][1]
+        if type =~# '\m^[EF]'
+            let loclist[n]['type'] = 'E'
+        elseif type =~# '\m^[CRW]'
+            let loclist[n]['type'] = 'W'
+        else
+            let loclist[n]['valid'] = 0
+        endif
+        let loclist[n]['vcol'] = 0
+    endfor
+
+    return loclist
+endfunction
+
+function s:PylintNew()
+    try
+        " On Windows the version is shown as "pylint-script.py 1.0.0".
+        " On Gentoo Linux it's "pylint-python2.7 0.28.0".  Oh, joy. :)
+        let pylint_version = filter(split(system('pylint --version'), '\m, \=\|\n'), 'v:val =~# ''\m^pylint\>''')[0]
+        let pylint_version = substitute(pylint_version, '\v^\S+\s+', '', '')
+        let ret = syntastic#util#versionIsAtLeast(syntastic#util#parseVersion(pylint_version), [1])
+    catch /^Vim\%((\a\+)\)\=:E684/
+        call syntastic#util#error("checker python/pylint: can't parse version string (abnormal termination?)")
+        let ret = -1
+    endtry
+    return ret
+endfunction
+
+call g:SyntasticRegistry.CreateAndRegisterChecker({
+    \ 'filetype': 'python',
+    \ 'name': 'pylint' })
