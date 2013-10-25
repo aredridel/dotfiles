@@ -9,3 +9,6 @@ Dir['*'].each do |file|
   target = File.join(home, ".#{file}")
   `ln -sfn #{File.expand_path file} #{target}`
 end
+
+system "cd ~/.vim/bundle/tern_for_vim; npm install"
+
