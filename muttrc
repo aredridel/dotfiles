@@ -127,3 +127,6 @@ set markers=no
 
 macro index A <save-message>=Archive<enter>
 macro pager A <save-message>=Archive<enter>
+
+macro index \Cg <save-message>=Junk<enter>
+macro pager \Cg <save-message>=Junk<enter>
