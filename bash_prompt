@@ -127,7 +127,7 @@ dvcs_function="
         prompt=\$prompt\"\$gitChange\\[\$COLOR_YELLOW\\])\\[\$COLOR_RESET\\]\"
 
         # How many local commits do you have ahead of origin?
-        num=\$(echo \$gitStatus | ack \"Your branch is ahead of\" | awk '{split(\$0,a,\" \"); print a[13];}')
+        num=\$(echo \$gitStatus | ack \"Your branch is ahead of .* by ([0-9]+) commit\" --output=\"\\\$1\")
         if [ -n \"\$num\" ]; then
             prompt=\$prompt\"\\[\$COLOR_CYAN\\] +\$num\"
         else
