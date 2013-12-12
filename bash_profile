@@ -34,7 +34,7 @@ fi
 
 export PLAN9=/usr/local/plan9
 PATH=$PATH:$PLAN9/bin
-export PATH=$HOME/bin:/usr/local/share/npm/bin:$PATH:node_modules/.bin/
+export PATH=$HOME/bin:/usr/local/share/npm/bin:$PATH:node_modules/.bin
 
 PATH="/Users/aredridel/.apportable/SDK/bin:$PATH"
 
