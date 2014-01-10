@@ -44,3 +44,7 @@ export MANTA_KEY_ID=$(ssh-keygen -l -f $HOME/.ssh/id_rsa.pub | awk '{print $2}')
 export SDC_URL=https://us-east-1.api.joyentcloud.com
 export SDC_ACCOUNT=aredridel
 export SDC_KEY_ID=$(ssh-keygen -l -f $HOME/.ssh/id_rsa.pub | awk '{print $2}')
+
+alias wow="git status"
+alias such=git
+alias very=git
