@@ -1,4 +1,4 @@
-text/html; elinks -dump %s; copiousoutput; description=HTML; nametemplate=%s.html
+text/html; elinks -dump %s -dump-charset %{charset}; copiousoutput; description=HTML; nametemplate=%s.html
 application/pdf; open -W %s; description=PDF; nametemplate=%s.pdf
 image/png; open -W %s; description=png; nametemplate=%s.png
 image/jpeg; open -W %s; description=jpeg; nametemplate=%s.jpeg
