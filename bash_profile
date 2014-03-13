@@ -48,3 +48,10 @@ export SDC_KEY_ID=$(ssh-keygen -l -f $HOME/.ssh/id_rsa.pub | awk '{print $2}')
 alias wow="git status"
 alias such=git
 alias very=git
+
+function pleasedont {
+    R=("can u not" "ಠ_ಠ" "(╯°□°）╯︵ ┻━┻")
+    s=$(($RANDOM % ${#R[@]}))
+    echo ${R[$s]}>&2
+    return 1
+}
