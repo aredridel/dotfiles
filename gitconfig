@@ -12,7 +12,8 @@
 [diff]
 	noprefix = on
 [branch]
-	autosetupmerge = on
+	autosetupmerge = always
+    autosetuprebase = always
 [alias]
 	graph = log --format=damn-awesome --graph
 [pretty]
