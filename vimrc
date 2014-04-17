@@ -94,6 +94,8 @@ if has('syntax')
     call vundle#rc()
 
     Plugin 'gmarik/vundle'
+
+    Plugin 'tpope/vim-classpath'
 endif
 
 " Force ourselves to use home-row motion keybindings
