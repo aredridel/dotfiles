@@ -97,6 +97,7 @@ if has('syntax')
 
     Plugin 'tpope/vim-classpath'
     Plugin 'trag'
+    Plugin 'tlib'
     Plugin 'molokai'
     Plugin 'vim-stylus'
 endif
