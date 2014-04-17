@@ -97,6 +97,7 @@ if has('syntax')
 
     Plugin 'tpope/vim-classpath'
     Plugin 'trag'
+    Plugin 'molokai'
 endif
 
 " Force ourselves to use home-row motion keybindings
