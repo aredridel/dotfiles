@@ -96,6 +96,7 @@ if has('syntax')
     Plugin 'gmarik/vundle'
 
     Plugin 'tpope/vim-classpath'
+    Plugin 'trag'
 endif
 
 " Force ourselves to use home-row motion keybindings
