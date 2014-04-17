@@ -100,6 +100,7 @@ if has('syntax')
     Plugin 'tlib'
     Plugin 'molokai'
     Plugin 'vim-stylus'
+    Plugin 'pangloss/vim-javascript'
 endif
 
 " Force ourselves to use home-row motion keybindings
