@@ -88,6 +88,12 @@ if has('syntax')
     autocmd BufNewFile,BufRead *.html nnoremap <Leader>H :call HtmlUnEscape()<CR>
 
     autocmd BufNewFile,BufRead *.js nnoremap <Leader>j :%!js-beautify -f - --good-parts -j -k -s 4<CR>
+
+    " Set up Vundle
+    set rtp+=~/.vim/bundle/vundle/
+    call vundle#rc()
+
+    Plugin 'gmarik/vundle'
 endif
 
 " Force ourselves to use home-row motion keybindings
@@ -95,3 +101,4 @@ noremap <Up> <nop>
 noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
+
