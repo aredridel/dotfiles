@@ -14,6 +14,14 @@ if which vim >/dev/null 2>&1; then
     alias vi=vim
 fi
 
+shopt -s checkhash
+shopt -s cmdhist
+shopt -s histappend
+shopt -s histreedit
+shopt -s histverify
+shopt -s lithist
+shopt -s no_empty_cmd_completion
+
 alias less='less -R'
 
 if which brew >/dev/null 2>&1; then
