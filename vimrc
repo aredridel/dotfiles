@@ -96,8 +96,8 @@ if has('syntax')
     Plugin 'gmarik/vundle'
 
     Plugin 'tpope/vim-classpath'
-    Plugin 'trag'
     Plugin 'tlib'
+    Plugin 'trag'
     Plugin 'molokai'
     Plugin 'vim-stylus'
     Plugin 'pangloss/vim-javascript'
