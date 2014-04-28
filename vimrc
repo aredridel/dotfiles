@@ -101,6 +101,8 @@ if has('syntax')
     Plugin 'pangloss/vim-javascript'
     Plugin 'rodjek/vim-puppet'
     Plugin 'hsanson/vim-android'
+    Plugin 'scrooloose/syntastic'
+    Plugin 'tpope/vim-surround'
 endif
 
 " Force ourselves to use home-row motion keybindings
