@@ -30,10 +30,6 @@ if which brew >/dev/null 2>&1; then
     if [ -f $(brew --prefix)/etc/bash_completion ]; then
         . $(brew --prefix)/etc/bash_completion
     fi
-
-    if brew --prefix josegonzalez/php/php54 >/dev/null; then
-        PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
-    fi
 fi
 
 if [ -d ~/Library/Perl/5/lib/perl5/ ]; then
@@ -43,8 +39,6 @@ fi
 export PLAN9=/usr/local/plan9
 PATH=$PATH:$PLAN9/bin
 export PATH=$HOME/bin:/usr/local/share/npm/bin:$PATH:node_modules/.bin
-
-PATH="/Users/aredridel/.apportable/SDK/bin:$PATH"
 
 export MANTA_URL=https://us-east.manta.joyent.com
 export MANTA_USER=aredridel
