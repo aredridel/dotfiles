@@ -7,4 +7,5 @@ brew cask install spotify
 brew cask install dropbox
 brew cask install flux
 brew cask install cord
+brew cask install xquartz
 brew install bash-completion ack encfs
