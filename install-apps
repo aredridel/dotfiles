@@ -6,3 +6,4 @@ brew cask install firefox
 brew cask install spotify
 brew cask install dropbox
 brew cask install flux
+brew cask install cord
