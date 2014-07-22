@@ -1,5 +1,3 @@
-[include]
-    path = .gitconfig.local
 [color]
 	diff = auto
 	status = auto
@@ -39,3 +37,15 @@
     diff = auto
     status = auto
     ui = true
+[user]
+	name = Aria Stewart
+    email = aredridel@dinhe.net
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[github]
+	user = aredridel
+[ghi]
+	token = !security find-internet-password -a aredridel -s github.com -l 'ghi token' -w
+[include]
+    path = .gitconfig.local
