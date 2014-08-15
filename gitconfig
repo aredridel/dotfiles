@@ -49,3 +49,5 @@
 	token = !security find-internet-password -a aredridel -s github.com -l 'ghi token' -w
 [include]
     path = .gitconfig.local
+[url "https://github.com/"]
+	insteadOf = git://github.com/
