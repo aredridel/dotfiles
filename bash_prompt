@@ -84,7 +84,7 @@ dvcs_function="
     if [ -n \"\$_git_dir\" ]; then
         # find current branch
         gitBranch=\$(command git symbolic-ref HEAD 2> /dev/null)
-        gitStatus=\`command git status\`
+        gitStatus=\`command git status -b --porcelain\`
 
         # Figure out current branch, or if we are bisecting, or lost in space
         bisecting=\"\"
@@ -101,7 +101,7 @@ dvcs_function="
         fi
 
         # changed *tracked* files in local directory?
-        gitChange=\$(echo \$gitStatus | ack 'modified:|deleted:|new file:')
+        gitChange=\$(echo \"\$gitStatus\" | egrep '^D|^.D|^M|^.M|^A|^.A')
         if [ -n \"\$gitChange\" ]; then
             gitChange=\"\\[\$COLOR_YELLOW\\] \\[$TPUT_SC\\]  \\[$TPUT_RC\\]\$DELTA_CHAR \"
         fi
@@ -127,20 +127,9 @@ dvcs_function="
         prompt=\$prompt\"\$gitChange\\[\$COLOR_YELLOW\\])\\[\$COLOR_RESET\\]\"
 
         # How many local commits do you have ahead of origin?
-        num=\$(echo \$gitStatus | ack \"Your branch is ahead of .* by ([0-9]+) commit\" --output=\"\\\$1\")
+        num=\$(echo \"\$gitStatus\" | grep '^##.*\\\[.*\\\]' | sed -E -e \"s/.*\\\[(.*)\\\].*/\\\1/g; s/ahead /+/g; s/behind /-/g; s/, /\\\//g\")
         if [ -n \"\$num\" ]; then
-            prompt=\$prompt\"\\[\$COLOR_CYAN\\] +\$num\"
-        else
-            num=\$(echo \$gitStatus | ack \"Your branch is behind .* by ([0-9]+) commits\" --output=\"-\\\$1\")
-
-            if [ -n \"\$num\" ]; then
-                prompt=\$prompt\"\\[\$COLOR_CYAN\\] \$num\"
-            else
-                num=\$(echo \$gitStatus | ack \"and have ([0-9]+) and ([0-9]+) different commits? each\" --output=\"+\\\$1/-\\\$2\") 
-                if [ -n \"\$num\" ]; then
-                    prompt=\$prompt\"\\[\$COLOR_CYAN\\] \$num\"
-                fi
-            fi
+            prompt=\$prompt\"\\[\$COLOR_CYAN\\] \$num\"
         fi
 
         # any conflicts? (sed madness is to remove line breaks)
