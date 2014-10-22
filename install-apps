@@ -6,6 +6,6 @@ brew cask install firefox
 brew cask install spotify
 brew cask install dropbox
 brew cask install flux
-brew cask install cord
 brew cask install xquartz
-brew install bash-completion ack encfs nodejs gnupg wget unicodechecker rlwrap ipv6toolkit
+brew cask install spectacle
+brew install bash-completion encfs nodejs gnupg wget unicodechecker rlwrap ipv6toolkit
