@@ -9,3 +9,4 @@ brew cask install flux
 brew cask install xquartz
 brew cask install spectacle
 brew install bash-completion encfs nodejs gnupg wget unicodechecker rlwrap ipv6toolkit
+npm install ghwd json uglify tick
