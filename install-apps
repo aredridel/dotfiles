@@ -8,5 +8,19 @@ brew cask install dropbox
 brew cask install flux
 brew cask install xquartz
 brew cask install spectacle
-brew install bash-completion encfs nodejs gnupg wget unicodechecker rlwrap ipv6toolkit
-npm install ghwd json uglify tick
+brew install bash-completion
+brew install encfs
+brew install nodejs
+brew install gnupg
+brew install wget
+brew install unicodechecker
+brew install rlwrap
+brew install ipv6toolkit
+brew install ack
+brew install ag
+brew install pt
+brew install pwgen
+npm install -g ghwd
+npm install -g json
+npm install -g uglifyjs
+npm install -g tick
