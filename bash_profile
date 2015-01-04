@@ -58,3 +58,7 @@ function pleasedont {
     echo ${R[$s]}>&2
     return 1
 }
+
+if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
+    . ~/.nix-profile/etc/profile.d/nix.sh
+fi
