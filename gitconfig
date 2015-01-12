@@ -41,8 +41,9 @@
 	name = Aria Stewart
     email = aredridel@dinhe.net
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
 [github]
 	user = aredridel
 [ghi]
