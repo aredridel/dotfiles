@@ -24,3 +24,4 @@ npm install -g ghwd
 npm install -g json
 npm install -g uglifyjs
 npm install -g tick
+npm install -g jshint
