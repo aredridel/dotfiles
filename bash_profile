@@ -10,6 +10,10 @@ if [ -r ~/.bash_profile.local ]; then
     . ~/.bash_profile.local
 fi
 
+if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
+    . ~/.nix-profile/etc/profile.d/nix.sh
+fi
+
 if which vim >/dev/null 2>&1; then
     alias vi=vim
 fi
@@ -58,7 +62,3 @@ function pleasedont {
     echo ${R[$s]}>&2
     return 1
 }
-
-if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
-    . ~/.nix-profile/etc/profile.d/nix.sh
-fi
