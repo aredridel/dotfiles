@@ -25,3 +25,4 @@ npm install -g json
 npm install -g uglifyjs
 npm install -g tick
 npm install -g jshint
+npm install -g manage-npm-scripts
