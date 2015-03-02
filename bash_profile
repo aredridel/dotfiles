@@ -36,6 +36,11 @@ if which brew >/dev/null 2>&1; then
     fi
 fi
 
+if [ -d /usr/pkg/bin ]; then
+    PATH=/usr/pkg/sbin:/usr/pkg/bin:$PATH
+    MANPATH=/usr/pkg/man:$MANPATH
+fi
+
 if [ -d ~/Library/Perl/5/lib/perl5/ ]; then
     eval $(perl -I ~/Library/Perl/5/lib/perl5/ -Mlocal::lib)
 fi
