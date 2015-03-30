@@ -59,7 +59,10 @@ export SDC_KEY_ID=$(ssh-keygen -l -f $HOME/.ssh/id_rsa.pub | awk '{print $2}')
 alias wow="git status"
 alias such=git
 alias very=git
-alias node="NODE_NO_READLINE=1 rlwrap -p green node"
+
+if [ -n "`which rlwrap 2>/dev/null`" ]; then
+    alias node="NODE_NO_READLINE=1 rlwrap -p green node"
+fi
 
 function pleasedont {
     R=("can u not" "ಠ_ಠ" "(╯°□°）╯︵ ┻━┻")
