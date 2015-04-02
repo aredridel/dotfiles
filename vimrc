@@ -20,8 +20,6 @@ set formatoptions+=ro
 
 if has('syntax')
     call pathogen#infect() 
-    let g:load_doxygen_syntax=1
-    let g:sql_type_default="mysql"
     set winheight=40
     set cmdheight=3
     set list listchars=tab:\ \ ,trail:·
@@ -54,11 +52,9 @@ if has('syntax')
         endif
     endif
 
-    "colorscheme molokai
     colorscheme desert
 
     let g:Gitv_OpenHorizontal = 'auto'
-    let g:syntastic_php_phpcs_args = '--standard=PSR1'
     let g:syntastic_check_on_open = 1
     let g:syntastic_javascript_checkers = [ 'eslint' ]
 :
@@ -68,28 +64,8 @@ if has('syntax')
     autocmd BufNewFile,BufRead *.js set foldmethod=indent foldlevel=3
     autocmd BufNewFile,BufRead *.sql set foldmethod=indent foldlevel=3
     autocmd BufNewFile,BufRead *.txt set textwidth=76 noautoindent nocindent
-    autocmd BufNewFile,BufRead *.us set syntax=html
     autocmd BufNewFile,BufRead *.hjs set syntax=mustache
     autocmd BufNewFile,BufRead *.mmm set syntax=mustache
-    autocmd BufNewFile,BufRead *.coffee set ts=2 sw=2
-
-    syntax enable
-    function HtmlEscape()
-        silent s/&/\&amp;/eg
-        silent s/</\&lt;/eg
-        silent s/>/\&gt;/eg
-    endfunction
-
-    function HtmlUnEscape()
-        silent s/&lt;/</eg
-        silent s/&gt;/>/eg
-        silent s/&amp;/\&/eg
-    endfunction
-
-    autocmd BufNewFile,BufRead *.html nnoremap <Leader>h :call HtmlEscape()<CR>
-    autocmd BufNewFile,BufRead *.html nnoremap <Leader>H :call HtmlUnEscape()<CR>
-
-    autocmd BufNewFile,BufRead *.js nnoremap <Leader>j :%!js-beautify -f - --good-parts -j -k -s 4<CR>
 
     " Set up Vundle
     set rtp+=~/.vim/bundle/vundle/
@@ -98,7 +74,6 @@ if has('syntax')
     Plugin 'gmarik/vundle'
 
     Plugin 'tpope/vim-classpath'
-    Plugin 'molokai'
     Plugin 'vim-stylus'
     Plugin 'pangloss/vim-javascript'
     Plugin 'rodjek/vim-puppet'
