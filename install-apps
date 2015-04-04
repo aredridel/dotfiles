@@ -23,7 +23,7 @@ brew install pwgen
 brew install wifi-password
 npm install -g ghwd
 npm install -g json
-npm install -g uglifyjs
+npm install -g uglify-js
 npm install -g tick
 npm install -g eslint
 npm install -g manage-npm-scripts
