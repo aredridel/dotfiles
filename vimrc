@@ -73,11 +73,8 @@ if has('syntax')
 
     Plugin 'gmarik/vundle'
 
-    Plugin 'tpope/vim-classpath'
     Plugin 'vim-stylus'
     Plugin 'pangloss/vim-javascript'
-    Plugin 'rodjek/vim-puppet'
-    Plugin 'hsanson/vim-android'
     Plugin 'scrooloose/syntastic'
     Plugin 'tpope/vim-surround'
     Plugin 'wting/rust.vim'
