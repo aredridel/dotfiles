@@ -86,3 +86,5 @@ noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
 
+set secure
+set exrc
