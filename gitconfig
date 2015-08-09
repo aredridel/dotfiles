@@ -24,6 +24,7 @@
 	date = local
 [push]
 	default = simple
+	followTags = true
 [mergetool]
 	keepBackup = true
 [merge]
