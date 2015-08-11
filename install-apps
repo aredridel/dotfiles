@@ -29,3 +29,4 @@ npm install -g eslint
 npm install -g manage-npm-scripts
 npm install -g npe
 npm install -g clidom
+npm install -g jsonstream
