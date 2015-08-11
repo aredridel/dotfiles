@@ -24,6 +24,7 @@ if has('syntax')
     set cmdheight=3
     set list listchars=tab:\ \ ,trail:·
     set laststatus=2
+    set autoread
 
     filetype plugin indent on
     syntax enable
