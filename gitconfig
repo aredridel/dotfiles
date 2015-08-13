@@ -41,7 +41,7 @@
     ui = true
 [user]
 	name = Aria Stewart
-    email = aredridel@dinhe.net
+	email = aredridel@dinhe.net
 [filter "media"]
 	required = true
 	clean = git media clean %f
