@@ -1,5 +1,6 @@
 brew tap caskroom/cask
 brew install brew-cask
+brew cask install iterm2
 brew cask install mou
 brew cask install seashore
 brew cask install firefox
