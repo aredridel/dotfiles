@@ -21,6 +21,7 @@ brew install ack
 brew install ag
 brew install pt
 brew install pwgen
+brew install hub
 brew install wifi-password
 npm install -g ghwd
 npm install -g json
