@@ -23,6 +23,9 @@ brew install pt
 brew install pwgen
 brew install hub
 brew install wifi-password
+brew install ssh-copy-id
+brew tap neovim/neovim
+brew install --HEAD neovim
 npm install -g ghwd
 npm install -g json
 npm install -g uglify-js
