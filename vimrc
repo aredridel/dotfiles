@@ -3,8 +3,7 @@ set expandtab
 set shiftwidth=4
 set tabstop=4
 set nohlsearch
-
-set nocompatible
+set exrc
 set ruler
 
 " Keep lines on screen
@@ -19,46 +18,19 @@ set backspace=indent
 set formatoptions+=ro
 
 if has('syntax')
-    call pathogen#infect() 
+    syntax enable
+
     set winheight=40
     set cmdheight=3
     set list listchars=tab:\ \ ,trail:·
     set laststatus=2
     set autoread
 
-    filetype plugin indent on
-    syntax enable
-
-    if &term =~ "xterm.*"
-        let &t_ti = &t_ti . "\e[?2004h"
-        let &t_te = "\e[?2004l" . &t_te
-        function XTermPasteBegin(ret)
-            set pastetoggle=<Esc>[201~
-            set paste
-            return a:ret
-        endfunction
-        function XTermPasteEnd(ret)
-            set nopaste
-            return a:ret
-        endfunction
-        map <expr> <Esc>[200~ XTermPasteBegin("i")
-        imap <expr> <Esc>[200~ XTermPasteBegin("")
-        imap <expr> <Esc>[201~ XTermPasteEnd("")
-        cmap <Esc>[200~ <nop>
-        cmap <Esc>[201~ <nop>
-
-        if &term =~ "xterm-265.*"
-            set t_AB=<Esc>[48;5;%dm
-            set t_AF=<Esc>[38;5;%dm
-        endif
-    endif
-
     colorscheme desert
 
-    let g:Gitv_OpenHorizontal = 'auto'
     let g:syntastic_check_on_open = 1
     let g:syntastic_javascript_checkers = [ 'eslint' ]
-:
+
     autocmd BufNewFile,BufRead $HOME/Projects/html5/* set tabstop=4 shiftwidth=4 noexpandtab
     autocmd BufNewFile,BufRead xliff.csv set noexpandtab
     autocmd BufNewFile,BufRead *.yml set tabstop=2 shiftwidth=2
@@ -69,15 +41,16 @@ if has('syntax')
     autocmd BufNewFile,BufRead *.mmm set syntax=mustache
 
     " Set up Vundle
-    set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
-
-    Plugin 'gmarik/vundle'
-
+    set rtp+=~/.vim/bundle/Vundle.vim/
+    call vundle#begin()
+    Plugin 'VundleVim/Vundle.vim'
     Plugin 'vim-stylus'
     Plugin 'pangloss/vim-javascript'
     Plugin 'scrooloose/syntastic'
     Plugin 'tpope/vim-surround'
+    filetype plugin indent on
+    call vundle#end()
+
 endif
 
 " Force ourselves to use home-row motion keybindings
@@ -87,4 +60,3 @@ noremap <Left> <nop>
 noremap <Right> <nop>
 
 set secure
-set exrc
