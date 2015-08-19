@@ -14,10 +14,6 @@ if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
     . ~/.nix-profile/etc/profile.d/nix.sh
 fi
 
-if which vim >/dev/null 2>&1; then
-    alias vi=vim
-fi
-
 shopt -s checkhash
 shopt -s cmdhist
 shopt -s histappend
@@ -59,6 +55,13 @@ export SDC_KEY_ID=$(ssh-keygen -l -f $HOME/.ssh/id_rsa.pub | awk '{print $2}')
 alias wow="git status"
 alias such=git
 alias very=git
+
+if which -s nvim; then
+    alias vim=nvim
+    alias vi=nvim
+elif which -s vim; then
+    alias vi=vim
+fi
 
 function pleasedont {
     R=("can u not" "ಠ_ಠ" "(╯°□°）╯︵ ┻━┻")
