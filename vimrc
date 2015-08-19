@@ -78,7 +78,6 @@ if has('syntax')
     Plugin 'pangloss/vim-javascript'
     Plugin 'scrooloose/syntastic'
     Plugin 'tpope/vim-surround'
-    Plugin 'wting/rust.vim'
 endif
 
 " Force ourselves to use home-row motion keybindings
