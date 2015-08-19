@@ -60,10 +60,6 @@ alias wow="git status"
 alias such=git
 alias very=git
 
-if [ -n "`which rlwrap 2>/dev/null`" ]; then
-    alias node="NODE_NO_READLINE=1 rlwrap -p green node"
-fi
-
 function pleasedont {
     R=("can u not" "ಠ_ಠ" "(╯°□°）╯︵ ┻━┻")
     s=$(($RANDOM % ${#R[@]}))
