@@ -15,6 +15,7 @@
 [alias]
 	graph = log --format=damn-awesome --graph
     deploy = "!bash -c '[ -z $1 ] && echo Specify an environment 1>&2 && exit 1 || git push origin +HEAD:deploy-$1' -- "
+	make-fetch-happen = fetch --all -p --tags
 [pretty]
 	damn-awesome = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
 [core]
