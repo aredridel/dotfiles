@@ -24,6 +24,7 @@ brew install pwgen
 brew install hub
 brew install wifi-password
 brew install ssh-copy-id
+brew install nq
 brew tap neovim/neovim
 brew install --HEAD neovim
 npm install -g ghwd
@@ -36,3 +37,5 @@ npm install -g npe
 npm install -g psy
 npm install -g clidom
 npm install -g jsonstream
+npm install -g keybase
+npm install -g node-bin-gen

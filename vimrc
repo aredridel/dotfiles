@@ -38,7 +38,9 @@ if has('syntax')
     autocmd BufNewFile,BufRead *.sql set foldmethod=indent foldlevel=3
     autocmd BufNewFile,BufRead *.txt set textwidth=76 noautoindent nocindent
     autocmd BufNewFile,BufRead *.hjs set syntax=mustache
+    autocmd BufNewFile,BufRead *.hbs set syntax=mustache
     autocmd BufNewFile,BufRead *.mmm set syntax=mustache
+    autocmd BufWritePost *.js silent ![ -x ./node_modules/.bin/esformatter ] && ./node_modules/.bin/esformatter % -i
 
     " Set up Vundle
     set rtp+=~/.vim/bundle/Vundle.vim/

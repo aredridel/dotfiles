@@ -10,10 +10,6 @@ if [ -r ~/.bash_profile.local ]; then
     . ~/.bash_profile.local
 fi
 
-if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
-    . ~/.nix-profile/etc/profile.d/nix.sh
-fi
-
 shopt -s checkhash
 shopt -s cmdhist
 shopt -s histappend
@@ -32,18 +28,33 @@ if which brew >/dev/null 2>&1; then
     fi
 fi
 
+if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
+    . ~/.nix-profile/etc/profile.d/nix.sh
+fi
+
+if [ -d ~/.local/bin ]; then
+    PATH=~/.local/bin:"$PATH"
+fi
+
+#export NIX_PATH=nixpkgs=~/Projects/nixpkgs
+
+MANPATH=/usr/local/share/man:/usr/share/man
+export MANPATH
+
 if [ -d /usr/pkg/bin ]; then
-    PATH=/usr/pkg/sbin:/usr/pkg/bin:$PATH
-    MANPATH=/usr/pkg/man:$MANPATH
+    PATH="/usr/pkg/sbin:/usr/pkg/bin:$PATH"
+    MANPATH="/usr/pkg/man:$MANPATH"
 fi
 
 if [ -d ~/Library/Perl/5/lib/perl5/ ]; then
     eval $(perl -I ~/Library/Perl/5/lib/perl5/ -Mlocal::lib)
 fi
 
+MANPATH="man:$MANPATH"
+
 export PLAN9=/usr/local/plan9
 PATH=$PATH:$PLAN9/bin
-export PATH=$HOME/bin:/usr/local/share/npm/bin:$PATH:node_modules/.bin
+export PATH=node_modules/.bin:$HOME/bin:/usr/local/share/npm/bin:$PATH
 
 export MANTA_URL=https://us-east.manta.joyent.com
 export MANTA_USER=aredridel
@@ -56,10 +67,10 @@ alias wow="git status"
 alias such=git
 alias very=git
 
-if which -s nvim; then
+if which nvim 2>/dev/null >/dev/null; then
     alias vim=nvim
     alias vi=nvim
-elif which -s vim; then
+elif which vim 2>/dev/null >/dev/null; then
     alias vi=vim
 fi
 
@@ -69,3 +80,4 @@ function pleasedont {
     echo ${R[$s]}>&2
     return 1
 }
+if [ -e /Users/aredridel/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/aredridel/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
