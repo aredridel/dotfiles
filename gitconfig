@@ -13,7 +13,7 @@
 	autosetupmerge = always
     autosetuprebase = always
 [alias]
-	graph = log --format=damn-awesome --graph
+	graph = log --format=damn-awesome --graph --date-order
     deploy = "!bash -c '[ -z $1 ] && echo Specify an environment 1>&2 && exit 1 || git push origin +HEAD:deploy-$1' -- "
 	make-fetch-happen = fetch --all -p --tags
 [pretty]
