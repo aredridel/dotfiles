@@ -25,6 +25,7 @@ if has('syntax')
     set list listchars=tab:\ \ ,trail:·
     set laststatus=2
     set autoread
+    set mouse=
 
     colorscheme desert
 
