@@ -39,6 +39,8 @@ if has('syntax')
     autocmd BufNewFile,BufRead *.hbs set syntax=mustache
     autocmd BufNewFile,BufRead *.mmm set syntax=mustache
     autocmd BufWritePost *.js silent ![ -x ./node_modules/.bin/esformatter ] && ./node_modules/.bin/esformatter % -i
+    autocmd BufReadPost * DetectIndent
+
 
     " Set up Vundle
     set rtp+=~/.vim/bundle/Vundle.vim/
@@ -48,9 +50,9 @@ if has('syntax')
     Plugin 'pangloss/vim-javascript'
     Plugin 'scrooloose/syntastic'
     Plugin 'tpope/vim-surround'
+    Plugin 'ciaranm/detectindent.git'
     filetype plugin indent on
     call vundle#end()
-
 endif
 
 " Force ourselves to use home-row motion keybindings
