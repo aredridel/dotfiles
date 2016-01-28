@@ -26,7 +26,8 @@ brew install wifi-password
 brew install ssh-copy-id
 brew install nq
 brew tap neovim/neovim
-brew install --HEAD neovim
+brew install neovim
+brew install mosh
 npm install -g ghwd
 npm install -g json
 npm install -g uglify-js
@@ -39,3 +40,4 @@ npm install -g clidom
 npm install -g jsonstream
 npm install -g keybase
 npm install -g node-bin-gen
+npm install -g jik
