@@ -18,6 +18,7 @@
     redeploy = "!bash -c '[ -z $1 ] && echo Specify an environment 1>&2 && exit 1 || V=`git commit-tree origin/deploy-$1: -p origin/deploy-$1 -m \"Redeploy $2\"` && git push origin $V:deploy-$1' -- "
 
 	make-fetch-happen = fetch --all -p --tags
+	clone = clone --recursive
 [pretty]
 	damn-awesome = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
 [core]
