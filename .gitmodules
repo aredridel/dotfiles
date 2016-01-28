@@ -1,6 +1,6 @@
-[submodule "vim/bundle/vim-stylus"]
-	path = vim/bundle/vim-stylus
+[submodule "config/nvim/bundle/vim-stylus"]
+	path = config/nvim/bundle/vim-stylus
 	url = https://github.com/wavded/vim-stylus
-[submodule "vim/bundle/Vundle.vim"]
-	path = vim/bundle/Vundle.vim
+[submodule "config/nvim/bundle/Vundle.vim"]
+	path = config/nvim/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
