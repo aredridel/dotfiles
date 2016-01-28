@@ -5,3 +5,4 @@ TODO.TXT
 *.vba
 *.vmb
 .last_*
+.netrwhist
