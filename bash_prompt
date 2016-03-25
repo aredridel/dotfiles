@@ -169,7 +169,7 @@ PS1="\u@\h:\W\$(${dvcs_function})\[$COLOR_RESET\]\n:; "
 
 case $TERM in
     gnome*|nxterm|xterm*|rxvt*|konsole*)
-        PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+        PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
         ;;
     *)
         ;;
