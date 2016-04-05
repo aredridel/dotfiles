@@ -46,6 +46,10 @@ if [ -d /usr/pkg/bin ]; then
     MANPATH="/usr/pkg/man:$MANPATH"
 fi
 
+if [ -d ~/Library/node/bin ]; then
+    PATH=~/Library/node/bin:"$PATH"
+fi
+
 if [ -d ~/Library/Perl/5/lib/perl5/ ]; then
     eval $(perl -I ~/Library/Perl/5/lib/perl5/ -Mlocal::lib)
 fi
