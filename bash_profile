@@ -10,6 +10,8 @@ if [ -r ~/.bash_profile.local ]; then
     . ~/.bash_profile.local
 fi
 
+. ~/.iterm2_shell_integration.bash
+
 shopt -s checkhash
 shopt -s cmdhist
 shopt -s histappend
