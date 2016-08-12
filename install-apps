@@ -23,6 +23,7 @@ brew install hub
 brew install wifi-password
 brew install ssh-copy-id
 brew install nq
+brew install vis
 brew tap neovim/neovim
 brew install --HEAD neovim/neovim/neovim
 brew install mosh
