@@ -27,6 +27,7 @@
 	pager = less -r
 	quotepath = false
 	abbrev = 12
+	excludesfile = /Users/aredridel/.gitignore_global
 [log]
 	date = local
 [push]
