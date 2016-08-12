@@ -3,11 +3,9 @@ brew install brew-cask
 brew cask install iterm2
 brew cask install mou
 brew cask install seashore
-brew cask install firefox
 brew cask install spotify
 brew cask install dropbox
 brew cask install flux
-brew cask install xquartz
 brew cask install spectacle
 brew install bash-completion
 brew install encfs
@@ -26,7 +24,7 @@ brew install wifi-password
 brew install ssh-copy-id
 brew install nq
 brew tap neovim/neovim
-brew install neovim
+brew install --HEAD neovim/neovim/neovim
 brew install mosh
 npm install -g ghwd
 npm install -g json
