@@ -38,7 +38,7 @@ if has('syntax')
     autocmd BufNewFile,BufRead *.hjs set syntax=mustache
     autocmd BufNewFile,BufRead *.hbs set syntax=mustache
     autocmd BufNewFile,BufRead *.mmm set syntax=mustache
-    autocmd BufWritePost *.js silent ![ -x ./node_modules/.bin/esformatter ] && ./node_modules/.bin/esformatter % -i
+    "autocmd BufWritePost *.js silent ![ -x ./node_modules/.bin/esformatter ] && ./node_modules/.bin/esformatter % -i
     autocmd BufReadPost * DetectIndent
 
 
