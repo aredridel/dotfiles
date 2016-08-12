@@ -39,3 +39,4 @@ npm install -g jsonstream
 npm install -g keybase
 npm install -g node-bin-gen
 npm install -g jik
+npm install -g cssfmt
