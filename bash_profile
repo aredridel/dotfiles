@@ -1,5 +1,5 @@
-export EDITOR=vi
-export VISUAL=vi
+export EDITOR=vis
+export VISUAL=vis
 
 
 if [ -r ~/.bash_prompt ]; then 
