@@ -1,12 +1,9 @@
 brew tap caskroom/cask
 brew install brew-cask
 brew cask install iterm2
-brew cask install mou
-brew cask install seashore
-brew cask install spotify
 brew cask install dropbox
 brew cask install flux
-brew cask install spectacle
+brew cask install keybase
 brew install bash-completion
 brew install encfs
 brew install nodejs
@@ -39,7 +36,6 @@ npm install -g npe
 npm install -g psy
 npm install -g clidom
 npm install -g jsonstream
-npm install -g keybase
 npm install -g node-bin-gen
 npm install -g jik
 npm install -g cssfmt
