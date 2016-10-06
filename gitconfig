@@ -14,7 +14,7 @@
     autosetuprebase = always
 [alias]
 	graph = log --format=damn-awesome --graph --date-order
-    deploy = "!bash -c '[ -z $1 ] && echo Specify an environment 1>&2 && exit 1 || git push origin +HEAD:deploy-$1' -- "
+    deploy = "!bash -c '[ -z \"$1\" -o -z \"$2\" ] && echo use: git deploy environment tree-ish 1>&2 && exit 1 || git push origin +\"$2:deploy-$1\"' -- "
     redeploy = "!bash -c '[ -z $1 ] && echo Specify an environment 1>&2 && exit 1 || V=`git commit-tree origin/deploy-$1: -p origin/deploy-$1 -m \"Redeploy $2\"` && git push origin $V:deploy-$1' -- "
 
 	make-fetch-happen = fetch --all -p --tags
