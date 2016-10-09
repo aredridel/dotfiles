@@ -79,11 +79,3 @@ if which nvim 2>/dev/null >/dev/null; then
 elif which vim 2>/dev/null >/dev/null; then
     alias vi=vim
 fi
-
-function pleasedont {
-    R=("can u not" "ಠ_ಠ" "(╯°□°）╯︵ ┻━┻")
-    s=$(($RANDOM % ${#R[@]}))
-    echo ${R[$s]}>&2
-    return 1
-}
-if [ -e /Users/aredridel/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/aredridel/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
