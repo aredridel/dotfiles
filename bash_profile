@@ -28,6 +28,13 @@ if which brew >/dev/null 2>&1; then
     if [ -f $(brew --prefix)/etc/bash_completion ]; then
         . $(brew --prefix)/etc/bash_completion
     fi
+
+    if which -s android; then
+        ANDROID_HOME="$(brew --prefix android)"
+        PATH="${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools"
+        export ANDROID_HOME
+    fi
+
 fi
 
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
