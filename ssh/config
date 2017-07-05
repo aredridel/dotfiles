@@ -1,0 +1,29 @@
+GSSApiAuthentication no
+
+User aredridel
+
+Host *.ouraynet.com
+	User root
+	IdentityFile ~/.ssh/root@ouraynet.com.key
+
+Host *.theinternetco.net
+	ForwardX11Trusted yes
+	ControlMaster auto
+	ControlPath ~/.ssh/control-%h-%p-%r
+
+Host *.nbtsc.org
+	ForwardX11Trusted yes
+	ControlMaster auto
+	ControlPath ~/.ssh/control-%h-%p-%r
+
+Host *.blumenthals.com
+	User aria
+	GSSApiAuthentication no
+
+Host 24.75.24.*
+	User aria
+	GSSApiAuthentication no
+
+Host 24.75.25.*
+	User aria
+	GSSApiAuthentication no
