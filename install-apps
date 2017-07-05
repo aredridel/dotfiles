@@ -21,8 +21,7 @@ brew install wifi-password
 brew install ssh-copy-id
 brew install nq
 brew install vis
-brew tap neovim/neovim
-brew install --HEAD neovim/neovim/neovim
+brew install neovim
 brew install mosh
 brew install lua
 luarocks install lpeg
