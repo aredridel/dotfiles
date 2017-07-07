@@ -45,6 +45,10 @@ if [ -d ~/.local/bin ]; then
     PATH=~/.local/bin:"$PATH"
 fi
 
+if [ -d ~/.composer/vendor/bin ]; then
+    export PATH=~/.composer/vendor/bin:"$PATH"
+fi
+
 #export NIX_PATH=nixpkgs=~/Projects/nixpkgs
 
 MANPATH=/usr/local/share/man:/usr/share/man
