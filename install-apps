@@ -20,10 +20,13 @@ brew install hub
 brew install wifi-password
 brew install ssh-copy-id
 brew install nq
+brew install lua
 brew install vis
 brew install neovim
 brew install mosh
-brew install lua
+brwe install xsv
+brew install jq
+brew install awscli
 luarocks install lpeg
 npm install -g ghwd
 npm install -g json
