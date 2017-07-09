@@ -22,6 +22,9 @@ shopt -s no_empty_cmd_completion
 
 alias less='less -R'
 
+MANPATH=man:/usr/local/share/man:/usr/share/man
+export MANPATH
+
 if which brew >/dev/null 2>&1; then
     PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
 
@@ -29,16 +32,15 @@ if which brew >/dev/null 2>&1; then
         . $(brew --prefix)/etc/bash_completion
     fi
 
-    if which -s android; then
-        ANDROID_HOME="$(brew --prefix android)"
-        PATH="${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools"
-        export ANDROID_HOME
-    fi
-
 fi
 
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
     . ~/.nix-profile/etc/profile.d/nix.sh
+fi
+
+if [ -d ~/System ]; then
+    PATH=~/System/bin:"$PATH"
+    MABPATH=~/System/share/man:"$MANPATH"
 fi
 
 if [ -d ~/.local/bin ]; then
@@ -50,9 +52,6 @@ if [ -d ~/.composer/vendor/bin ]; then
 fi
 
 #export NIX_PATH=nixpkgs=~/Projects/nixpkgs
-
-MANPATH=/usr/local/share/man:/usr/share/man
-export MANPATH
 
 if [ -d /usr/pkg/bin ]; then
     PATH="/usr/pkg/sbin:/usr/pkg/bin:$PATH"
@@ -67,11 +66,12 @@ if [ -d ~/Library/Perl/5/lib/perl5/ ]; then
     eval $(perl -I ~/Library/Perl/5/lib/perl5/ -Mlocal::lib)
 fi
 
-MANPATH="man:$MANPATH"
+if [ -d /usr/local/plan9 ]; then
+    export PLAN9=/usr/local/plan9
+    PATH=$PATH:$PLAN9/bin
+fi
 
-export PLAN9=/usr/local/plan9
-PATH=$PATH:$PLAN9/bin
-export PATH=node_modules/.bin:$HOME/bin:/usr/local/share/npm/bin:$PATH
+export PATH=node_modules/.bin:$HOME/bin:$PATH
 
 export MANTA_URL=https://us-east.manta.joyent.com
 export MANTA_USER=aredridel
