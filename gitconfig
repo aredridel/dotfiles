@@ -24,10 +24,9 @@
 [pretty]
 	damn-awesome = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
 [core]
-	pager = less -r
+	pager = less --tabs=4 -RFX
 	quotepath = false
 	abbrev = 12
-	excludesfile = /Users/aredridel/.gitignore_global
 [log]
 	date = local
 [push]
@@ -69,3 +68,5 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[diff-so-fancy]
+	changeHunkIndicators = true
