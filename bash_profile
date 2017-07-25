@@ -31,7 +31,10 @@ if which brew >/dev/null 2>&1; then
     if [ -f $(brew --prefix)/etc/bash_completion ]; then
         . $(brew --prefix)/etc/bash_completion
     fi
+fi
 
+if which -s npx; then
+    source <(npx --shell-auto-fallback)
 fi
 
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
