@@ -346,6 +346,13 @@ fi;
 
 # -- BEGIN ITERM2 CUSTOMIZATIONS --
 
+# We don't care about whitespace, but users care about not changing their histcontrol variables.
+# We overwrite the upstream __bp_adjust_histcontrol function whcih gets called from the next
+# PROMPT_COMMAND invocation.
+function __bp_adjust_histcontrol() {
+  true
+}
+
 function iterm2_begin_osc {
   printf "\033]"
 }
@@ -403,14 +410,18 @@ function iterm2_prompt_suffix() {
 
 function iterm2_print_version_number() {
   iterm2_begin_osc
-  printf "1337;ShellIntegrationVersion=5;shell=bash"
+  printf "1337;ShellIntegrationVersion=8;shell=bash"
   iterm2_end_osc
 }
 
 
 # If hostname -f is slow on your system, set iterm2_hostname before sourcing this script.
 if [ -z "${iterm2_hostname:-}" ]; then
-  iterm2_hostname=$(hostname -f)
+  iterm2_hostname=$(hostname -f 2>/dev/null)
+  # some flavors of BSD (i.e. NetBSD and OpenBSD) don't have the -f option
+  if [ $? -ne 0 ]; then
+    iterm2_hostname=$(hostname)
+  fi
 fi
 
 # Runs after interactively edited command but before execution
