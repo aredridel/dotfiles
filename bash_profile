@@ -33,7 +33,7 @@ if which brew >/dev/null 2>&1; then
     fi
 fi
 
-if which -s npx; then
+if which npx >/dev/null 2>&1; then
     source <(npx --shell-auto-fallback)
 fi
 
