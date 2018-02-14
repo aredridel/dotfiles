@@ -6,7 +6,7 @@ require('plugins/textobject-lexer')
 vis.events.subscribe(vis.events.INIT, function()
 --	vis:command('set theme subtle-256')
 --	vis:command('set theme light-16')
-	vis:command('set theme solarized')
+	vis:command('set theme base16-spacemacs')
 end)
 
 
