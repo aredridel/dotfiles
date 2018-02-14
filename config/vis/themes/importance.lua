@@ -21,7 +21,7 @@ local colors = {
 	['kelley'] = '#2d9574',
 	['skyblue'] = '#4f97d7',
 	['magenta'] = '#a31db1',
-	['purple'] = '#b03060',
+	['purple'] = '#9341f2',
 }
 
 lexers.colors = colors
@@ -60,8 +60,8 @@ lexers.STYLE_CURSOR_PRIMARY = 'fore:'..colors.gray00..',back:'..colors.gray05
 lexers.STYLE_CURSOR_LINE = 'back:'..colors.gray01
 lexers.STYLE_COLOR_COLUMN = 'back:'..colors.gray01
 lexers.STYLE_SELECTION = 'back:'..colors.gray01
-lexers.STYLE_STATUS = 'fore:'..colors.mustard..',back:'..colors.gray01
-lexers.STYLE_STATUS_FOCUSED = 'fore:'..colors.tangerine..',back:'..colors.gray01
+lexers.STYLE_STATUS = 'fore:'..colors.mustard..',back:'..colors.gray02
+lexers.STYLE_STATUS_FOCUSED = 'fore:'..colors.tangerine..',back:'..colors.gray02
 lexers.STYLE_SEPARATOR = lexers.STYLE_DEFAULT
 lexers.STYLE_INFO = 'fore:default,back:default,bold'
 lexers.STYLE_EOF = ''
