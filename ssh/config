@@ -1,31 +1,63 @@
-Host *.ouraynet.com
-	User root
-	IdentityFile ~/.ssh/root@ouraynet.com.key
+AddKeysToAgent yes
 
-Host *.thegrommet.com
-	User aria
+IgnoreUnknown UseKeychain
+UseKeychain yes
 
 Host *.theinternetco.net
 	ForwardX11Trusted yes
-	GSSApiAuthentication yes
+    ForwardAgent yes
 	ControlMaster auto
 	ControlPath ~/.ssh/control-%h-%p-%r
 
 Host *.nbtsc.org
 	ForwardX11Trusted yes
+    ForwardAgent yes
 	ControlMaster auto
-	GSSApiAuthentication yes
 	ControlPath ~/.ssh/control-%h-%p-%r
+    GSSAPIAuthentication yes
+    GSSAPIDelegateCredentials yes
 
-Host *.blumenthals.com
-	User aria
+Host vpshost3.blumenthals.com
+    User root
 
-Host 24.75.24.*
-	User aria
+Host *.blumenthals.com *.wnynetworks.net
+    User aria
+    ForwardAgent yes
+
+Host *.manhunt.net *.manhunt.local *.*.manhunt.net
+    User astewart
+    ForwardAgent yes
+
+Host mojo.local 10.0.1.12 # Travis Scheidegger
+    User ariastewart
+
+Host *.http80.net
+    GSSAPIAuthentication yes
+    GSSAPIDelegateCredentials yes
+
+Host *.westernairparts.com
+    GSSAPIAuthentication no
+    GSSAPIDelegateCredentials no
+
+Host *.eriebank.net
+    User aria
 
 Host 24.75.25.*
-	User aria
+    User aria
 
-Host *
-	User aredridel
-	GSSApiAuthentication no
+Host 24.75.24.*
+    User aria
+
+Host *.local
+    ForwardAgent yes
+
+Host protocol.club
+    User aredridel
+
+Host bastion-orionlabs
+    HostName 52.3.165.129
+
+Host 10.45.*
+	ControlMaster auto
+	ControlPath ~/.ssh/control-%h-%p-%r
+	ProxyCommand ssh bastion-orionlabs nc %h %p
