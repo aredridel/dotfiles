@@ -43,18 +43,21 @@ local keyword = token(l.KEYWORD, word_match{
 local identifier = token(l.IDENTIFIER, l.word)
 
 -- Operators.
-local operator = token(l.OPERATOR, P('==') + P('=>') + S('+-/*%^!&|?:;,.()[]{}<>'))
+local operator = token(l.OPERATOR, P('===') + P('!==') + P('!=') + P('==') + P('=>') + S('+-/*%^!&|?:,.<>'))
+local brackets = token('brackets', S('()[]{}'))
+local unimportant = token('unimportant', S(';'))
 local assignment = token('assignment', S('='))
 
 M._rules = {
   {'whitespace', ws},
+  {'comment', comment},
+  {'operator', operator},
   {'keyword', keyword},
   {'identifier', identifier},
-  {'comment', comment},
   {'number', number},
   {'string', string},
-  {'operator', operator},
   {'assignment', assignment},
+  {'brackets', brackets},
 }
 
 M._foldsymbols = {
@@ -64,7 +67,9 @@ M._foldsymbols = {
 }
 
 M._tokenstyles = {
-  assignment = l.STYLE_ASSIGNMENT
+  unimportant = l.STYLE_UNIMPORTANT,
+  assignment = l.STYLE_ASSIGNMENT,
+  brackets = l.STYLE_BRACKETS
 }
 
 return M
