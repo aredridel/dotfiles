@@ -27,6 +27,7 @@ brew install mosh
 brwe install xsv
 brew install jq
 brew install awscli
+brew install massren
 luarocks install lpeg
 npm install -g ghwd
 npm install -g json
