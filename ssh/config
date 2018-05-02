@@ -1,7 +1,13 @@
 AddKeysToAgent yes
-
 IgnoreUnknown UseKeychain
 UseKeychain yes
+
+Match exec "[ $(basename $(pwd))-$( [ -f .terraform/environment ] && cat .terraform/environment) = 'm2-development' ]" host "*.internal"
+	User aria
+	ProxyJump bastion.development.thegrommet.com
+
+Host *.thegrommet.com *.compute-1.amazonaws.com *.wallis.io wallis.io
+	User aria
 
 Host *.theinternetco.net
 	ForwardX11Trusted yes
