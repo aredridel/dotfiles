@@ -6,10 +6,6 @@ if [ -r ~/.bash_prompt ]; then
     . ~/.bash_prompt
 fi
 
-if [ -r ~/.bash_profile.local ]; then 
-    . ~/.bash_profile.local
-fi
-
 . ~/.iterm2_shell_integration.bash
 
 shopt -s checkhash
@@ -93,3 +89,8 @@ if which nvim 2>/dev/null >/dev/null; then
 elif which vim 2>/dev/null >/dev/null; then
     alias vi=vim
 fi
+
+if [ -r ~/.bash_profile.local ]; then 
+    . ~/.bash_profile.local
+fi
+
