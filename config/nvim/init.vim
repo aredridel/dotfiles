@@ -56,6 +56,8 @@ if has('syntax')
     Plugin 'pangloss/vim-javascript'
     Plugin 'scrooloose/syntastic'
     Plugin 'tpope/vim-surround'
+    Plugin 'tpope/vim-repeat'
+    Plugin 'tpope/vim-commentary'
     Plugin 'ciaranm/detectindent.git'
     filetype plugin indent on
     call vundle#end()
