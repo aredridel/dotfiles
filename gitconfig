@@ -27,6 +27,7 @@
 	pager = less --tabs=4 -RFX
 	quotepath = false
 	abbrev = 12
+	excludesfile = ~/.gitignore_global
 [log]
 	date = local
 [push]
