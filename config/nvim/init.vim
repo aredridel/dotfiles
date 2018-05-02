@@ -31,6 +31,12 @@ if has('syntax')
 
     let g:syntastic_check_on_open = 1
     let g:syntastic_javascript_checkers = [ 'eslint' ]
+    let g:syntastic_php_phpcs_args="--standard=PSR1"
+    let g:syntastic_php_checkers = ['php' ]
+
+    au VimEnter * set winheight=3
+    au WinEnter * set winheight=999
+    au VimEnter * set winminheight=3
 
     autocmd BufNewFile,BufRead *.js set foldmethod=indent foldlevel=3
     autocmd BufNewFile,BufRead *.sql set foldmethod=indent foldlevel=3
