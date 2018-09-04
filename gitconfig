@@ -67,6 +67,8 @@
 	insteadOf = https://gist.github.com/aredridel/
 [url "git@gist.github.com:"]
 	insteadOf = http://gist.github.com/aredridel/
+[url "git@gist.github.com:"]
+	insteadOf = git://gist.github.com/
 [include]
     path = .gitconfig.local
 [filter "lfs"]

@@ -29,6 +29,8 @@ if which brew >/dev/null 2>&1; then
     fi
 fi
 
+PATH="$PATH:$HOME/.cargo/bin"
+
 if which npx >/dev/null 2>&1; then
     source <(npx --shell-auto-fallback)
 fi
@@ -93,4 +95,7 @@ fi
 if [ -r ~/.bash_profile.local ]; then 
     . ~/.bash_profile.local
 fi
+
+
+export PATH="$HOME/.cargo/bin:$PATH"
 
