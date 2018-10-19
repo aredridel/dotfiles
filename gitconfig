@@ -37,6 +37,7 @@
 	keepBackup = true
 [merge]
 	conflictstyle = diff3
+	ff = false
 [color "status"]
     added = yellow
     changed = green
