@@ -12,21 +12,19 @@ Host *.thegrommet.com *.compute-1.amazonaws.com *.wallis.io wallis.io
 	User aria
 
 Host *.theinternetco.net
+	User aredridel
 	ForwardX11Trusted yes
     ForwardAgent yes
 	ControlMaster auto
 	ControlPath ~/.ssh/control-%h-%p-%r
 
-Host *.nbtsc.org
-	ForwardX11Trusted yes
+Host *.nbtsc.org *.http80.net
+	User aredridel
     ForwardAgent yes
 	ControlMaster auto
 	ControlPath ~/.ssh/control-%h-%p-%r
     GSSAPIAuthentication yes
     GSSAPIDelegateCredentials yes
-
-Host vpshost3.blumenthals.com
-    User root
 
 Host *.blumenthals.com *.wnynetworks.net
     User aria
@@ -36,36 +34,12 @@ Host *.manhunt.net *.manhunt.local *.*.manhunt.net
     User astewart
     ForwardAgent yes
 
-Host mojo.local 10.0.1.12 # Travis Scheidegger
-    User ariastewart
-
-Host *.http80.net
-    GSSAPIAuthentication yes
-    GSSAPIDelegateCredentials yes
-
 Host *.westernairparts.com
     GSSAPIAuthentication no
     GSSAPIDelegateCredentials no
-
-Host *.eriebank.net
-    User aria
-
-Host 24.75.25.*
-    User aria
-
-Host 24.75.24.*
-    User aria
 
 Host *.local
     ForwardAgent yes
 
 Host protocol.club
     User aredridel
-
-Host bastion-orionlabs
-    HostName 52.3.165.129
-
-Host 10.45.*
-	ControlMaster auto
-	ControlPath ~/.ssh/control-%h-%p-%r
-	ProxyCommand ssh bastion-orionlabs nc %h %p
