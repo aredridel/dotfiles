@@ -1,6 +1,8 @@
-AddKeysToAgent yes
 IgnoreUnknown UseKeychain
 UseKeychain yes
+
+Host !127.0.0.1
+	AddKeysToAgent yes
 
 Match exec "[ $(basename $(pwd))-$( [ -f .terraform/environment ] && cat .terraform/environment) = 'm2-development' ]" host "*.internal"
 	User aria
