@@ -1,2 +1,14 @@
 /node_modules
 /doc/tags
+/config/nvim/bundle
+!/config/nvim/bundle/Vundle.vim
+/ssh/id_*
+/ssh/*.key
+/ssh/*.pub
+/ssh/known_hosts
+/ssh/random_seed
+/ssh/authorized_keys*
+/config/wireshark/recent*
+/config/psy
+/config/psysh/psysh_history
+/config/psysh/update*
