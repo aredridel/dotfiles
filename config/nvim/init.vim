@@ -52,7 +52,6 @@ if has('syntax')
     set rtp+=~/.vim/bundle/Vundle.vim/
     call vundle#begin()
     Plugin 'VundleVim/Vundle.vim'
-    Plugin 'vim-stylus'
     Plugin 'pangloss/vim-javascript'
     Plugin 'scrooloose/syntastic'
     Plugin 'tpope/vim-surround'
