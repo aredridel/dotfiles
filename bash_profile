@@ -72,6 +72,10 @@ if [ -d /usr/local/plan9 ]; then
     PATH=$PATH:$PLAN9/bin
 fi
 
+if [ -d ~/.cargo/bin ]; then
+    PATH="$HOME/.cargo/bin:$PATH"
+fi
+
 export PATH=node_modules/.bin:$HOME/bin:$PATH
 
 export MANTA_URL=https://us-east.manta.joyent.com
@@ -96,5 +100,3 @@ if [ -r ~/.bash_profile.local ]; then
     . ~/.bash_profile.local
 fi
 
-
-export PATH="$HOME/.cargo/bin:$PATH"
