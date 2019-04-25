@@ -11,11 +11,11 @@
 	noprefix = on
 [branch]
 	autosetupmerge = always
-    autosetuprebase = always
+	autosetuprebase = always
 [alias]
 	graph = log --format=damn-awesome --graph --date-order
-    deploy = "!bash -c '[ -z \"$1\" -o -z \"$2\" ] && echo use: git deploy environment tree-ish 1>&2 && exit 1 || git push origin +\"$2:deploy-$1\"' -- "
-    redeploy = "!bash -c '[ -z $1 ] && echo Specify an environment 1>&2 && exit 1 || V=`git commit-tree origin/deploy-$1: -p origin/deploy-$1 -m \"Redeploy $2\"` && git push origin $V:deploy-$1' -- "
+	deploy = "!bash -c '[ -z \"$1\" -o -z \"$2\" ] && echo use: git deploy environment tree-ish 1>&2 && exit 1 || git push origin +\"$2:deploy-$1\"' -- "
+	redeploy = "!bash -c '[ -z $1 ] && echo Specify an environment 1>&2 && exit 1 || V=`git commit-tree origin/deploy-$1: -p origin/deploy-$1 -m \"Redeploy $2\"` && git push origin $V:deploy-$1' -- "
 
 	make-fetch-happen = fetch --all -p --tags
 	clone = clone --recursive
@@ -39,14 +39,14 @@
 	conflictstyle = diff3
 	ff = false
 [color "status"]
-    added = yellow
-    changed = green
-    untracked = cyan
+	added = yellow
+	changed = green
+	untracked = cyan
 [color]
-    branch = auto
-    diff = auto
-    status = auto
-    ui = true
+	branch = auto
+	diff = auto
+	status = auto
+	ui = true
 [user]
 	name = Aria Stewart
 	email = aredridel@dinhe.net
@@ -71,7 +71,7 @@
 [url "git@gist.github.com:"]
 	insteadOf = git://gist.github.com/
 [include]
-    path = .gitconfig.local
+	path = .gitconfig.local
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
