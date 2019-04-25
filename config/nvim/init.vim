@@ -18,6 +18,20 @@ set backspace=indent
 set formatoptions+=ro
 
 if has('syntax')
+    " Set up Vundle
+    set rtp+=~/.vim/bundle/Vundle.vim/
+    call vundle#begin()
+    Plugin 'VundleVim/Vundle.vim'
+    Plugin 'pangloss/vim-javascript'
+    Plugin 'scrooloose/syntastic'
+    Plugin 'tpope/vim-surround'
+    Plugin 'tpope/vim-repeat'
+    Plugin 'tpope/vim-commentary'
+    Plugin 'challenger-deep-theme/vim', { 'name': 'challenger-deep' }
+    Plugin 'ciaranm/detectindent.git'
+    filetype plugin indent on
+    call vundle#end()
+
     syntax enable
 
     set winheight=40
@@ -27,7 +41,7 @@ if has('syntax')
     set autoread
     set mouse=
 
-    colorscheme desert
+    colorscheme challenger_deep
 
     let g:syntastic_check_on_open = 1
     let g:syntastic_javascript_checkers = [ 'eslint' ]
@@ -48,18 +62,6 @@ if has('syntax')
     autocmd BufReadPost * DetectIndent
 
 
-    " Set up Vundle
-    set rtp+=~/.vim/bundle/Vundle.vim/
-    call vundle#begin()
-    Plugin 'VundleVim/Vundle.vim'
-    Plugin 'pangloss/vim-javascript'
-    Plugin 'scrooloose/syntastic'
-    Plugin 'tpope/vim-surround'
-    Plugin 'tpope/vim-repeat'
-    Plugin 'tpope/vim-commentary'
-    Plugin 'ciaranm/detectindent.git'
-    filetype plugin indent on
-    call vundle#end()
 endif
 
 " Force ourselves to use home-row motion keybindings
