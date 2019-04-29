@@ -1,4 +1,4 @@
-if which vis > /dev/null; then
+if which vis 2> /dev/null > /dev/null; then
     export EDITOR=vis
     export VISUAL=vis
 fi
