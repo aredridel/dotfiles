@@ -1,5 +1,7 @@
-export EDITOR=vis
-export VISUAL=vis
+if which vis > /dev/null; then
+    export EDITOR=vis
+    export VISUAL=vis
+fi
 
 
 if [ -r ~/.bash_prompt ]; then 
