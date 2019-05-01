@@ -1,5 +1,7 @@
-export EDITOR=vis
-export VISUAL=vis
+if which vis 2> /dev/null > /dev/null; then
+    export EDITOR=vis
+    export VISUAL=vis
+fi
 
 
 if [ -r ~/.bash_prompt ]; then 
@@ -78,12 +80,14 @@ fi
 
 export PATH=node_modules/.bin:$HOME/bin:$PATH
 
-export MANTA_URL=https://us-east.manta.joyent.com
-export MANTA_USER=aredridel
-export MANTA_KEY_ID=$(ssh-keygen -l -f $HOME/.ssh/id_rsa.pub | awk '{print $2}')
-export SDC_URL=https://us-east-1.api.joyentcloud.com
-export SDC_ACCOUNT=aredridel
-export SDC_KEY_ID=$(ssh-keygen -l -f $HOME/.ssh/id_rsa.pub | awk '{print $2}')
+if [ -e ~/.ssh/id_rsa.pub ]; then
+    export MANTA_URL=https://us-east.manta.joyent.com
+    export MANTA_USER=aredridel
+    export MANTA_KEY_ID=$(ssh-keygen -l -f $HOME/.ssh/id_rsa.pub | awk '{print $2}')
+    export SDC_URL=https://us-east-1.api.joyentcloud.com
+    export SDC_ACCOUNT=aredridel
+    export SDC_KEY_ID=$(ssh-keygen -l -f $HOME/.ssh/id_rsa.pub | awk '{print $2}')
+fi
 
 alias wow="git status"
 alias such=git
