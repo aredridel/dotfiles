@@ -1,7 +1,7 @@
-if which vis 2> /dev/null > /dev/null; then
-    export EDITOR=vis
-    export VISUAL=vis
-fi
+#if which vis 2> /dev/null > /dev/null; then
+#    export EDITOR=vis
+#    export VISUAL=vis
+#fi
 
 
 if [ -r ~/.bash_prompt ]; then 
