@@ -3,9 +3,13 @@
 #    export VISUAL=vis
 #fi
 
+GIT_PROMPT_THEME=Custom
+GIT_PROMPT_ONLY_IN_REPO=1
+PS1="\w\n;: "
 
-if [ -r ~/.bash_prompt ]; then 
-    . ~/.bash_prompt
+if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+    __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
+    source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
 fi
 
 . ~/.iterm2_shell_integration.bash
