@@ -1,7 +1,7 @@
-#if which vis 2> /dev/null > /dev/null; then
-#    export EDITOR=vis
-#    export VISUAL=vis
-#fi
+if which vise 2> /dev/null > /dev/null; then
+    export EDITOR=vise
+    export VISUAL=vise
+fi
 
 GIT_PROMPT_THEME=Custom
 GIT_PROMPT_ONLY_IN_REPO=1
