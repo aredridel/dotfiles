@@ -3,6 +3,7 @@ if which vise 2> /dev/null > /dev/null; then
     export VISUAL=vise
 fi
 
+GIT_PROMPT_FETCH_REMOTE_STATUS=0
 GIT_PROMPT_THEME=Custom
 GIT_PROMPT_ONLY_IN_REPO=1
 PS1="\w\n;: "
