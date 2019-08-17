@@ -1,2 +1,5 @@
 [character]
 symbol = ":;"
+
+[git_branch]
+symbol = "🌱 "
