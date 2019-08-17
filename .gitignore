@@ -12,3 +12,5 @@
 /config/psy
 /config/psysh/psysh_history
 /config/psysh/update*
+/gnupg/pubring.kbx
+/gnupg/crls.d/*
