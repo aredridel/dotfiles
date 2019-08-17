@@ -3,14 +3,10 @@ if which vise 2> /dev/null > /dev/null; then
     export VISUAL=vise
 fi
 
-GIT_PROMPT_FETCH_REMOTE_STATUS=0
-GIT_PROMPT_THEME=Custom
-GIT_PROMPT_ONLY_IN_REPO=1
 PS1="\w\n;: "
 
-if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
-    __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
-    source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
+if which starship 2> /dev/null >/dev/null; then
+    eval "$(starship init bash)"
 fi
 
 . ~/.iterm2_shell_integration.bash
