@@ -93,6 +93,7 @@ fi
 alias wow="git status"
 alias such=git
 alias very=git
+alias please=sudo
 
 if which nvim 2>/dev/null >/dev/null; then
     alias vim=nvim
