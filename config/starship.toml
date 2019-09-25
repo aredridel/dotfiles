@@ -1,5 +1,9 @@
+prompt_order = [ "username", "directory", "git_branch", "git_status", "package", "nodejs", "rust", "python", "golang", "cmd_duration", "jobs", "battery", "line_break", "character", ]
+
 [character]
 symbol = ":;"
 
 [git_branch]
 symbol = "🌱 "
+
+
