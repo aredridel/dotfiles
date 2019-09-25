@@ -2,6 +2,7 @@
 require('vis')
 require('plugins/filetype')
 require('plugins/textobject-lexer')
+require('plugins/surround')
 
 vis.events.subscribe(vis.events.INIT, function()
 --	vis:command('set theme subtle-256')
