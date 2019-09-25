@@ -27,7 +27,10 @@ if has('syntax')
     Plugin 'tpope/vim-surround'
     Plugin 'tpope/vim-repeat'
     Plugin 'tpope/vim-commentary'
+    Plugin 'mattn/emmet-vim'
     Plugin 'challenger-deep-theme/vim', { 'name': 'challenger-deep' }
+    Plugin 'posva/vim-vue'
+    Plugin 'leafOfTree/vim-svelte-plugin'
     Plugin 'ciaranm/detectindent.git'
     filetype plugin indent on
     call vundle#end()
@@ -48,6 +51,9 @@ if has('syntax')
     let g:syntastic_php_phpcs_args="--standard=PSR1"
     let g:syntastic_php_checkers = ['php' ]
 
+    let g:javascript_plugin_jsdoc = 1
+    let g:vue_pre_processors = []
+
     au VimEnter * set winheight=3
     au WinEnter * set winheight=999
     au VimEnter * set winminheight=3
@@ -55,11 +61,18 @@ if has('syntax')
     autocmd BufNewFile,BufRead *.js set foldmethod=indent foldlevel=3
     autocmd BufNewFile,BufRead *.sql set foldmethod=indent foldlevel=3
     autocmd BufNewFile,BufRead *.txt set textwidth=76 noautoindent nocindent
-    autocmd BufNewFile,BufRead *.hjs set syntax=mustache
-    autocmd BufNewFile,BufRead *.hbs set syntax=mustache
-    autocmd BufNewFile,BufRead *.mmm set syntax=mustache
+    autocmd BufNewFile,BufRead *.hjs set filetype=mustache
+    autocmd BufNewFile,BufRead *.hbs set filetype=mustache
+    autocmd BufNewFile,BufRead *.mmm set filetype=mustache
+    autocmd BufNewFile,BufRead *.vue set filetype=vue
+    autocmd BufNewFile,BufRead *.svelte set filetype=svelte
     "autocmd BufWritePost *.js silent ![ -x ./node_modules/.bin/esformatter ] && ./node_modules/.bin/esformatter % -i
     autocmd BufReadPost * DetectIndent
+
+    augroup javascript_folding
+        au!
+        au FileType javascript setlocal foldmethod=syntax
+    augroup END
 
 
 endif
