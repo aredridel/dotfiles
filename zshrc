@@ -1,38 +1,6 @@
-if which vise 2> /dev/null > /dev/null; then
-    export EDITOR=vise
-    export VISUAL=vise
-fi
-
-PS1="\w\n;: "
-
-if which starship 2> /dev/null >/dev/null; then
-    eval "$(starship init bash)"
-fi
-
-. ~/.iterm2_shell_integration.bash
-
-shopt -s checkhash
-shopt -s cmdhist
-shopt -s histappend
-shopt -s histreedit
-shopt -s histverify
-shopt -s lithist
-shopt -s no_empty_cmd_completion
-
-alias less='less -R'
-
-MANPATH=man:/usr/local/share/man:/usr/share/man
-export MANPATH
-
 if which brew >/dev/null 2>&1; then
     PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
-
-    if [ -f $(brew --prefix)/etc/bash_completion ]; then
-        . $(brew --prefix)/etc/bash_completion
-    fi
 fi
-
-PATH="$PATH:$HOME/.cargo/bin"
 
 if which npx >/dev/null 2>&1; then
     source <(npx --shell-auto-fallback)
@@ -54,8 +22,6 @@ fi
 if [ -d ~/.composer/vendor/bin ]; then
     export PATH=~/.composer/vendor/bin:"$PATH"
 fi
-
-#export NIX_PATH=nixpkgs=~/Projects/nixpkgs
 
 if [ -d /usr/pkg/bin ]; then
     PATH="/usr/pkg/sbin:/usr/pkg/bin:$PATH"
@@ -81,18 +47,6 @@ fi
 
 export PATH=node_modules/.bin:$HOME/bin:$PATH
 
-alias wow="git status"
-alias such=git
-alias very=git
-alias please=sudo
-
-if which nvim 2>/dev/null >/dev/null; then
-    alias vim=nvim
-    alias vi=nvim
-elif which vim 2>/dev/null >/dev/null; then
-    alias vi=vim
-fi
-
-if [ -r ~/.bash_profile.local ]; then 
-    . ~/.bash_profile.local
+if which starship 2> /dev/null >/dev/null; then
+	source <(starship init zsh --print-full-init)
 fi
