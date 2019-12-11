@@ -5,10 +5,6 @@ fi
 
 PS1="\w\n;: "
 
-if which starship 2> /dev/null >/dev/null; then
-    eval "$(starship init bash)"
-fi
-
 . ~/.iterm2_shell_integration.bash
 
 shopt -s checkhash
@@ -92,6 +88,19 @@ if which nvim 2>/dev/null >/dev/null; then
 elif which vim 2>/dev/null >/dev/null; then
     alias vi=vim
 fi
+
+if which starship 2> /dev/null >/dev/null; then
+    eval "$(starship init bash)"
+fi
+
+if which powerline-go 2> /dev/null >/dev/null; then
+    function _update_ps1() {
+        PS1="$(powerline-go -error $?)"
+    }
+
+    PROMPT_COMMAND="_update_ps1"
+fi
+
 
 if [ -r ~/.bash_profile.local ]; then 
     . ~/.bash_profile.local
