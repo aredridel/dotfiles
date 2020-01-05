@@ -1,0 +1,4 @@
+--theme="Monokai Extended"
+--style="changes,header"
+--italic-text=always
+--pager="less -FR"
