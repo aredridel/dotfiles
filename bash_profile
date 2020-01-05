@@ -1,3 +1,5 @@
+source ~/.profile
+
 if which vise 2> /dev/null > /dev/null; then
     export EDITOR=vise
     export VISUAL=vise
@@ -28,8 +30,6 @@ if which brew >/dev/null 2>&1; then
     fi
 fi
 
-PATH="$PATH:$HOME/.cargo/bin"
-
 if which npx >/dev/null 2>&1; then
     source <(npx --shell-auto-fallback)
 fi
@@ -37,41 +37,6 @@ fi
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
     . ~/.nix-profile/etc/profile.d/nix.sh
 fi
-
-if [ -d ~/System ]; then
-    PATH=~/System/bin:"$PATH"
-    MABPATH=~/System/share/man:"$MANPATH"
-fi
-
-if [ -d ~/.local/bin ]; then
-    PATH=~/.local/bin:"$PATH"
-fi
-
-if [ -d ~/.composer/vendor/bin ]; then
-    export PATH=~/.composer/vendor/bin:"$PATH"
-fi
-
-#export NIX_PATH=nixpkgs=~/Projects/nixpkgs
-
-if [ -d /usr/pkg/bin ]; then
-    PATH="/usr/pkg/sbin:/usr/pkg/bin:$PATH"
-    MANPATH="/usr/pkg/man:$MANPATH"
-fi
-
-if [ -d ~/Library/node/bin ]; then
-    PATH=~/Library/node/bin:"$PATH"
-fi
-
-if [ -d ~/Library/Perl/5/lib/perl5/ ]; then
-    eval $(perl -I ~/Library/Perl/5/lib/perl5/ -Mlocal::lib)
-fi
-
-if [ -d /usr/local/plan9 ]; then
-    export PLAN9=/usr/local/plan9
-    PATH=$PATH:$PLAN9/bin
-fi
-
-export PATH=node_modules/.bin:$HOME/bin:$PATH
 
 alias wow="git status"
 alias such=git
