@@ -71,10 +71,6 @@ if [ -d /usr/local/plan9 ]; then
     PATH=$PATH:$PLAN9/bin
 fi
 
-if [ -d ~/.cargo/bin ]; then
-    PATH="$HOME/.cargo/bin:$PATH"
-fi
-
 export PATH=node_modules/.bin:$HOME/bin:$PATH
 
 alias wow="git status"
@@ -101,7 +97,11 @@ if which powerline-go 2> /dev/null >/dev/null; then
     PROMPT_COMMAND="_update_ps1"
 fi
 
+if [ -d ~/.cargo/bin ]; then
+    PATH="$HOME/.cargo/bin:$PATH"
+fi
 
 if [ -r ~/.bash_profile.local ]; then 
     . ~/.bash_profile.local
 fi
+
