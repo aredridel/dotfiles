@@ -7,5 +7,6 @@ home = File.expand_path('~')
 Dir['*'].each do |file|
   next if file =~ /install/ or file =~ /\.md$/
   target = File.join(home, ".#{file}")
-  `ln -sfn #{File.expand_path file} #{target}`
+  `rm -f #{target}`
+  `ln -sf #{File.expand_path file} #{target}`
 end
