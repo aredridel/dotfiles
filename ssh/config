@@ -40,3 +40,8 @@ Host *.local
 
 Host protocol.club
     User aredridel
+
+Host build.pancake.io
+	User git
+	IdentityFile ~/.ssh/id_aredridel@dinhe.net
+
