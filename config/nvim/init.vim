@@ -18,22 +18,19 @@ set backspace=indent
 set formatoptions+=ro
 
 if has('syntax')
-    " Set up Vundle
-    set rtp+=~/.vim/bundle/Vundle.vim/
-    call vundle#begin()
-    Plugin 'VundleVim/Vundle.vim'
-    Plugin 'pangloss/vim-javascript'
-    Plugin 'scrooloose/syntastic'
-    Plugin 'tpope/vim-surround'
-    Plugin 'tpope/vim-repeat'
-    Plugin 'tpope/vim-commentary'
-    Plugin 'mattn/emmet-vim'
-    Plugin 'challenger-deep-theme/vim', { 'name': 'challenger-deep' }
-    Plugin 'posva/vim-vue'
-    Plugin 'leafOfTree/vim-svelte-plugin'
-    Plugin 'ciaranm/detectindent.git'
-    filetype plugin indent on
-    call vundle#end()
+    call plug#begin()
+    Plug 'pangloss/vim-javascript'
+    Plug 'scrooloose/syntastic'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-repeat'
+    Plug 'tpope/vim-commentary'
+    Plug 'mattn/emmet-vim'
+    Plug 'challenger-deep-theme/vim', { 'name': 'challenger-deep' }
+    Plug 'posva/vim-vue'
+    Plug 'leafOfTree/vim-svelte-plugin'
+    Plug 'ciaranm/detectindent.git'
+    Plug 'neoclide/coc.nvim' { 'branch': 'release' }
+    call plug#end()
 
     syntax enable
 
