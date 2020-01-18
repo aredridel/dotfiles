@@ -1,7 +1,6 @@
-!/config/nvim/bundle/Vundle.vim
 /config/configstore/update-notifier-*
 /config/configstore/nodemon.json
-/config/nvim/bundle
+/config/nvim/plugged
 /config/org.sparkleshare.SparkleShare/
 /config/psy
 /config/psysh/psysh_history

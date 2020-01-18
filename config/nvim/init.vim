@@ -17,7 +17,10 @@ set cindent
 set backspace=indent
 set formatoptions+=ro
 
+
 if has('syntax')
+    syntax enable
+
     call plug#begin()
     Plug 'pangloss/vim-javascript'
     Plug 'scrooloose/syntastic'
@@ -25,14 +28,11 @@ if has('syntax')
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-commentary'
     Plug 'mattn/emmet-vim'
-    Plug 'challenger-deep-theme/vim', { 'name': 'challenger-deep' }
-    Plug 'posva/vim-vue'
+    Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
     Plug 'leafOfTree/vim-svelte-plugin'
-    Plug 'ciaranm/detectindent.git'
-    Plug 'neoclide/coc.nvim' { 'branch': 'release' }
+    Plug 'ciaranm/detectindent'
+    Plug 'neoclide/coc.nvim', { 'branch': 'release' }
     call plug#end()
-
-    syntax enable
 
     set winheight=40
     set cmdheight=3
