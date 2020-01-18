@@ -32,6 +32,7 @@ if has('syntax')
     Plug 'leafOfTree/vim-svelte-plugin'
     Plug 'ciaranm/detectindent'
     Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+    Plug 'vim-airline/vim-airline'
     call plug#end()
 
     set winheight=40
