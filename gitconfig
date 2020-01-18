@@ -23,10 +23,10 @@
 [pretty]
 	damn-awesome = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
 [core]
-	pager = "delta --theme 'Monokai Extended'"
 	quotepath = false
 	abbrev = 12
 	excludesfile = /Users/aria/.gitignore_global
+	pager = more -R
 [log]
 	date = local
 [push]
