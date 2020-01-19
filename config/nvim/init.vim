@@ -49,6 +49,8 @@ if has('syntax')
     let g:syntastic_php_phpcs_args="--standard=PSR1"
     let g:syntastic_php_checkers = ['php' ]
 
+    let g:coc_global_extensions = [ 'coc-prettier', 'coc-marketplace', 'coc-lists', 'coc-git', 'coc-eslint', 'coc-emoji', 'coc-emmet', 'coc-browser', 'coc-tsserver', 'coc-svg', 'coc-svelte', 'coc-stylelintplus', 'coc-sh', 'coc-rls', 'coc-markmap', 'coc-markdownlint', 'coc-json', 'coc-import-cost', 'coc-html', 'coc-deno', 'coc-css' ]
+
     let g:javascript_plugin_jsdoc = 1
     let g:vue_pre_processors = []
 
