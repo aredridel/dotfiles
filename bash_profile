@@ -54,13 +54,13 @@ if which starship 2> /dev/null >/dev/null; then
     eval "$(starship init bash)"
 fi
 
-if which powerline-go 2> /dev/null >/dev/null; then
-    function _update_ps1() {
-        PS1="$(powerline-go -error $?)"
-    }
-
-    PROMPT_COMMAND="_update_ps1"
-fi
+#if which powerline-go 2> /dev/null >/dev/null; then
+#    function _update_ps1() {
+#        PS1="$(powerline-go -error $?)"
+#    }
+#
+#    PROMPT_COMMAND="_update_ps1"
+#fi
 
 if [ -d ~/.cargo/bin ]; then
     PATH="$HOME/.cargo/bin:$PATH"
