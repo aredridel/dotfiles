@@ -6,7 +6,7 @@ Host !127.0.0.1
 
 Host *.thegrommet.com *.compute-1.amazonaws.com *.wallis.io wallis.io
 	User aria
-	IdentityFile ~/.ssh/id_20190920.rsa
+	IdentityFile ~/.ssh/id_20191220.rsa
 
 Host *.theinternetco.net
 	User aredridel
@@ -15,7 +15,7 @@ Host *.theinternetco.net
 	ControlMaster auto
 	ControlPath ~/.ssh/control-%h-%p-%r
 
-Host *.nbtsc.org *.http80.net
+Host *.nbtsc.org *.http80.net *.dinhe.net
 	User aredridel
     ForwardAgent yes
 	ControlMaster auto
