@@ -21,9 +21,26 @@ set formatoptions+=ro
 if has('syntax')
     syntax enable
 
+    set winheight=40
+    set cmdheight=3
+    " set list listchars=tab:\ \ ,trail:·
+    set laststatus=2
+    set autoread
+    set mouse=
+
+    let g:typescript_indent_disable = 1
+
+    let g:coc_global_extensions = [ 'coc-prettier', 'coc-marketplace', 'coc-lists', 'coc-diagnostic', 'coc-git', 'coc-eslint', 'coc-emoji', 'coc-emmet', 'coc-browser', 'coc-tsserver', 'coc-svg', 'coc-svelte', 'coc-stylelintplus', 'coc-sh', 'coc-rls', 'coc-markmap', 'coc-markdownlint', 'coc-json', 'coc-import-cost', 'coc-html', 'coc-deno', 'coc-css' ]
+
+    " let g:ale_open_list = 1
+    let g:ale_set_loclist = 0
+    let g:ale_set_quickfix = 1
+
+    let g:javascript_plugin_jsdoc = 1
+    let g:vue_pre_processors = []
+
     call plug#begin()
     Plug 'pangloss/vim-javascript'
-    Plug 'scrooloose/syntastic'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-commentary'
@@ -33,26 +50,11 @@ if has('syntax')
     Plug 'ciaranm/detectindent'
     Plug 'neoclide/coc.nvim', { 'branch': 'release' }
     Plug 'vim-airline/vim-airline'
+    "Plug 'dense-analysis/ale'
+    Plug 'leafgarland/typescript-vim'
     call plug#end()
 
-    set winheight=40
-    set cmdheight=3
-    " set list listchars=tab:\ \ ,trail:·
-    set laststatus=2
-    set autoread
-    set mouse=
-
     colorscheme challenger_deep
-
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_javascript_checkers = [ 'eslint' ]
-    let g:syntastic_php_phpcs_args="--standard=PSR1"
-    let g:syntastic_php_checkers = ['php' ]
-
-    let g:coc_global_extensions = [ 'coc-prettier', 'coc-marketplace', 'coc-lists', 'coc-git', 'coc-eslint', 'coc-emoji', 'coc-emmet', 'coc-browser', 'coc-tsserver', 'coc-svg', 'coc-svelte', 'coc-stylelintplus', 'coc-sh', 'coc-rls', 'coc-markmap', 'coc-markdownlint', 'coc-json', 'coc-import-cost', 'coc-html', 'coc-deno', 'coc-css' ]
-
-    let g:javascript_plugin_jsdoc = 1
-    let g:vue_pre_processors = []
 
     au VimEnter * set winheight=3
     au WinEnter * set winheight=999
@@ -83,10 +85,10 @@ if has('syntax')
     set nowritebackup
 
     " Better display for messages
-    set cmdheight=2
+    set cmdheight=6
 
     " You will have bad experience for diagnostic messages when it's default 4000.
-    set updatetime=300
+    set updatetime=500
 
     " don't give |ins-completion-menu| messages.
     set shortmess+=c
@@ -204,6 +206,12 @@ if has('syntax')
     " Resume latest coc list
     nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+    " Load all plugins now.
+    " Plugins need to be added to runtimepath before helptags can be generated.
+    packloadall
+    " Load all of the helptags now, after plugins have been loaded.
+    " All messages and errors will be ignored.
+    silent! helptags ALL
 endif
 
 " Force ourselves to use home-row motion keybindings
