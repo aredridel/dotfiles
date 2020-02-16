@@ -50,3 +50,5 @@ fi
 #		install_powerline_precmd
 #	fi
 #fi
+
+setopt no_share_history
