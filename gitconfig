@@ -26,7 +26,7 @@
 	quotepath = false
 	abbrev = 12
 	excludesfile = /Users/aria/.gitignore_global
-	pager = less -R
+	pager = less -R -+X -+F
 [log]
 	date = local
 [push]
