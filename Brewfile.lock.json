@@ -2,7 +2,7 @@
   "entries": {
     "tap": {
       "homebrew/cask": {
-        "revision": "2fedea0d09e42bd05b50da2432dcdf9763cf70f1"
+        "revision": "8280931007ee748239c30bf4343cb0acb280c78a"
       },
       "mas-cli/tap": {
         "revision": "dcae96ab18e10b4bbd9b7704a1c712d790fff237"
@@ -350,6 +350,27 @@
             }
           }
         }
+      },
+      "fx": {
+        "version": "18.0.1",
+        "bottle": {
+          "cellar": ":any_skip_relocation",
+          "prefix": "/usr/local",
+          "files": {
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/fx-18.0.1.catalina.bottle.tar.gz",
+              "sha256": "6eeffd6a8a5c7375210fd900a15ffa92125358f4fa527042cc40bf06cb28737a"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/fx-18.0.1.mojave.bottle.tar.gz",
+              "sha256": "828fb186c9297842b9de006ebd9c32be30c43a134fc2478fac03e2d0dbda0252"
+            },
+            "high_sierra": {
+              "url": "https://homebrew.bintray.com/bottles/fx-18.0.1.high_sierra.bottle.tar.gz",
+              "sha256": "467c10fb9f1fb6caf54511e50dba80d24a83ea7d01cafbc87e293376e5d23e02"
+            }
+          }
+        }
       }
     },
     "cask": {
@@ -393,9 +414,9 @@
   "system": {
     "macos": {
       "catalina": {
-        "HOMEBREW_VERSION": "2.2.6-31-g2834a75",
+        "HOMEBREW_VERSION": "2.2.7-20-g10ba0d5",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "7989ceacf1750cbb50be0392b99faabe3cac1c1a",
+        "Homebrew/homebrew-core": "3ba0438784e7ccfa7e2bb3e5cde31516eb99b6ab",
         "CLT": "11.0.33.8",
         "Xcode": "11.3.1",
         "macOS": "10.15.3"

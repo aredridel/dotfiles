@@ -18,6 +18,7 @@ brew "mosh"
 brew "awscli"
 brew "massren"
 brew "starship"
+brew "fx"
 
 cask "firefox"
 
