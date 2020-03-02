@@ -1,0 +1,16 @@
+{
+  "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
+  "suggest.enablePreview": true,
+  "tsserver.npm": "npm",
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-lsp",
+      "filetypes": ["terraform", "tf"],
+      "initializationOptions": {}
+    },
+    "kotlin": {
+      "command": "/home/users/aredridel/Projects/KotlinLanguageServer/server/build/scripts/server",
+      "filetypes": ["kotlin"]
+    }
+  }
+}
