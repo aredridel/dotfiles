@@ -4,9 +4,8 @@
 
 home = File.expand_path('~')
 
-Dir['*'].each do |file|
-  next if file =~ /install/ or file =~ /\.md$/
-  target = File.join(home, ".#{file}")
-  `rm -f #{target}`
-  `ln -sf #{File.expand_path file} #{target}`
+Dir['dotfiles/*'].each do |file|
+  target = File.join(home, ".#{File.basename file}")
+  File.unlink target rescue Errno::ENOENT
+  File.symlink(File.expand_path(file), target)
 end
