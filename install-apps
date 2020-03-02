@@ -1,17 +1,3 @@
-brew install bash-completion
-brew install bash-git-prompt
-brew install encfs
-brew install node
-brew install gnupg
-brew install pwgen
-brew install ssh-copy-id
-brew install nq
-brew install lua
-brew install vis
-brew install mosh
-brew install awscli
-brew install massren
-brew install starship
 npm install -g json
 npm install -g eslint
 npm install -g node-bin-gen
