@@ -26,7 +26,7 @@ if has('syntax')
     " set list listchars=tab:\ \ ,trail:·
     set laststatus=2
     set autoread
-    set mouse=
+    set mouse=nv
 
     let g:typescript_indent_disable = 1
 
@@ -60,14 +60,16 @@ if has('syntax')
     au WinEnter * set winheight=999
     au VimEnter * set winminheight=3
 
-    autocmd BufNewFile,BufRead *.js set foldmethod=indent foldlevel=3
+    autocmd BufNewFile,BufRead *.js set foldmethod=manual foldlevel=3
     autocmd BufNewFile,BufRead *.sql set foldmethod=indent foldlevel=3
     autocmd BufNewFile,BufRead *.txt set textwidth=76 noautoindent nocindent
     autocmd BufNewFile,BufRead *.hjs set filetype=mustache
     autocmd BufNewFile,BufRead *.hbs set filetype=mustache
     autocmd BufNewFile,BufRead *.mmm set filetype=mustache
     autocmd BufNewFile,BufRead *.vue set filetype=vue
-    autocmd BufNewFile,BufRead *.svelte set filetype=svelte
+    autocmd BufNewFile,BufRead *.svelte set filetype=svelte foldmethod=manual foldlevel=3 iskeyword=@,_,-
+    autocmd BufNewFile,BufRead *.html set iskeyword=@,_,-
+    autocmd BufNewFile,BufRead *.blade.php set iskeyword=@,_,-
     "autocmd BufWritePost *.js silent ![ -x ./node_modules/.bin/esformatter ] && ./node_modules/.bin/esformatter % -i
     autocmd BufReadPost * DetectIndent
 
