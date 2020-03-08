@@ -22,6 +22,6 @@
     "coc-stylelintplus": ">=1.0.3",
     "coc-svelte": ">=0.0.2",
     "coc-svg": ">=0.0.13",
-    "coc-tsserver": ">=1.4.9"
+    "coc-tsserver": ">=1.4.10"
   }
 }

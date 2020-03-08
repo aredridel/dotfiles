@@ -1135,8 +1135,14 @@
         "id": "1333542190",
         "version": "7.4.4"
       },
-      "Affinity Designer": null,
-      "Affinity Photo": null,
+      "Affinity Designer": {
+        "id": "824171161",
+        "version": "1.8.1"
+      },
+      "Affinity Photo": {
+        "id": "824183456",
+        "version": "1.8.1"
+      },
       "Xcode": {
         "id": "497799835",
         "version": "11.3.1"
@@ -1150,10 +1156,10 @@
   "system": {
     "macos": {
       "catalina": {
-        "HOMEBREW_VERSION": "2.2.6-67-gf37cd18",
+        "HOMEBREW_VERSION": "2.2.7-20-g10ba0d5",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "2517c6edb81b18a3768a640ab60c101ef60fbaa8",
-        "CLT": "11.0.33.17",
+        "Homebrew/homebrew-core": "3ba0438784e7ccfa7e2bb3e5cde31516eb99b6ab",
+        "CLT": "11.0.33.8",
         "Xcode": "11.3.1",
         "macOS": "10.15.3"
       }
