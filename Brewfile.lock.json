@@ -2,7 +2,7 @@
   "entries": {
     "tap": {
       "homebrew/cask": {
-        "revision": "d9ff11c5deed25e3e93eccf9bf905d3a967134ad"
+        "revision": "313d1aa43e5daf2d1fab80403352957f6959183b"
       },
       "mas-cli/tap": {
         "revision": "dcae96ab18e10b4bbd9b7704a1c712d790fff237"
@@ -564,24 +564,7 @@
       },
       "git-delta": {
         "version": "0.0.16",
-        "bottle": {
-          "cellar": ":any_skip_relocation",
-          "prefix": "/usr/local",
-          "files": {
-            "catalina": {
-              "url": "https://homebrew.bintray.com/bottles/git-delta-0.0.16.catalina.bottle.tar.gz",
-              "sha256": "0248a4a319540d6024cc7875855f99f2dae9b47f13b5c4dcdfdae4f8c66b7d13"
-            },
-            "mojave": {
-              "url": "https://homebrew.bintray.com/bottles/git-delta-0.0.16.mojave.bottle.tar.gz",
-              "sha256": "32894ad7e77f339198252bc5ebe5e5c0f393a1b9338b4fda3e393b47b74796e7"
-            },
-            "high_sierra": {
-              "url": "https://homebrew.bintray.com/bottles/git-delta-0.0.16.high_sierra.bottle.tar.gz",
-              "sha256": "81d9eb60f8c187c729ccb3bb95a5b8eb0e05e759182bad6253e5f60b53aa52d7"
-            }
-          }
-        }
+        "bottle": false
       },
       "gitbatch": {
         "version": "0.5.0",
