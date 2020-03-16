@@ -7,7 +7,7 @@
     "coc-emmet": ">=1.1.4",
     "coc-emoji": ">=1.2.3",
     "coc-eslint": ">=1.2.6",
-    "coc-git": ">=1.7.4",
+    "coc-git": ">=1.7.7",
     "coc-html": ">=1.2.3",
     "coc-import-cost": ">=1.0.1",
     "coc-json": ">=1.2.5",
@@ -15,6 +15,7 @@
     "coc-markdownlint": ">=1.1.1",
     "coc-marketplace": ">=1.7.0",
     "coc-markmap": ">=0.1.4",
+    "coc-phpls": ">=2.1.8",
     "coc-prettier": ">=1.1.11",
     "coc-python": ">=1.2.9",
     "coc-rls": ">=1.1.4",
@@ -22,6 +23,6 @@
     "coc-stylelintplus": ">=1.0.3",
     "coc-svelte": ">=0.0.2",
     "coc-svg": ">=0.0.13",
-    "coc-tsserver": ">=1.4.10"
+    "coc-tsserver": ">=1.4.11"
   }
 }

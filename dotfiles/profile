@@ -45,3 +45,7 @@ export PATH=node_modules/.bin:$HOME/bin:$PATH
 if [ -r ~/.profile.local ]; then 
     . ~/.profile.local
 fi
+
+if which brew >/dev/null 2>&1; then
+    PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
+fi

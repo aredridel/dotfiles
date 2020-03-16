@@ -2,6 +2,7 @@
   "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
   "suggest.enablePreview": true,
   "tsserver.npm": "npm",
+  "intelephense.licenceKey": "002VULS67BSVY0F",
   "languageserver": {
     "terraform": {
       "command": "terraform-lsp",

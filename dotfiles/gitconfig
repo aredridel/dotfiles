@@ -93,3 +93,6 @@
 	trustExitCode = true
 [pull]
 	rebase = true
+[trim]
+	protected = production,staging,development
+	bases = master,production

@@ -17,7 +17,6 @@ set cindent
 set backspace=indent
 set formatoptions+=ro
 
-
 if has('syntax')
     syntax enable
 
@@ -28,37 +27,64 @@ if has('syntax')
     set autoread
     set mouse=nv
 
-    let g:typescript_indent_disable = 1
+    " let g:typescript_indent_disable = 1
 
-    " let g:coc_global_extensions = [ 'coc-prettier', 'coc-marketplace', 'coc-lists', 'coc-diagnostic', 'coc-git', 'coc-eslint', 'coc-emoji', 'coc-emmet', 'coc-browser', 'coc-tsserver', 'coc-svg', 'coc-svelte', 'coc-stylelintplus', 'coc-sh', 'coc-rls', 'coc-markmap', 'coc-markdownlint', 'coc-json', 'coc-import-cost', 'coc-html', 'coc-deno', 'coc-css' ]
+    let g:coc_global_extensions = [ 'coc-prettier', 'coc-marketplace', 'coc-lists', 'coc-diagnostic', 'coc-git', 'coc-eslint', 'coc-emoji', 'coc-emmet', 'coc-browser', 'coc-tsserver', 'coc-svg', 'coc-svelte', 'coc-stylelintplus', 'coc-sh', 'coc-rls', 'coc-markmap', 'coc-markdownlint', 'coc-json', 'coc-import-cost', 'coc-html', 'coc-deno', 'coc-css' ]
 
-    " let g:ale_open_list = 1
-    let g:ale_set_loclist = 0
-    let g:ale_set_quickfix = 1
+    let g:ale_open_list = 1
+    " let g:ale_set_loclist = 0
+    " let g:ale_set_quickfix = 1
+    let g:ale_completion_enabled = 1
+    let g:ale_use_global_executables = 1
+    let g:ale_completion_tsserver_autoimport = 1
 
     let g:javascript_plugin_jsdoc = 1
-    let g:vue_pre_processors = []
+
+    let g:ale_fixers = {
+        \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+        \   'json': ['prettier'],
+        \   'svelte': ['prettier'],
+        \}
 
     call plug#begin()
-    " Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-    Plug 'prabirshrestha/async.vim'
-    Plug 'prabirshrestha/vim-lsp'
-    Plug 'mattn/vim-lsp-settings'
-    Plug 'prabirshrestha/asyncomplete.vim'
-    Plug 'prabirshrestha/asyncomplete-lsp.vim'
-    Plug 'ryanolsonx/vim-lsp-typescript'
+    Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+    " Plug 'prabirshrestha/async.vim'
+    " Plug 'prabirshrestha/vim-lsp'
+    " Plug 'mattn/vim-lsp-settings'
+    " Plug 'prabirshrestha/asyncomplete.vim'
+    " Plug 'prabirshrestha/asyncomplete-lsp.vim'
+    " Plug 'ryanolsonx/vim-lsp-typescript'
+    " Plug 'autozimu/LanguageClient-neovim', {
+    "     \ 'branch': 'next',
+    "     \ 'do': 'bash install.sh',
+    "     \ }
     Plug 'pangloss/vim-javascript'
     Plug 'tpope/vim-surround'
-    Plug 'tpope/vim-repeat'
+    " Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-commentary'
-    " Plug 'mattn/emmet-vim'
+    Plug 'mattn/emmet-vim'
     Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
     Plug 'leafOfTree/vim-svelte-plugin'
     Plug 'ciaranm/detectindent'
     Plug 'vim-airline/vim-airline'
-    "Plug 'dense-analysis/ale'
-    " Plug 'leafgarland/typescript-vim'
+    Plug 'leafgarland/typescript-vim'
+    " Plug 'dense-analysis/ale'
     call plug#end()
+ 
+    if has('ale')
+        call ale#linter#Define('svelte', {
+            \   'name': 'svelteserver',
+            \   'lsp': 'stdio',
+            \   'executable': 'svelteserver',
+            \   'command': '%e --stdio',
+            \   'project_root': '.',
+            \})
+        inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+        inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+        inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+    endif
+
+    set completeopt=menu,menuone,preview,noselect,noinsert
 
     colorscheme challenger_deep
 
@@ -69,10 +95,7 @@ if has('syntax')
     autocmd BufNewFile,BufRead *.js set foldmethod=manual foldlevel=3
     autocmd BufNewFile,BufRead *.sql set foldmethod=indent foldlevel=3
     autocmd BufNewFile,BufRead *.txt set textwidth=76 noautoindent nocindent
-    autocmd BufNewFile,BufRead *.hjs set filetype=mustache
-    autocmd BufNewFile,BufRead *.hbs set filetype=mustache
-    autocmd BufNewFile,BufRead *.mmm set filetype=mustache
-    autocmd BufNewFile,BufRead *.vue set filetype=vue
+    autocmd BufNewFile,BufRead *.hbs set filetype=html
     autocmd BufNewFile,BufRead *.svelte set filetype=svelte foldmethod=manual foldlevel=3 iskeyword=@,_,-
     autocmd BufNewFile,BufRead *.html set iskeyword=@,_,-
     autocmd BufNewFile,BufRead *.blade.php set iskeyword=@,_,-
@@ -92,46 +115,85 @@ if has('syntax')
     " You will have bad experience for diagnostic messages when it's default 4000.
     set updatetime=500
 
-    " vim-lsp
-    let g:lsp_virtual_text_enabled = 0
-    let g:lsp_diagnostics_echo_cursor = 1
-    set foldmethod=expr
-        \ foldexpr=lsp#ui#vim#folding#foldexpr()
-        \ foldtext=lsp#ui#vim#folding#foldtext()
+    if has('languagelient-neovim')
 
-    function! s:on_lsp_buffer_enabled() abort
-        setlocal omnifunc=lsp#complete
-        nmap <buffer> gd <plug>(lsp-definition)
-        nmap <buffer> gy <plug>(lsp-type-definition)
-        nmap <buffer> gi <plug>(lsp-implementation)
-        nmap <buffer> <leader>rn <plug>(lsp-rename)
-        nmap <buffer> <leader>d <plug>(lsp-peek-definition)
-        nmap <buffer> <leader>y <plug>(lsp-peek-type-definition)
-        nmap <buffer> <leader>i <plug>(lsp-peek-implementation)
-        nmap <buffer> <leader>h <plug>(lsp-type-hierarchy)
-        nmap <buffer> ]g <plug>(lsp-next-diagnostic)
-        nmap <buffer> [g <plug>(lsp-previous-diagnostic)
-        nmap <buffer> ]e <plug>(lsp-next-error)
-        nmap <buffer> [e <plug>(lsp-previous-error)
-        nmap <buffer> ]w <plug>(lsp-next-warning)
-        nmap <buffer> [w <plug>(lsp-previous-warning)
-        " refer to doc to add more commands
-    endfunction
+        " lc
+        let g:LanguageClient_serverCommands = {
+            \ 'svelte': ['svelteserver', '--stdio'],
+            \ 'javascript': ['typescript-language-server', '--stdio'],
+            \ 'typescript': ['typescript-language-server', '--stdio'],
+            \ 'php': ['intelephense', '--stdio'],
+            \ 'json': ['vscode-json-languageserver', '--stdio'],
+            \ }
 
-    augroup lsp_install
-        au!
-        " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-        autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-    augroup END
+        function LC_maps()
+        if has_key(g:LanguageClient_serverCommands, &filetype)
+            nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
+            nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
+            nnoremap <buffer> <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+        endif
+        endfunction
 
-    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-    inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
-    imap <c-space> <Plug>(asyncomplete_force_refresh)
-    set completeopt+=preview
-    autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+        set completefunc=LanguageClient#complete
+        set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+        " let g:LanguageClient_selectionUI="quickfix"
 
-    if has('coc.nvim')
+        autocmd FileType * call LC_maps()
+    endif
+
+    if has('vim-lsp')
+        " vim-lsp
+        let g:lsp_virtual_text_enabled = 0
+        let g:lsp_diagnostics_echo_cursor = 1
+        set foldmethod=expr
+            \ foldexpr=lsp#ui#vim#folding#foldexpr()
+            \ foldtext=lsp#ui#vim#folding#foldtext()
+
+        let g:lsp_log_file = expand('~/vim-lsp.log')
+
+        function! s:on_lsp_buffer_enabled() abort
+            setlocal omnifunc=lsp#complete
+            nmap <buffer> gd <plug>(lsp-definition)
+            nmap <buffer> gy <plug>(lsp-type-definition)
+            nmap <buffer> gi <plug>(lsp-implementation)
+            nmap <buffer> <leader>rn <plug>(lsp-rename)
+            nmap <buffer> <leader>d <plug>(lsp-peek-definition)
+            nmap <buffer> <leader>y <plug>(lsp-peek-type-definition)
+            nmap <buffer> <leader>i <plug>(lsp-peek-implementation)
+            nmap <buffer> <leader>h <plug>(lsp-type-hierarchy)
+            nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+            nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+            nmap <buffer> ]e <plug>(lsp-next-error)
+            nmap <buffer> [e <plug>(lsp-previous-error)
+            nmap <buffer> ]w <plug>(lsp-next-warning)
+            nmap <buffer> [w <plug>(lsp-previous-warning)
+            " refer to doc to add more commands
+        endfunction
+
+        augroup lsp_install
+            au!
+            " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+            autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+        augroup END
+
+        if executable('svelteserver')
+            au User lsp_setup call lsp#register_server({
+                \ 'name': 'svelteserver',
+                \ 'cmd': { server_info->[&shell, &shellcmdflag, 'tee /Users/aria/in.log | svelteserver --stdio | tee /Users/aria/fffff.log']},
+                \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+                \ 'whitelist': ['svelte']
+                \ })
+        endif
+
+        inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+        inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+        inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+        imap <c-space> <Plug>(asyncomplete_force_refresh)
+        set completeopt+=preview
+        autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+    endif
+
+    if 1 " has('coc.nvim')
         " coc config
         " if hidden is not set, TextEdit might fail.
         set hidden
