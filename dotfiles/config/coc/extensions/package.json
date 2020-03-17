@@ -3,7 +3,7 @@
     "coc-browser": ">=1.2.6",
     "coc-css": ">=1.2.2",
     "coc-deno": ">=0.2.0",
-    "coc-diagnostic": ">=0.2.3",
+    "coc-diagnostic": ">=0.2.4",
     "coc-emmet": ">=1.1.4",
     "coc-emoji": ">=1.2.3",
     "coc-eslint": ">=1.2.6",
