@@ -68,6 +68,7 @@ if has('syntax')
     Plug 'ciaranm/detectindent'
     Plug 'vim-airline/vim-airline'
     Plug 'leafgarland/typescript-vim'
+    Plug 'udalov/kotlin-vim'
     " Plug 'dense-analysis/ale'
     call plug#end()
  
@@ -95,6 +96,7 @@ if has('syntax')
     autocmd BufNewFile,BufRead *.js set foldmethod=manual foldlevel=3
     autocmd BufNewFile,BufRead *.sql set foldmethod=indent foldlevel=3
     autocmd BufNewFile,BufRead *.txt set textwidth=76 noautoindent nocindent
+    autocmd BufNewFile,BufRead *.kt set filetype=kotlin
     autocmd BufNewFile,BufRead *.hbs set filetype=html
     autocmd BufNewFile,BufRead *.svelte set filetype=svelte foldmethod=manual foldlevel=3 iskeyword=@,_,-
     autocmd BufNewFile,BufRead *.html set iskeyword=@,_,-
