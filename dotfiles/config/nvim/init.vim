@@ -98,9 +98,9 @@ if has('syntax')
     autocmd BufNewFile,BufRead *.txt set textwidth=76 noautoindent nocindent
     autocmd BufNewFile,BufRead *.kt set filetype=kotlin
     autocmd BufNewFile,BufRead *.hbs set filetype=html
-    autocmd BufNewFile,BufRead *.svelte set filetype=svelte foldmethod=manual foldlevel=3 iskeyword=@,_,-
-    autocmd BufNewFile,BufRead *.html set iskeyword=@,_,-
-    autocmd BufNewFile,BufRead *.blade.php set iskeyword=@,_,-
+    autocmd BufNewFile,BufRead *.svelte set filetype=svelte foldmethod=manual foldlevel=3 iskeyword=@,_,-,48-57
+    autocmd BufNewFile,BufRead *.html set iskeyword=@,_,-,48-57
+    autocmd BufNewFile,BufRead *.blade.php set iskeyword=@,_,-,48-57
     "autocmd BufWritePost *.js silent ![ -x ./node_modules/.bin/esformatter ] && ./node_modules/.bin/esformatter % -i
     autocmd BufReadPost * DetectIndent
 
