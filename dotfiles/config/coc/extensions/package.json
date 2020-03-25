@@ -23,6 +23,7 @@
     "coc-stylelintplus": ">=1.0.3",
     "coc-svelte": ">=0.0.2",
     "coc-svg": ">=0.0.13",
-    "coc-tsserver": ">=1.4.11"
+    "coc-syntax": ">=1.2.4",
+    "coc-tsserver": ">=1.4.12"
   }
 }
