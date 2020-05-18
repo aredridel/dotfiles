@@ -18,6 +18,7 @@
 /dotfiles/config/psysh/psysh_history
 /dotfiles/config/psysh/update*
 /dotfiles/config/wireshark/recent*
+/dotfiles/config/gh/
 /dotfiles/gnupg/crls.d/*
 /dotfiles/gnupg/pubring.kbx
 /dotfiles/gnupg/*.db
