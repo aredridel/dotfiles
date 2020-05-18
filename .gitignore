@@ -1,6 +1,6 @@
 /dotfiles/config/**/*.log
 /dotfiles/config/coc/commands
-/dotfiles/config/coc/extensions/coc-browser-data/
+/dotfiles/config/coc/extensions/*-data/
 /dotfiles/config/coc/extensions/db.json
 /dotfiles/config/coc/extensions/node_modules/
 /dotfiles/config/coc/history.json
@@ -33,6 +33,5 @@
 /dotfiles/ssh/random_seed
 .DS_Store
 *~
-*
 *.swp
 node_modules
