@@ -47,13 +47,13 @@ brew "python"
 brew "qemu"
 brew "qp"
 brew "redis"
-brew "rust"
 brew "rustup-init"
 brew "sc-im"
 brew "sqlite"
 brew "ssh-copy-id"
 brew "starship"
 brew "terraform"
+brew "uutils-coreutils"
 brew "vis"
 brew "watchman"
 brew "xhyve"
@@ -61,6 +61,8 @@ brew "xz"
 brew "zsh-completions"
 
 cask "firefox"
+cask "kitty"
+cask "plexampl"
 
 mas "1Password 7", id: 1333542190
 mas "Affinity Designer", id: 824171161
