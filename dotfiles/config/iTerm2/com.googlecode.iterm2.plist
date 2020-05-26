@@ -37,7 +37,7 @@
 	<key>DisableFullscreenTransparency</key>
 	<true/>
 	<key>EnableProxyIcon</key>
-	<false/>
+	<true/>
 	<key>EnableRendezvous</key>
 	<false/>
 	<key>FlashTabBarInFullscreen</key>
@@ -150,7 +150,7 @@
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>640 690 400 129 0 0 1680 1050 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>530 493 620 392 0 0 1680 1050 </string>
+	<string>549 476 620 392 0 0 1680 1027 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 126 606 469 0 0 1680 1050 </string>
 	<key>NSWindow Frame SharedPreferences</key>
@@ -158,7 +158,7 @@
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>127 443 592 584 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>41 0 500 350 0 0 1680 1050 </string>
+	<string>38 0 420 375 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>668 202 570 452 0 0 1680 1027 </string>
 	<key>New Bookmarks</key>
@@ -2118,6 +2118,7 @@
 		<string>3.3.9beta1</string>
 		<string>3.3.10beta1</string>
 		<string>3.3.10beta2</string>
+		<string>3.3.10beta3</string>
 	</array>
 	<key>NoSyncBFPRecents</key>
 	<array>
@@ -2126,6 +2127,10 @@
 	</array>
 	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
 	<true/>
+	<key>NoSyncConfirmRunOpenFile</key>
+	<true/>
+	<key>NoSyncConfirmRunOpenFile_selection</key>
+	<integer>0</integer>
 	<key>NoSyncFrame_SessionsPreferences</key>
 	<dict>
 		<key>screenFrame</key>
@@ -2151,7 +2156,7 @@
 	<key>NoSyncLastTipTime</key>
 	<real>588520268.83912003</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>69</integer>
+	<integer>75</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -3019,11 +3024,11 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-03-25T13:49:45Z</date>
+	<date>2020-04-17T15:44:47Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateGroupIdentifier</key>
-	<integer>1263955972</integer>
+	<integer>748225628</integer>
 	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>Secure Input</key>
@@ -3053,7 +3058,7 @@
 	<key>TabStyle</key>
 	<integer>1</integer>
 	<key>TabStyleWithAutomaticOption</key>
-	<integer>4</integer>
+	<integer>6</integer>
 	<key>TabViewType</key>
 	<integer>0</integer>
 	<key>TerminalMargin</key>
@@ -3081,6 +3086,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.3.10beta2</string>
+	<string>3.3.10beta3</string>
 </dict>
 </plist>
