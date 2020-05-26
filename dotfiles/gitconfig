@@ -96,3 +96,6 @@
 [trim]
 	protected = production,staging,development
 	bases = master,production
+[pager]
+	branch = false
+	status = false

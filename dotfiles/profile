@@ -46,12 +46,12 @@ fi
 
 export PATH=node_modules/.bin:$HOME/bin:$PATH
 
-if [ -r ~/.profile.local ]; then
-    . ~/.profile.local
-fi
-
 if which brew >/dev/null 2>&1; then
     PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
+fi
+
+if [ -r ~/.profile.local ]; then
+    . ~/.profile.local
 fi
 
 if which systemctl 2>/dev/null >/dev/null; then
@@ -66,4 +66,3 @@ elif which vi 2>/dev/null >/dev/null; then
     VISUAL=vi
 fi
 export VISUAL
-

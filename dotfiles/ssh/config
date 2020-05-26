@@ -1,12 +1,11 @@
 IgnoreUnknown UseKeychain
 UseKeychain yes
 
+Include config.local
+Include config.local
+
 Host !127.0.0.1
 	AddKeysToAgent yes
-
-Host *.thegrommet.com *.compute-1.amazonaws.com *.wallis.io wallis.io
-	User aria
-	IdentityFile ~/.ssh/id_20191220.rsa
 
 Host *.theinternetco.net
 	User aredridel
@@ -44,4 +43,3 @@ Host protocol.club
 Host build.pancake.io
 	User git
 	IdentityFile ~/.ssh/id_aredridel@dinhe.net
-
