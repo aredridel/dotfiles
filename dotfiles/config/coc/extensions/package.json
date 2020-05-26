@@ -20,7 +20,7 @@
     "coc-prettier": ">=1.1.12",
     "coc-python": ">=1.2.12",
     "coc-rls": ">=1.1.6",
-    "coc-rust-analyzer": ">=0.6.6",
+    "coc-rust-analyzer": ">=0.7.1",
     "coc-sh": ">=0.4.0",
     "coc-stylelintplus": ">=1.0.4",
     "coc-svelte": ">=0.0.2",
