@@ -26,7 +26,7 @@
 	quotepath = false
 	abbrev = 12
 	excludesfile = ~/.gitignore_global
-	pager = less -R -+X -+F
+	pager = less -RXF
 [log]
 	date = local
 [push]
