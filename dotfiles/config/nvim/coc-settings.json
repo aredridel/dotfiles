@@ -1,7 +1,11 @@
 {
   "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
+  "svelte.plugin.typescript.diagnostics.enable": false,
   "suggest.enablePreview": true,
   "tsserver.npm": "npm",
+  "tsserver.ignoreLocalTsserver": true,
+  "typescript.format.enabled": true,
+  "typescript.preferences.importModuleSpecifierEnding": "auto",
   "intelephense.licenceKey": "002VULS67BSVY0F",
   "languageserver": {
     "terraform": {
