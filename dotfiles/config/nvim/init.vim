@@ -53,6 +53,7 @@ if has('syntax')
     call plug#begin()
     Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
     Plug 'liuchengxu/vista.vim'
+    Plug 'haya14busa/vim-edgemotion'
     " Plug 'prabirshrestha/async.vim'
     " Plug 'prabirshrestha/vim-lsp'
     " Plug 'mattn/vim-lsp-settings'
@@ -236,6 +237,11 @@ if has('syntax')
         nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
         " Resume latest coc list
         nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+        "---------
+
+        map <C-j> <Plug>(edgemotion-j)
+        map <C-k> <Plug>(edgemotion-k)
     endif
 
     " Load all plugins now.
