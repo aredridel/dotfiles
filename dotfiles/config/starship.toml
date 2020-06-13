@@ -1,4 +1,4 @@
-prompt_order = [ "username", "directory", "git_branch", "git_status", "package", "nodejs", "rust", "python", "golang", "cmd_duration", "jobs", "battery", "line_break", "character", ]
+prompt_order = [ "username", "directory", "git_branch", "git_status", "git_state", "git_commit", "package", "nodejs", "rust", "python", "golang", "cmd_duration", "jobs", "battery", "line_break", "character", ]
 
 [character]
 symbol = ":;"
@@ -6,4 +6,6 @@ symbol = ":;"
 [git_branch]
 symbol = "🌱 "
 
-
+[git_commit]
+only_detached = false
+commit_hash_length = 9

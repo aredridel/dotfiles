@@ -11,8 +11,10 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 antigen use oh-my-zsh
 
 antigen bundle git
+antigen bundle git-prompt
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle softmoth/zsh-vim-mode
+antigen bundle laravel
 
 antigen theme robbyrussell
 
