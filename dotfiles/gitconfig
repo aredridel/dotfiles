@@ -20,6 +20,7 @@
 	clone = clone --recursive
 	track = "!bash -c 'git commit --allow-empty -m Tracking -m \"[#$1]\"' -- "
 	fast-forward = merge --ff-only
+	ff = merge --ff-only
 [pretty]
 	damn-awesome = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
 [core]
