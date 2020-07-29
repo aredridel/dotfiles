@@ -20,15 +20,31 @@ if has('syntax')
     syntax enable
 
     set winheight=40
-    set cmdheight=3
+    set cmdheight=6
     " set list listchars=tab:\ \ ,trail:·
     set laststatus=2
     set autoread
     set mouse=nv
 
+    let &t_ut=''
+
     " let g:typescript_indent_disable = 1
 
     " let g:coc_global_extensions = [ 'coc-prettier', 'coc-marketplace', 'coc-lists', 'coc-diagnostic', 'coc-git', 'coc-eslint', 'coc-emoji', 'coc-emmet', 'coc-browser', 'coc-tsserver', 'coc-svg', 'coc-svelte', 'coc-stylelintplus', 'coc-sh', 'coc-rust-analyzer', 'coc-markmap', 'coc-markdownlint', 'coc-json', 'coc-import-cost', 'coc-html', 'coc-deno', 'coc-css', 'coc-phpls' ]
+    "
+    let g:vdebug_keymap = {
+    \    'run' : '<Leader>dr',
+    \    'run_to_cursor' : '<Leader>dc',
+    \    'step_over' : '<Leader>dn',
+    \    'step_into' : '<Leader>di',
+    \    'step_out' : '<Leader>do',
+    \    'close' : '<Leader>dx',
+    \    'detach' : '<Leader>dq',
+    \    'set_breakpoint' : '<Leader>db',
+    \    'get_context' : '<Leader>dg',
+    \    'eval_under_cursor' : '<Leader>e',
+    \    'eval_visual' : '<Leader>v'
+    \}
 
     let g:javascript_plugin_jsdoc = 1
 
@@ -51,9 +67,12 @@ if has('syntax')
         \ }
 
     call plug#begin()
-    Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'vim-vdebug/vdebug'
+    Plug 'liuchengxu/eleline.vim'
     Plug 'liuchengxu/vista.vim'
     Plug 'haya14busa/vim-edgemotion'
+    Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+    " Plug 'vim-airline/vim-airline'
     " Plug 'prabirshrestha/async.vim'
     " Plug 'prabirshrestha/vim-lsp'
     " Plug 'mattn/vim-lsp-settings'
@@ -73,7 +92,6 @@ if has('syntax')
     Plug 'leafOfTree/vim-svelte-plugin'
     " Plug 'evanleck/vim-svelte'
     Plug 'ciaranm/detectindent'
-    Plug 'vim-airline/vim-airline'
     Plug 'leafgarland/typescript-vim'
     Plug 'udalov/kotlin-vim'
     Plug 'jwalton512/vim-blade'
