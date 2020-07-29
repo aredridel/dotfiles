@@ -66,3 +66,5 @@ elif which vi 2>/dev/null >/dev/null; then
     VISUAL=vi
 fi
 export VISUAL
+
+export PATH="$HOME/.cargo/bin:$PATH"
