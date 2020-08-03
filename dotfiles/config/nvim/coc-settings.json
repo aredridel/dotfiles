@@ -1,5 +1,6 @@
 {
   "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
+  "rust-analyzer.checkOnSave.command": "clippy",
   "svelte.language-server.runtime": "/usr/local/bin/svelteserver",
   "tsserver.npm": "npm",
   "typescript.preferences.importModuleSpecifierEnding": "auto",
