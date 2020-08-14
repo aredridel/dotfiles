@@ -80,7 +80,6 @@
 [diff-so-fancy]
 	changeHunkIndicators = true
 [init]
-	templateDir = ~/.config/git/template
 	defaultBranch = main
 #[merge "npm-merge-driver"]
 #	name = automatically merge npm lockfiles
