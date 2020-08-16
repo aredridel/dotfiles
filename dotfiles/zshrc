@@ -55,3 +55,5 @@ fi
 #fi
 
 setopt no_share_history
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/kustomize kustomize
