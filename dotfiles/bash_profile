@@ -71,3 +71,4 @@ if [ -r ~/.bash_profile.local ]; then
 fi
 
 export PATH="$HOME/.cargo/bin:$PATH"
+complete -C /usr/local/bin/kustomize kustomize
