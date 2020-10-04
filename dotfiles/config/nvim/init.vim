@@ -32,20 +32,6 @@ if has('syntax')
 
     " let g:coc_global_extensions = [ 'coc-prettier', 'coc-marketplace', 'coc-lists', 'coc-diagnostic', 'coc-git', 'coc-eslint', 'coc-emoji', 'coc-emmet', 'coc-browser', 'coc-tsserver', 'coc-svg', 'coc-svelte', 'coc-stylelintplus', 'coc-sh', 'coc-rust-analyzer', 'coc-markmap', 'coc-markdownlint', 'coc-json', 'coc-import-cost', 'coc-html', 'coc-deno', 'coc-css', 'coc-phpls' ]
     "
-    let g:vdebug_keymap = {
-    \    'run' : '<Leader>dr',
-    \    'run_to_cursor' : '<Leader>dc',
-    \    'step_over' : '<Leader>dn',
-    \    'step_into' : '<Leader>di',
-    \    'step_out' : '<Leader>do',
-    \    'close' : '<Leader>dx',
-    \    'detach' : '<Leader>dq',
-    \    'set_breakpoint' : '<Leader>db',
-    \    'get_context' : '<Leader>dg',
-    \    'eval_under_cursor' : '<Leader>e',
-    \    'eval_visual' : '<Leader>v'
-    \}
-
     let g:javascript_plugin_jsdoc = 1
 
     " Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.
@@ -67,7 +53,6 @@ if has('syntax')
         \ }
 
     call plug#begin()
-    Plug 'vim-vdebug/vdebug'
     Plug 'liuchengxu/eleline.vim'
     Plug 'liuchengxu/vista.vim'
     Plug 'haya14busa/vim-edgemotion'
