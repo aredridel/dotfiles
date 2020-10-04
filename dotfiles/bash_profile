@@ -30,10 +30,6 @@ if which brew >/dev/null 2>&1; then
     fi
 fi
 
-if which npx >/dev/null 2>&1; then
-    source <(npx --shell-auto-fallback)
-fi
-
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
     . ~/.nix-profile/etc/profile.d/nix.sh
 fi

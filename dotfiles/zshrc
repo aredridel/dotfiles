@@ -1,10 +1,5 @@
 source ~/.profile
 
-
-if which npx >/dev/null 2>&1; then
-    source <(npx --shell-auto-fallback)
-fi
-
 source /usr/local/share/antigen/antigen.zsh
 fpath=(/usr/local/share/zsh-completions $fpath)
 
