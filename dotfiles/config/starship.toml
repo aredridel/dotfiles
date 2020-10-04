@@ -1,11 +1,15 @@
-prompt_order = [ "username", "directory", "git_branch", "git_status", "git_state", "git_commit", "package", "nodejs", "rust", "python", "golang", "terraform", "cmd_duration", "jobs", "battery", "line_break", "character", ]
+format = """\
+$username$directory$git_branch$git_status$git_state$git_commit$package$nodejs$rust$python$golang$terraform$cmd_duration$jobs$battery$status
+$character\
+"""
 
 [character]
-symbol = ":;"
-
-[git_branch]
-symbol = "🌱 "
+error_symbol = "[:;](bold red)"
+success_symbol = "[:;](bold green)"
 
 [git_commit]
 only_detached = false
 commit_hash_length = 9
+
+[status]
+disabled = false
