@@ -1,7 +1,10 @@
-IgnoreUnknown UseKeychain
+ignoreUnknown UseKeychain
 UseKeychain yes
 
-Include config.local
+IdentityFile ~/.ssh/id_rsa
+IdentityFile ~/.ssh/id_201906.ecdsa
+IdentityFile ~/.ssh/id_201906.ed25519
+
 Include config.local
 
 Host !127.0.0.1
