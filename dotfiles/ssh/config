@@ -22,24 +22,8 @@ Host *.nbtsc.org *.http80.net *.dinhe.net
     GSSAPIAuthentication yes
     GSSAPIDelegateCredentials yes
 
-Host *.blumenthals.com *.wnynetworks.net
-    User aria
-    ForwardAgent yes
-
-Host *.manhunt.net *.manhunt.local *.*.manhunt.net
-    User astewart
-    ForwardAgent yes
-
-Host *.westernairparts.com
-    GSSAPIAuthentication no
-    GSSAPIDelegateCredentials no
-
 Host *.local
     ForwardAgent yes
 
 Host protocol.club
     User aredridel
-
-Host build.pancake.io
-	User git
-	IdentityFile ~/.ssh/id_aredridel@dinhe.net
