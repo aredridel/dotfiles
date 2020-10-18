@@ -13,3 +13,4 @@ commit_hash_length = 9
 
 [status]
 disabled = false
+symbol = "last err "
