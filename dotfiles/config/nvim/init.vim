@@ -53,7 +53,6 @@ if has('syntax')
         \ }
 
     call plug#begin()
-    Plug 'liuchengxu/eleline.vim'
     Plug 'liuchengxu/vista.vim'
     Plug 'haya14busa/vim-edgemotion'
     Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
@@ -221,7 +220,7 @@ if has('syntax')
         command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
         " Add status line support, for integration with other plugin, checkout `:h coc-status`
-        set statusline^=%{coc#status()}%{get(b:,'vista_nearest_method_or_function','')}
+        set statusline=%f\ %{get(b:,'vista_nearest_method_or_function','')}\ %h%w%m%r\ %=\ %{coc#status()}%=\ %(%l,%c%V\ %=\ %P%)
 
         " Using CocList
         " Show all diagnostics
