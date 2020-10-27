@@ -88,7 +88,6 @@ if has('syntax')
     colorscheme challenger_deep
 
     au VimEnter * set winheight=3
-    au WinEnter * set winheight=999
     au VimEnter * set winminheight=3
 
     autocmd BufNewFile,BufRead *.js set foldmethod=manual foldlevel=3
@@ -107,10 +106,7 @@ if has('syntax')
         au FileType javascript setlocal foldmethod=syntax
     augroup END
 
-    set foldlevelstart=5
-    "
-    " Better display for messages
-    set cmdheight=6
+    set foldlevelstart=3
 
     " You will have bad experience for diagnostic messages when it's default 4000.
     set updatetime=500
