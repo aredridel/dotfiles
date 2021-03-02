@@ -1,7 +1,7 @@
 source ~/.profile
 
-source /usr/local/share/antigen/antigen.zsh
-fpath=(/usr/local/share/zsh-completions $fpath)
+source $(brew --prefix)/share/antigen/antigen.zsh
+fpath=($(brew --prefix)/share/zsh-completions $fpath)
 
 antigen use oh-my-zsh
 
