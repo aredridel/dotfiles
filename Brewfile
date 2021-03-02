@@ -67,9 +67,9 @@ brew "zsh-completions"
 cask "firefox"
 cask "kitty"
 cask "plexamp"
+cask "zerotier-one"
 
 mas "1Password 7", id: 1333542190
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
 mas "Xcode", id: 497799835
-mas "Microsoft To Do", id: 1274495053
