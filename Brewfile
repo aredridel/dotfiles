@@ -1,6 +1,7 @@
 tap "homebrew/cask"
 tap "mas-cli/tap"
 tap "filippo.io/age", "https://filippo.io/age"
+tap "wallix/awless"
 
 cask_args appdir: "~/Applications"
 
@@ -9,6 +10,7 @@ brew "age"
 brew "ansible"
 brew "antigen"
 brew "awscli"
+# brew "awless"
 # brew "bandwhich"
 brew "bash-completion"
 brew "bash-git-prompt"
@@ -55,6 +57,7 @@ brew "sqlite"
 brew "ssh-copy-id"
 brew "starship"
 brew "terraform"
+brew "tmux"
 brew "tre"
 #brew "uutils-coreutils"
 brew "vim"
@@ -68,8 +71,10 @@ cask "firefox"
 cask "kitty"
 cask "plexamp"
 cask "zerotier-one"
+cask "visual-studio-code"
 
 mas "1Password 7", id: 1333542190
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
 mas "Xcode", id: 497799835
+mas "Slack", id: 803453959
