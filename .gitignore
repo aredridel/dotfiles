@@ -35,6 +35,9 @@
 /dotfiles/ssh/id_*
 /dotfiles/ssh/known_hosts
 /dotfiles/ssh/random_seed
+/dotfiles/config/coc/*-history.json
+/dotfiles/config/git/config.local
+/dotfiles/config/licensezero/developer.json
 .DS_Store
 *~
 *.swp
