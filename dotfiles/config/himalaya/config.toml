@@ -1,0 +1,23 @@
+
+name = "Aria Stewart"
+downloads-dir = "~/Downloads"
+signature = """
+--
+Regards,
+"""
+
+[aredridel]
+default = true
+email = "aredridel@dinhe.net"
+
+imap-host = "mail.dinhe.net"
+imap-port = 143
+imap-starttls = true
+imap-login = "aredridel"
+imap-passwd-cmd = "security find-generic-password -a aredridel@dinhe.net -s himalaya -w"
+
+smtp-host = "mail.dinhe.net"
+smtp-port = 587
+smtp-starttls = true
+smtp-login = "aredridel"
+smtp-passwd-cmd = "security find-generic-password -a aredridel@dinhe.net -s himalaya -w"
