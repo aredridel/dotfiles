@@ -1,6 +1,8 @@
 ignoreUnknown UseKeychain
 UseKeychain yes
 
+Include ~/.ssh/config.local
+
 Host !127.0.0.1
 	AddKeysToAgent yes
 
@@ -27,6 +29,3 @@ Host protocol.club
 
 Host dinhe.net
 	HostName dinhe.net
-
-Include ~/.ssh/config.local
-

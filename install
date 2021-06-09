@@ -9,3 +9,6 @@ Dir['dotfiles/*'].each do |file|
   File.unlink target rescue Errno::ENOENT
   File.symlink(File.expand_path(file), target)
 end
+
+File.open(File.join(home, '.ssh/config.local'), 'w+')
+
