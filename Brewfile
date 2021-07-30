@@ -72,6 +72,8 @@ cask "kitty"
 cask "plexamp"
 cask "zerotier-one"
 cask "visual-studio-code"
+cask "around"
+cask "wezterm"
 
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
