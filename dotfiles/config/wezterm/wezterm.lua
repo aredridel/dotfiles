@@ -12,6 +12,8 @@ return {
     {key="h", mods="LEADER", action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}}},
     -- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
     {key="a", mods="LEADER|CTRL", action=wezterm.action{SendString="\x01"}},
+    {key="l", mods="SUPER", action="ShowLauncher"},
+    {key="r", mods="SUPER", action="ReloadConfiguration"},
   },
 
   ssh_domains = {
