@@ -1,6 +1,10 @@
 export TIME_STYLE=long-iso
 alias ll="exa -lh --git"
 
+if [ -d /opt/homebrew/bin ]; then
+    export PATH="/opt/homebrew/bin:$PATH"
+fi
+
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
     . ~/.nix-profile/etc/profile.d/nix.sh
 fi
@@ -44,8 +48,6 @@ if [ -d ~/Library/Python/3.7/bin ]; then
     PATH="$HOME/Library/Python/3.7/bin:$PATH"
 fi
 
-export PATH=node_modules/.bin:$HOME/bin:$PATH
-
 if which brew >/dev/null 2>&1; then
     PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
 fi
@@ -68,3 +70,5 @@ fi
 export VISUAL
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+export HOMEBREW_UPDATE_REPORT_ALL_FORMULAE=1

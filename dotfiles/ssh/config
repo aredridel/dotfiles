@@ -1,5 +1,7 @@
 ignoreUnknown UseKeychain
+IgnoreUnknown AddKeysToAgent
 UseKeychain yes
+AddKeysToAgent yes
 
 Include ~/.ssh/config.local
 
@@ -29,3 +31,16 @@ Host protocol.club
 
 Host dinhe.net
 	HostName dinhe.net
+Host dev-*
+	ProxyJump tf-m2-bastion.development.thegrommet.com
+	IdentityFile ~/.ssh/id_20211007.key
+	IdentityFile ~/.ssh/id_20210629
+
+Host prod-*
+	ProxyJump tf-m2-bastion.production.thegrommet.com
+	IdentityFile ~/.ssh/id_20211007.key
+	IdentityFile ~/.ssh/id_20210629
+
+Host *.thegrommet.com
+	IdentityFile ~/.ssh/id_20211007.key
+	IdentityFile ~/.ssh/id_20210629
