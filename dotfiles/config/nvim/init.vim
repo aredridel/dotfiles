@@ -52,6 +52,11 @@ if has('syntax')
         \   'ifannouncement': 'endifannouncement',
         \ }
 
+    let g:svelte_preprocessor_tags = [
+        \ { 'name': 'ts', 'tag': 'script', 'as': 'typescript' }
+        \ ]
+    let g:svelte_preprocessors = ['ts']
+
     call plug#begin()
     Plug 'liuchengxu/vista.vim'
     Plug 'haya14busa/vim-edgemotion'
@@ -73,8 +78,8 @@ if has('syntax')
     Plug 'tpope/vim-commentary'
     Plug 'mattn/emmet-vim'
     Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-    Plug 'leafOfTree/vim-svelte-plugin'
-    " Plug 'evanleck/vim-svelte'
+    " Plug 'leafOfTree/vim-svelte-plugin'
+    Plug 'evanleck/vim-svelte'
     Plug 'ciaranm/detectindent'
     Plug 'leafgarland/typescript-vim'
     Plug 'udalov/kotlin-vim'

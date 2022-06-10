@@ -31,3 +31,6 @@ Host protocol.club
 
 Host dinhe.net
 	HostName dinhe.net
+
+Host homeassistant.local
+	User ubuntu

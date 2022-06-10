@@ -1,3 +1,8 @@
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the start of this file.
+[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
+#### END FIG ENV VARIABLES ####
 source ~/.profile
 
 if which vise 2> /dev/null > /dev/null; then
@@ -68,3 +73,8 @@ fi
 
 export PATH="$HOME/.cargo/bin:$PATH"
 complete -C /usr/local/bin/kustomize kustomize
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the end of this file.
+[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
+#### END FIG ENV VARIABLES ####
