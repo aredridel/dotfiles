@@ -1,7 +1,6 @@
 tap "homebrew/cask"
 tap "mas-cli/tap"
 tap "filippo.io/age", "https://filippo.io/age"
-tap "wallix/awless"
 
 cask_args appdir: "~/Applications"
 
@@ -10,7 +9,6 @@ brew "age"
 brew "ansible"
 brew "antigen"
 brew "awscli"
-# brew "awless"
 # brew "bandwhich"
 brew "bash-completion"
 brew "bash-git-prompt"
