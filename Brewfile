@@ -69,16 +69,14 @@ brew "zsh-completions"
 
 cask "affinity-photo"
 cask "affinity-designer"
+cask "discord"
 cask "firefox"
-cask "kitty"
-cask "plexamp"
 cask "zerotier-one"
 cask "visual-studio-code"
 cask "around"
 cask "wezterm"
-cask "yippy"
 
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
 #mas "Xcode", id: 497799835
-#mas "Slack", id: 803453959
+mas "Slack", id: 803453959
