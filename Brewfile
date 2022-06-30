@@ -78,5 +78,7 @@ cask "zoom"
 
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
-#mas "Xcode", id: 497799835
+mas "Affinity Publisher", id: 881418622
+mas "Xcode", id: 497799835
 mas "Slack", id: 803453959
+mas "Home Assistant", id: 1099568401
