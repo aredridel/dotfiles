@@ -1,6 +1,6 @@
 local wezterm = require 'wezterm';
 return {
-  font = wezterm.font_with_fallback({"Triplicate T4", "SF Mono", "LastResort"}),
+  font = wezterm.font_with_fallback({"Triplicate T4c", "SF Mono", "LastResort"}),
   color_scheme = "Builtin Tango Dark",
   scrollback_lines = 3500,
   initial_rows = 70,
