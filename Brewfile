@@ -26,7 +26,6 @@ brew "git-delta"
 brew "gitbatch"
 brew "gnupg"
 brew "graphviz"
-brew "html1"
 brew "jc"
 brew "jq"
 brew "llvm"
@@ -75,6 +74,7 @@ cask "zerotier-one"
 cask "visual-studio-code"
 cask "around"
 cask "wezterm"
+cask "zoom"
 
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
