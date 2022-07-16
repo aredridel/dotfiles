@@ -65,17 +65,23 @@ brew "xz"
 brew "yq"
 brew "zsh-completions"
 
-cask "affinity-photo"
+cask "1password-cli-beta"
 cask "affinity-designer"
+cask "affinity-photo"
 cask "affinity-publisher"
+cask "around"
 cask "discord"
 cask "firefox"
-cask "zerotier-one"
+cask "home-assistant"
+cask "meetingbar"
+cask "slack"
+cask "sparkleshare"
+cask "trex"
+cask "utm"
 cask "visual-studio-code"
-cask "around"
+cask "vlc"
 cask "wezterm"
+cask "zerotier-one"
 cask "zoom"
 
 mas "Xcode", id: 497799835
-mas "Slack", id: 803453959
-mas "Home Assistant", id: 1099568401
