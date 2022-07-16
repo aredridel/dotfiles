@@ -5,9 +5,6 @@ AddKeysToAgent yes
 
 Include ~/.ssh/config.local
 
-Host !127.0.0.1
-	AddKeysToAgent yes
-
 Host *.theinternetco.net
 	User aredridel
 	ForwardX11Trusted yes

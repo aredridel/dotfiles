@@ -2,7 +2,7 @@
   "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
   "rust-analyzer.checkOnSave.command": "clippy",
   "clangd.path": "/usr/local/opt/llvm/bin/clangd",
-  "svelte.language-server.runtime": "/usr/local/bin/svelteserver",
+  "svelte.language-server.runtime": "/opt/homebrew/bin/svelteserver",
   "tsserver.npm": "npm",
   "typescript.preferences.importModuleSpecifierEnding": "auto",
   "intelephense.licenceKey": "002VULS67BSVY0F",
