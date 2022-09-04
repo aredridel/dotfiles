@@ -34,19 +34,6 @@ if has('syntax')
     "
     let g:javascript_plugin_jsdoc = 1
 
-    " Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.
-    let g:vista#renderer#enable_icon = 1
-
-    " The default icons can't be suitable for all the filetypes, you can extend it as you wish.
-    let g:vista#renderer#icons = {
-                \   "function": "\uf794",
-                \   "variable": "\uf71b",
-                \  }
-
-    " Executive used when opening vista sidebar without specifying it.
-    " See all the avaliable executives via `:echo g:vista#executives`.
-    let g:vista_default_executive = 'coc'
-
     let g:blade_custom_directives = ['svelte', 'announcement']
     let g:blade_custom_directives_pairs = {
         \   'ifannouncement': 'endifannouncement',
@@ -58,7 +45,6 @@ if has('syntax')
     let g:svelte_preprocessors = ['ts']
 
     call plug#begin()
-    Plug 'liuchengxu/vista.vim'
     Plug 'haya14busa/vim-edgemotion'
     Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
     " Plug 'vim-airline/vim-airline'
@@ -85,8 +71,6 @@ if has('syntax')
     Plug 'udalov/kotlin-vim'
     Plug 'jwalton512/vim-blade'
     call plug#end()
-
-    autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
     set completeopt=menu,menuone,preview,noselect,noinsert
 
@@ -134,24 +118,27 @@ if has('syntax')
         " Use tab for trigger completion with characters ahead and navigate.
         " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
         inoremap <silent><expr> <TAB>
-                    \ pumvisible() ? "\<C-n>" :
-                    \ <SID>check_back_space() ? "\<TAB>" :
-                    \ coc#refresh()
-        inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+            \ coc#pum#visible() ? coc#pum#next(1) :
+            \ CheckBackspace() ? "\<Tab>" :
+            \ coc#refresh()
+        inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-        function! s:check_back_space() abort
+        " Make <CR> to accept selected completion item or notify coc.nvim to format
+        " <C-g>u breaks current undo, please make your own choice.
+        inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                                    \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+        function! CheckBackspace() abort
             let col = col('.') - 1
             return !col || getline('.')[col - 1]  =~# '\s'
         endfunction
 
         " Use <c-space> to trigger completion.
-        inoremap <silent><expr> <c-space> coc#refresh()
-
-        " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-        " Coc only does snippet and additional edit on confirm.
-        inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-        " Or use `complete_info` if your vim support it, like:
-        " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+        if has('nvim')
+            inoremap <silent><expr> <c-space> coc#refresh()
+        else
+            inoremap <silent><expr> <c-@> coc#refresh()
+        endif
 
         " Use `[g` and `]g` to navigate diagnostics
         nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -164,15 +151,16 @@ if has('syntax')
         nmap <silent> gr <Plug>(coc-references)
 
         " Use K to show documentation in preview window
-        nnoremap <silent> K :call <SID>show_documentation()<CR>
+        nnoremap <silent> K :call ShowDocumentation()<CR>
 
-        function! s:show_documentation()
-            if (index(['vim','help'], &filetype) >= 0)
-                execute 'h '.expand('<cword>')
+        function! ShowDocumentation()
+            if CocAction('hasProvider', 'hover')
+                call CocActionAsync('doHover')
             else
-                call CocAction('doHover')
+                call feedkeys('K', 'in')
             endif
         endfunction
+
 
         " Highlight symbol under cursor on CursorHold
         autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -201,15 +189,31 @@ if has('syntax')
         " Fix autofix problem of current line
         nmap <leader>qf  <Plug>(coc-fix-current)
 
-        " Create mappings for function text object, requires document symbols feature of languageserver.
+        " Map function and class text objects
+        " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
         xmap if <Plug>(coc-funcobj-i)
-        xmap af <Plug>(coc-funcobj-a)
         omap if <Plug>(coc-funcobj-i)
+        xmap af <Plug>(coc-funcobj-a)
         omap af <Plug>(coc-funcobj-a)
+        xmap ic <Plug>(coc-classobj-i)
+        omap ic <Plug>(coc-classobj-i)
+        xmap ac <Plug>(coc-classobj-a)
+        omap ac <Plug>(coc-classobj-a)
 
-        " Use <TAB> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-        nmap <silent> <TAB> <Plug>(coc-range-select)
-        xmap <silent> <TAB> <Plug>(coc-range-select)
+        " Remap <C-f> and <C-b> for scroll float windows/popups.
+        if has('nvim-0.4.0') || has('patch-8.2.0750')
+            nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+            nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+            inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+            inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+            vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+            vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+        endif
+
+        " Use CTRL-S for selections ranges.
+        " Requires 'textDocument/selectionRange' support of language server.
+        nmap <silent> <C-s> <Plug>(coc-range-select)
+        xmap <silent> <C-s> <Plug>(coc-range-select)
 
         " Use `:Format` to format current buffer
         command! -nargs=0 Format :call CocAction('format')
@@ -220,8 +224,10 @@ if has('syntax')
         " use `:OR` for organize import of current buffer
         command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-        " Add status line support, for integration with other plugin, checkout `:h coc-status`
-        set statusline=%f\ %{get(b:,'vista_nearest_method_or_function','')}\ %h%w%m%r\ %=\ %{coc#status()}%=\ %(%l,%c%V\ %=\ %P%)
+        " Add (Neo)Vim's native statusline support.
+        " NOTE: Please see `:h coc-status` for integrations with external plugins that
+        " provide custom statusline: lightline.vim, vim-airline.
+        set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
         " Using CocList
         " Show all diagnostics
