@@ -13,10 +13,10 @@ brew "awscli"
 brew "bash-completion"
 brew "bash-git-prompt"
 brew "bat"
-brew "composer"
+# brew "composer"
 # brew "crystal"
 brew "deno"
-brew "elvish"
+# brew "elvish"
 # brew "encfs"
 brew "fx"
 brew "fzf"
@@ -34,7 +34,6 @@ brew "lua"
 # brew "luarocks"
 brew "mas"
 brew "massren"
-brew "mosh"
 brew "mosh"
 brew "msmtp"
 brew "murex"
@@ -68,6 +67,7 @@ brew "zsh-completions"
 
 cask "affinity-photo"
 cask "affinity-designer"
+cask "affinity-publisher"
 cask "discord"
 cask "firefox"
 cask "zerotier-one"
@@ -76,9 +76,6 @@ cask "around"
 cask "wezterm"
 cask "zoom"
 
-mas "Affinity Designer", id: 824171161
-mas "Affinity Photo", id: 824183456
-mas "Affinity Publisher", id: 881418622
 mas "Xcode", id: 497799835
 mas "Slack", id: 803453959
 mas "Home Assistant", id: 1099568401
