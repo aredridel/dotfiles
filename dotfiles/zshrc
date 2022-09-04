@@ -59,5 +59,3 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 if which himalaya > /dev/null; then
     eval `himalaya completion zsh`
 fi
-export PATH="/opt/homebrew/opt/php@8.0/bin:$PATH"
-export PATH="/opt/homebrew/opt/php@8.0/sbin:$PATH"
