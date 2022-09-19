@@ -38,6 +38,7 @@
 /dotfiles/config/coc/*-history.json
 /dotfiles/config/git/config.local
 /dotfiles/config/licensezero/developer.json
+/dotfiles/config/coc/extensions/package.json
 .DS_Store
 *~
 *.swp
