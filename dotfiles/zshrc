@@ -1,12 +1,17 @@
 source ~/.profile
 
-source $(brew --prefix)/share/antigen/antigen.zsh
-fpath=($(brew --prefix)/share/zsh-completions $fpath)
+if which brew 2>/dev/null >/dev/null; then
+    BREW=yes
+fi
+
+if [ -n "$BREW" ]; then
+    source $(brew --prefix)/share/antigen/antigen.zsh
+    fpath=($(brew --prefix)/share/zsh-completions $fpath)
+else
+    source /usr/share/zsh-antigen/antigen.zsh
+fi
 
 antigen use oh-my-zsh
-
-# antigen bundle git
-# antigen bundle git-prompt
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle softmoth/zsh-vim-mode
 antigen bundle laravel
@@ -20,7 +25,9 @@ if which starship 2> /dev/null >/dev/null; then
 fi
 
 autoload -U compinit && compinit
-fpath=($(brew --prefix)/share/zsh-completions $fpath)
+if [ -n "$BREW" ]; then
+    fpath=($(brew --prefix)/share/zsh-completions $fpath)
+fi
 
 if which awless 2> /dev/null >/dev/null; then
     source <(awless completion zsh)
@@ -52,8 +59,6 @@ fi
 setopt no_share_history
 autoload -U +X bashcompinit && bashcompinit
 
-#export PATH="$(brew --prefix)/opt/php@7.4/bin:$PATH"
-#export PATH="$(brew --prefix)/opt/php@7.4/sbin:$PATH"
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
 if which himalaya > /dev/null; then
