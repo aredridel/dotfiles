@@ -11,8 +11,23 @@ if which vise 2> /dev/null > /dev/null; then
 fi
 
 PS1="\w\n;: "
-
 . ~/.iterm2_shell_integration.bash
+
+if [[ "$TERM_PROGRAM" == "vscode" ]] ; then
+   . "$(code --locate-shell-integration-path bash)"
+else
+   if which starship 2> /dev/null >/dev/null; then
+      eval "$(starship init bash)"
+   fi
+fi
+
+#if which powerline-go 2> /dev/null >/dev/null; then
+#    function _update_ps1() {
+#        PS1="$(powerline-go -error $?)"
+#    }
+#
+#    PROMPT_COMMAND="_update_ps1"
+#fi
 
 shopt -s checkhash
 shopt -s cmdhist
@@ -50,18 +65,6 @@ if which nvim 2>/dev/null >/dev/null; then
 elif which vim 2>/dev/null >/dev/null; then
     alias vi=vim
 fi
-
-if which starship 2> /dev/null >/dev/null; then
-    eval "$(starship init bash)"
-fi
-
-#if which powerline-go 2> /dev/null >/dev/null; then
-#    function _update_ps1() {
-#        PS1="$(powerline-go -error $?)"
-#    }
-#
-#    PROMPT_COMMAND="_update_ps1"
-#fi
 
 if [ -d ~/.cargo/bin ]; then
     PATH="$HOME/.cargo/bin:$PATH"
