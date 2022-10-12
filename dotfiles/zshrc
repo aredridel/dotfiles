@@ -64,3 +64,8 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 if which himalaya > /dev/null; then
     eval `himalaya completion zsh`
 fi
+
+if [ -d /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/ ]; then
+    source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+    source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+fi
