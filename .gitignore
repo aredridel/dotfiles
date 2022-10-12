@@ -34,11 +34,13 @@
 /dotfiles/ssh/config.local
 /dotfiles/ssh/id_*
 /dotfiles/ssh/known_hosts
+/dotfiles/ssh/known_hosts.old
 /dotfiles/ssh/random_seed
 /dotfiles/config/coc/*-history.json
 /dotfiles/config/git/config.local
 /dotfiles/config/licensezero/developer.json
 /dotfiles/config/coc/extensions/package.json
+/dotfiles/config/op/config
 .DS_Store
 *~
 *.swp
