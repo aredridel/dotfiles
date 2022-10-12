@@ -1,16 +1,4 @@
-ignoreUnknown UseKeychain
-IgnoreUnknown AddKeysToAgent
-UseKeychain yes
-AddKeysToAgent yes
-
 Include ~/.ssh/config.local
-
-Host *.theinternetco.net
-	User aredridel
-	ForwardX11Trusted yes
-    ForwardAgent yes
-	ControlMaster auto
-	ControlPath ~/.ssh/control-%h-%p-%r
 
 Host *.nbtsc.org *.http80.net *.dinhe.net
 	User aredridel
