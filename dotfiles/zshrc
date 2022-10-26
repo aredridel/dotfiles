@@ -13,20 +13,20 @@ fi
 
 antigen use oh-my-zsh
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle softmoth/zsh-vim-mode
+antigen bundle softmoth/zsh-vim-mode@main
 antigen bundle laravel
+antigen bundle VirtusLab/git-machete completion
 
 antigen theme robbyrussell
 
 antigen apply
 
-if which starship 2> /dev/null >/dev/null; then
-    source <(starship init zsh --print-full-init)
-fi
+zstyle ':completion:*:*' ignored-patterns '*ORIG_HEAD'
 
 autoload -U compinit && compinit
-if [ -n "$BREW" ]; then
-    fpath=($(brew --prefix)/share/zsh-completions $fpath)
+
+if which starship 2> /dev/null >/dev/null; then
+    source <(starship init zsh --print-full-init)
 fi
 
 if which awless 2> /dev/null >/dev/null; then
