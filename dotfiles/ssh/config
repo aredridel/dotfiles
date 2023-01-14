@@ -1,14 +1,7 @@
 Include ~/.ssh/config.local
 
-Host !127.0.0.1
-	AddKeysToAgent yes
-
-Host *.theinternetco.net
-	User aredridel
-	ForwardX11Trusted yes
-    ForwardAgent yes
-	ControlMaster auto
-	ControlPath ~/.ssh/control-%h-%p-%r
+Host homeassistant.local homeassistant.taildc153.ts.net
+	User ubuntu
 
 Host *.nbtsc.org *.http80.net *.dinhe.net *.taildc153.ts.net
 	User aredridel
@@ -27,5 +20,3 @@ Host protocol.club
 Host dinhe.net
 	HostName dinhe.net
 
-Host homeassistant.local
-	User ubuntu
