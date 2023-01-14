@@ -61,7 +61,6 @@ brew "tre"
 #brew "uutils-coreutils"
 brew "vim"
 brew "vis"
-brew "watchman"
 brew "xz"
 brew "yq"
 brew "zsh-completions"
@@ -86,3 +85,4 @@ cask "zerotier-one"
 cask "zoom"
 
 mas "Xcode", id: 497799835
+mas "Tailscale", id: 1475387142
