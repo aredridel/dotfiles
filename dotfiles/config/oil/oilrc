@@ -1,0 +1,2 @@
+shopt -s parse_sh_assign parse_sloppy_case { source $HOME/.profile }
+setvar PROMPT_COMMAND='starship prompt'
