@@ -70,5 +70,10 @@ fi
 export VISUAL
 
 
+if test -d ~/Library/pnpm; then
+    export PNPM_HOME="$HOME/Library/pnpm"
+    export PATH="$PNPM_HOME:$PATH"
+fi
+
 export HOMEBREW_UPDATE_REPORT_ALL_FORMULAE=1
 . "$HOME/.cargo/env"

@@ -1,7 +1,19 @@
 Include ~/.ssh/config.local
 
+VerifyHostKeyDNS yes
+StrictHostKeyChecking accept-new
+
 Host homeassistant.local homeassistant.taildc153.ts.net
 	User ubuntu
+
+Host upstairs.taildc153.ts.net
+	User root
+
+Host downstairs.taildc153.ts.net
+	User root
+
+Host protocol.club
+    User aredridel
 
 Host *.nbtsc.org *.http80.net *.dinhe.net *.taildc153.ts.net
 	User aredridel
@@ -13,10 +25,3 @@ Host *.nbtsc.org *.http80.net *.dinhe.net *.taildc153.ts.net
 
 Host *.local
     ForwardAgent yes
-
-Host protocol.club
-    User aredridel
-
-Host dinhe.net
-	HostName dinhe.net
-
