@@ -11,10 +11,8 @@ else
     source /usr/share/zsh-antigen/antigen.zsh
 fi
 
-antigen use oh-my-zsh
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle softmoth/zsh-vim-mode@main
-antigen bundle laravel
 antigen bundle VirtusLab/git-machete completion
 
 antigen theme robbyrussell
