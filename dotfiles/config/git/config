@@ -21,6 +21,8 @@
 	track = "!bash -c 'git commit --allow-empty -m Tracking -m \"[#$1]\"' -- "
 	fast-forward = merge --ff-only
 	ff = merge --ff-only
+	cnv = commit --no-verify
+	main = "!bash -c 'git switch $(git rev-parse origin/main >/dev/null 2>&1 && echo main || echo master)'"
 [pretty]
 	damn-awesome = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
 [core]
@@ -28,6 +30,9 @@
 	abbrev = 12
 	excludesfile = ~/.gitignore_global
 	pager = less -RXF
+	fsmonitor = true
+[gpg]
+	format = ssh
 [log]
 	date = local
 [push]
@@ -50,7 +55,8 @@
 	ui = true
 [user]
 	name = Aria Stewart
-	email = aredridel@dinhe.net
+	email = astewart@primitybio.com
+	signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK7yzHqGQyNvZauwT511nvIr1WAqqvjPaRydNNKG6qRy"
 [filter "media"]
 	required = true
 	clean = git media clean %f
@@ -96,3 +102,5 @@
 [pager]
 	branch = false
 	status = false
+[commit]
+	gpgsign = true
