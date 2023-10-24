@@ -1,5 +1,5 @@
 format = """\
-$username$directory$git_branch$git_status$git_state$git_commit$package$nodejs$rust$golang$terraform$cmd_duration$jobs$battery$status
+$username$directory\n$git_branch$git_status$git_state$git_commit\n$package$nodejs$rust$golang$terraform$cmd_duration$jobs$battery$status
 $character\
 """
 
