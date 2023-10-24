@@ -14,6 +14,7 @@ fi
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle softmoth/zsh-vim-mode@main
 antigen bundle VirtusLab/git-machete completion
+antigen bundle jeffreytse/zsh-vi-mode
 
 antigen theme robbyrussell
 
