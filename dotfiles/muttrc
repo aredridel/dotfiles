@@ -1,5 +1,7 @@
 source ~/.muttrc.local
 
+set sendmail="/usr/lib/sendmail -oem -oi"
+
 set autoedit=yes
 set edit_headers=yes
 
@@ -7,7 +9,7 @@ set use_domain=yes
 
 # Mmhm.  UTF.  Candy.
 set charset="UTF-8"
-set send_charset="US-ASCII:ISO-8859-1:ISO-8859-2:UTF8"
+set send_charset="US-ASCII:UTF-8"
 
 # General Schtuff
 set nohelp
@@ -48,19 +50,18 @@ set include=yes
 set signature=~/.signature
 set sig_dashes
 set	abort_nosubject=no
-my_hdr X-Arbitrary-Number-Of-The-Day: 42
 
 # PGP Options
 set pgp_replyencrypt			# Encrypt when replying to encrypted messages.
 set pgp_replysignencrypted
 set pgp_replysign
-set	pgp_autosign				# autosign all outgoing mails
+# set	pgp_autosign				# autosign all outgoing mails
 set pgp_show_unusable="no"		# Don't display unusable keys.
 set pgp_sort_keys="address"		# Sort keys by key ID
 set pgp_timeout=3600			# Forget the PGP passphrase after an hour.
 #set	pgp_sort_keys=trust			# sort order
 #set	pgp_sign_as=0x2964BF46			# primary keyid
-set pipe_decode			# Decode messages I pipe to commands, typically to patch(1).
+set pipe_decode=no
 
 set	pgp_decode_command="gpg %?p?--passphrase-fd 0? --no-verbose --batch --output - %f"
 set	pgp_verify_command="gpg --no-verbose --batch --output - --verify %s %f"
@@ -90,7 +91,7 @@ unset pager_format
 set pager_stop=yes
 
 # EXIM Workaround
-set write_bcc=no
+# set write_bcc=no
 
 # Color
 color	hdrdefault	green default

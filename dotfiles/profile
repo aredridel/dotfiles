@@ -69,7 +69,6 @@ elif which vi 2>/dev/null >/dev/null; then
 fi
 export VISUAL
 
-
 if test -d ~/Library/pnpm; then
     export PNPM_HOME="$HOME/Library/pnpm"
     export PATH="$PNPM_HOME:$PATH"
@@ -79,4 +78,8 @@ export HOMEBREW_UPDATE_REPORT_ALL_FORMULAE=1
 
 if [ -f "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
+fi
+
+if [ -d "$HOME/.cargo/bin" ]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
 fi
