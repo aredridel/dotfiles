@@ -2,7 +2,7 @@ export TIME_STYLE=long-iso
 alias ll="exa -lh --git"
 
 if test -d /opt/homebrew/bin; then
-    export PATH="/opt/homebrew/bin:$PATH"
+    PATH="/opt/homebrew/bin:$PATH"
 fi
 
 if test -e ~/.nix-profile/etc/profile.d/nix.sh; then
@@ -16,10 +16,12 @@ fi
 
 if test -d ~/.local/bin; then
     PATH=~/.local/bin:"$PATH"
+    LD_LIBRARY_PATH="$HOME/.local/lib"
+
 fi
 
 if test -d ~/.composer/vendor/bin; then
-    export PATH=~/.composer/vendor/bin:"$PATH"
+    PATH=~/.composer/vendor/bin:"$PATH"
 fi
 
 if test -d /usr/pkg/bin; then
@@ -36,8 +38,9 @@ if test -d ~/Library/Perl/5/lib/perl5/; then
 fi
 
 if test -d /usr/local/plan9; then
-    export PLAN9=/usr/local/plan9
+    PLAN9=/usr/local/plan9
     PATH=$PATH:$PLAN9/bin
+    export PLAN9
 fi
 
 if test -d ~/.cargo/bin; then
@@ -70,8 +73,9 @@ fi
 export VISUAL
 
 if test -d ~/Library/pnpm; then
-    export PNPM_HOME="$HOME/Library/pnpm"
-    export PATH="$PNPM_HOME:$PATH"
+    PNPM_HOME="$HOME/Library/pnpm"
+    PATH="$PNPM_HOME:$PATH"
+    export PNPM_HOME
 fi
 
 export HOMEBREW_UPDATE_REPORT_ALL_FORMULAE=1
@@ -87,3 +91,8 @@ fi
 if [ -S "$SSH_AUTH_SOCK" ]; then
     ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/last-auth.sock"
 fi
+
+export LD_LIBRARY_PATH
+
+GRAB_HOME="$HOME/Projects/"
+export GRAB_HOME

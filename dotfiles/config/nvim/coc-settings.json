@@ -1,5 +1,10 @@
 {
+  "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh",
   "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
+  "tsserver.useLocalTsdk": true,
+  "tsserver.tsdk": "node_modules/typescript/lib",
+  "svelte.plugin.svelte.enable": true,
+  "eslint.enable": false,
   "rust-analyzer.checkOnSave.command": "clippy",
   "clangd.path": "/usr/local/opt/llvm/bin/clangd",
   "svelte.language-server.runtime": "/opt/homebrew/bin/svelteserver",
