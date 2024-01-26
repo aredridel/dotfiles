@@ -55,7 +55,7 @@
 	ui = true
 [user]
 	name = Aria Stewart
-	email = astewart@primitybio.com
+	email = aredridel@dinhe.net
 	signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK7yzHqGQyNvZauwT511nvIr1WAqqvjPaRydNNKG6qRy"
 [filter "media"]
 	required = true
