@@ -76,6 +76,10 @@ if test -d ~/Library/pnpm; then
     PNPM_HOME="$HOME/Library/pnpm"
     PATH="$PNPM_HOME:$PATH"
     export PNPM_HOME
+elif test -d ~/.local/share/pnpm; then
+    PNPM_HOME="$HOME/.local/share/pnpm"
+    PATH="$PNPM_HOME:$PATH"
+    export PNPM_HOME
 fi
 
 export HOMEBREW_UPDATE_REPORT_ALL_FORMULAE=1
