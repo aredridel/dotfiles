@@ -71,6 +71,7 @@ if has('syntax')
     Plug 'leafgarland/typescript-vim'
     Plug 'udalov/kotlin-vim'
     Plug 'jwalton512/vim-blade'
+    Plug 'vim-crystal/vim-crystal'
     call plug#end()
 
     set completeopt=menu,menuone,preview,noselect,noinsert
