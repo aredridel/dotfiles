@@ -63,3 +63,15 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 if which himalaya > /dev/null; then
     eval `himalaya completion zsh`
 fi
+
+# bun completions
+[ -s "/home/astewart/.bun/_bun" ] && source "/home/astewart/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/home/astewart/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end

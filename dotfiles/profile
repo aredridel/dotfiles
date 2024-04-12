@@ -82,8 +82,6 @@ elif test -d ~/.local/share/pnpm; then
     export PNPM_HOME
 fi
 
-export HOMEBREW_UPDATE_REPORT_ALL_FORMULAE=1
-
 if [ -f "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
 fi

@@ -12,6 +12,9 @@ Host upstairs.taildc153.ts.net downstairs.taildc153.ts.net
 Host protocol.club
     User aredridel
 
+Host auth.taildc153.ts.net db.nbtsc.org mysql.nbtsc.org
+  User admin
+
 Host *.nbtsc.org *.http80.net *.dinhe.net *.taildc153.ts.net
 	User aredridel
     ForwardAgent yes
@@ -22,3 +25,9 @@ Host *.nbtsc.org *.http80.net *.dinhe.net *.taildc153.ts.net
 
 Host *.local
     ForwardAgent yes
+
+Host git.pierre.co
+  AddKeysToAgent yes
+  IgnoreUnknown UseKeychain
+  IdentityFile /Users/aredridel/.ssh/pierre_rsa.pub
+
