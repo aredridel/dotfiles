@@ -20,6 +20,13 @@
     "kotlin": {
       "command": "/home/users/aredridel/Projects/KotlinLanguageServer/server/build/scripts/server",
       "filetypes": ["kotlin"]
+    },
+    "nix": {
+      "command": "nixd",
+      "filetypes": ["nix"],
+      "settings": {
+        "formatting": { "command": ["nixpkgs-fmt"] }
+      }
     }
   },
   "svelte.enable-ts-plugin": true

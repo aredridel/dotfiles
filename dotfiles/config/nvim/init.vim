@@ -85,6 +85,7 @@ if has('syntax')
     autocmd BufNewFile,BufRead *.sql set foldmethod=indent foldlevel=3
     autocmd BufNewFile,BufRead *.txt set textwidth=76 noautoindent nocindent
     autocmd BufNewFile,BufRead *.kt set filetype=kotlin
+    autocmd BufNewFile,BufRead *.nix set filetype=nix
     autocmd BufNewFile,BufRead *.hbs set filetype=html
     autocmd BufNewFile,BufRead *.svelte set filetype=svelte foldmethod=manual foldlevel=3 iskeyword=@,_,-,48-57
     autocmd BufNewFile,BufRead *.html set iskeyword=@,_,-,48-57
