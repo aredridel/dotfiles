@@ -30,7 +30,7 @@
 	abbrev = 12
 	excludesfile = ~/.gitignore_global
 	pager = less -RXF
-	fsmonitor = true
+	#fsmonitor = true
 [gpg]
 	format = ssh
 [log]
