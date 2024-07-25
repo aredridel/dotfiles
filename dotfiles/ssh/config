@@ -2,6 +2,7 @@ Include ~/.ssh/config.local
 
 VerifyHostKeyDNS yes
 StrictHostKeyChecking accept-new
+#IdentityFile SHA256:APNBDduY7Wz2GYjHV9OJlRl4SegLIJinpdKwb7rqTSM
 
 Host homeassistant.local homeassistant.taildc153.ts.net
 	User ubuntu
