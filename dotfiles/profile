@@ -17,7 +17,7 @@ fi
 if test -d ~/.local/bin; then
     PATH=~/.local/bin:"$PATH"
     LD_LIBRARY_PATH="$HOME/.local/lib"
-    MANPATH=~/.local/man:$MANPATH
+    MANPATH=~/.local/share/man:$MANPATH
 fi
 
 if test -d ~/.composer/vendor/bin; then
