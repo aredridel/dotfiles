@@ -35,9 +35,6 @@ shopt -s no_empty_cmd_completion
 
 alias less='less -R'
 
-MANPATH=man:/usr/local/share/man:/usr/share/man
-export MANPATH
-
 if which brew >/dev/null 2>&1; then
     PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
 

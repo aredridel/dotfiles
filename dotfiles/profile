@@ -9,15 +9,15 @@ if test -e ~/.nix-profile/etc/profile.d/nix.sh; then
     . ~/.nix-profile/etc/profile.d/nix.sh
 fi
 
-if test -d ~/System; then
-    PATH=~/System/bin:"$PATH"
-    MABPATH=~/System/share/man:"$MANPATH"
+if test -d "$HOME/System"; then
+    PATH="$HOME/System/bin:$PATH"
+    MANPATH="$HOME/System/share/man:$MANPATH"
 fi
 
-if test -d ~/.local/bin; then
-    PATH=~/.local/bin:"$PATH"
+if test -d "$HOME/.local/bin"; then
+    PATH="$HOME/.local/bin:$PATH"
     LD_LIBRARY_PATH="$HOME/.local/lib"
-    MANPATH=~/.local/share/man:$MANPATH
+    MANPATH="$HOME/.local/share/man:$MANPATH"
 fi
 
 if test -d ~/.composer/vendor/bin; then
@@ -99,6 +99,7 @@ if [ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
 fi
 
 export LD_LIBRARY_PATH
+export MANPATH
 
 GRAB_HOME="$HOME/Projects/"
 export GRAB_HOME
