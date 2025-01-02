@@ -1,3 +1,6 @@
 [submodule "config/nvim/bundle/vim-stylus"]
 	path = config/nvim/bundle/vim-stylus
 	url = https://github.com/wavded/vim-stylus
+[submodule "dotfiles/config/vis/plugins/vis-lspc"]
+	path = dotfiles/config/vis/plugins/vis-lspc
+	url = https://github.com/fischerling/vis-lspc
