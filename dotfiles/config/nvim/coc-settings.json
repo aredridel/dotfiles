@@ -5,6 +5,7 @@
   "tsserver.tsdk": "node_modules/typescript/lib",
   "svelte.plugin.svelte.enable": true,
   "eslint.enable": false,
+  "diagnostic.locationlist": "true",
   "rust-analyzer.checkOnSave.command": "clippy",
   "clangd.path": "/usr/local/opt/llvm/bin/clangd",
   "svelte.language-server.runtime": "/opt/homebrew/bin/svelteserver",
