@@ -1,5 +1,4 @@
 tap "homebrew/cask"
-tap "mas-cli/tap"
 tap "filippo.io/age", "https://filippo.io/age"
 
 cask_args appdir: "~/Applications"
