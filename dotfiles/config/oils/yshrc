@@ -1,0 +1,3 @@
+func renderPrompt(io) {
+	return (":; ")
+}
