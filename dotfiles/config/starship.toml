@@ -1,7 +1,5 @@
-format = """\
-$username$directory\n$git_branch$git_status$git_state$git_commit\n$package$nodejs$rust$golang$terraform$cmd_duration$jobs$battery$status
-$character\
-"""
+format = """$username$directory(\n$git_branch$git_status$git_state$git_commit)(\n$package$nodejs$rust$golang$terraform$cmd_duration$jobs$battery)$status
+$character"""
 
 [character]
 error_symbol = "[:;](bold red)"
