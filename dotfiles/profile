@@ -111,3 +111,9 @@ export MANPATH
 
 GRAB_HOME="$HOME/Projects/"
 export GRAB_HOME
+
+if [ -d "$HOME/Library/Application Support/Coursier/bin" ]; then
+    export PATH="$PATH:$HOME/Library/Application Support/Coursier/bin"
+    export JAVA_HOME="$(cs java-home)"
+    export PATH="$PATH=$JAVA_HOME/bin:$PATH"
+fi
