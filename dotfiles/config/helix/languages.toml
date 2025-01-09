@@ -1,0 +1,9 @@
+[language-server.vue]
+command = "vue-language-server"
+args = ["--stdio"]
+
+[[language]]
+name = "vue"
+scope = "scope.vue"
+roots = ["package.json"]
+file-types = [ "vue" ]
