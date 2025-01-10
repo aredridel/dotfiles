@@ -1,0 +1,2 @@
+[defaults]
+ssh_identity = "~/.ssh/id_ed25519"
