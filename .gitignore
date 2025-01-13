@@ -2,6 +2,7 @@
 /dotfiles/cargo/.*
 /dotfiles/cargo/bin
 /dotfiles/cargo/git
+/dotfiles/cargo/registry
 /dotfiles/config/coc/commands
 /dotfiles/config/coc/extensions/*-data/
 /dotfiles/config/coc/extensions/db.json
