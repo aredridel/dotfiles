@@ -49,4 +49,5 @@
 /dotfiles/ssh/known_hosts
 /dotfiles/ssh/known_hosts.old
 /dotfiles/ssh/random_seed
+/dotfiles/cargo/.*
 node_modules
