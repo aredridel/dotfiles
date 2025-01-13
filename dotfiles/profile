@@ -114,6 +114,20 @@ export GRAB_HOME
 
 if [ -d "$HOME/Library/Application Support/Coursier/bin" ]; then
     export PATH="$PATH:$HOME/Library/Application Support/Coursier/bin"
+fi
+
+if [ -d "$HOME/.local/share/coursier/bin" ]; then
+    export PATH="$PATH:$HOME/.local/share/coursier/bin"
+fi
+
+if which cs > /dev/null; then
     export JAVA_HOME="$(cs java-home)"
-    export PATH="$PATH=$JAVA_HOME/bin:$PATH"
+fi
+
+if [ -n "$JAVA_HOME" -a -d "$JAVA_HOME/bin" ]; then
+    export PATH="$JAVA_HOME/bin:$PATH"
+fi
+
+if [ -e "$HOME/.1password/agent.sock" ]; then
+    export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 fi
