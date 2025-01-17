@@ -1,38 +1,10 @@
 vim.g.javascript_plugin_jsdoc = 1
-local Plug = vim.fn['plug#']
-vim.call('plug#begin')
-Plug 'neovim/nvim-lspconfig'
-Plug 'elixir-editors/vim-elixir'
-Plug 'haya14busa/vim-edgemotion'
-Plug 'stevearc/oil.nvim'
-Plug 'tpope/vim-markdown'
-Plug 'jceb/vim-orgmode'
-Plug 'kylechui/nvim-surround'
-Plug 'preservim/vim-pencil'
-Plug 'dbmrq/vim-ditto'
-Plug 'kana/vim-textobj-user'
-Plug 'preservim/vim-textobj-quote'
-Plug 'preservim/vim-textobj-sentence'
-Plug 'tommcdo/vim-exchange'
-Plug 'pangloss/vim-javascript'
-Plug 'tpope/vim-commentary'
-Plug 'mattn/emmet-vim'
-Plug('challenger-deep-theme/vim', {as = 'challenger-deep' })
-Plug 'evanleck/vim-svelte'
-Plug 'ciaranm/detectindent'
-Plug 'leafgarland/typescript-vim'
-Plug 'udalov/kotlin-vim'
-Plug 'jwalton512/vim-blade'
-Plug 'vim-crystal/vim-crystal'
-Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
--- Plug 'nvim-lua/plenary.nvim'
--- Plug 'nvim-telescope/telescope.nvim'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-vim.call('plug#end')
+vim.opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
+
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
+require("config.lazy")
 
 vim.cmd([[
     set expandtab " Spaces, not tabs.  
@@ -140,71 +112,4 @@ vim.cmd([[
 
     set secure
 ]])
-
--- Set up nvim-cmp.
-local cmp = require'cmp'
-
-cmp.setup({
-    window = {
-        -- completion = cmp.config.window.bordered(),
-        -- documentation = cmp.config.window.bordered(),
-    },
-    mapping = cmp.mapping.preset.insert({
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    }),
-    sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-    }, {
-        { name = 'buffer' },
-    })
-})
-
--- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline({ '/', '?' }, {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-        { name = 'buffer' }
-    }
-})
-
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-        { name = 'path' }
-    }, {
-        { name = 'cmdline' }
-    }),
-    matching = { disallow_symbol_nonprefix_matching = false }
-})
-
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
--- Set up lspconfig.
-local lsp = require'lspconfig'
-lsp.rust_analyzer.setup{
-    capabilities = capabilities
-}
-lsp.lua_ls.setup{
-    capabilities = capabilities,
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = {"vim"}
-            }
-        }
-    }
-}
-
-lsp.harper_ls.setup {
-    capabilities = capabilities,
-    settings = {
-        ["harper-ls"] = {
-        }
-    },
-}
-
 require("oil").setup()
