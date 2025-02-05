@@ -1,12 +1,17 @@
+#!/bin/sh
 export TIME_STYLE=long-iso
 alias ll="exa -lh --git"
 
-if test -d /opt/homebrew/bin; then
-    PATH="/opt/homebrew/bin:$PATH"
+if test -d "$HOME/.local/state/nix/profile/bin"; then
+    NIX_PROFILE="$HOME/.local/state/nix/profile"
+    PATH="$NIX_PROFILE/bin:$PATH"
+elif test -f ~/.nix-profile/etc/profile.d/nix.sh; then
+    NIX_PROFILE="$HOME/.nix-profile"
+    . ~/.nix-profile/etc/profile.d/nix.sh
 fi
 
-if test -e ~/.nix-profile/etc/profile.d/nix.sh; then
-    . ~/.nix-profile/etc/profile.d/nix.sh
+if test -f "$NIX_PROFLE/etc/profile.d/hm-session-vars.sh"; then
+    source "$NIX_PROFILE/etc/profile.d/hm-session-vars.sh"
 fi
 
 if test -d "$HOME/System"; then
@@ -29,42 +34,18 @@ if test -d /usr/pkg/bin; then
     MANPATH="/usr/pkg/man:$MANPATH"
 fi
 
-if test -d ~/Library/node/bin; then
-    PATH=~/Library/node/bin:"$PATH"
-fi
-
-if test -d ~/Library/Perl/5/lib/perl5/; then
-    eval $(perl -I ~/Library/Perl/5/lib/perl5/ -Mlocal::lib)
-fi
-
-if test -d "$HOME/.local/opt/plan9"; then
-    PLAN9="$HOME/.local/opt/plan9"
+if test -d /usr/local/plan9; then
+    PLAN9=/usr/local/plan9
     PATH="$PATH:$PLAN9/bin"
     export PLAN9
-elif test -d /usr/local/plan9; then
-    PLAN9=/usr/local/plan9
-    PATH=$PATH:$PLAN9/bin
-    export PLAN9
-fi
-
-if test -d ~/.cargo/bin; then
-    PATH="$HOME/.cargo/bin:$PATH"
-fi
-
-if test -d ~/Library/Python/3.7/bin; then
-    PATH="$HOME/Library/Python/3.7/bin:$PATH"
 fi
 
 if which brew >/dev/null 2>&1; then
     PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
 fi
 
-if test -r ~/.profile.local; then
-    . ~/.profile.local
-fi
-
-if which systemctl 2>/dev/null >/dev/null; then
-    systemctl --user import-environment PATH
+if test -r "$HOME/.profile.local"; then
+    . "$HOME/.profile.local"
 fi
 
 if which vim 2>/dev/null >/dev/null; then
@@ -76,34 +57,27 @@ elif which vi 2>/dev/null >/dev/null; then
 fi
 export VISUAL
 
-if test -d ~/Library/pnpm; then
-    PNPM_HOME="$HOME/Library/pnpm"
-    PATH="$PNPM_HOME:$PATH"
-    export PNPM_HOME
-elif test -d ~/.local/share/pnpm; then
+if test -d "$HOME/.local/share/pnpm"; then
     PNPM_HOME="$HOME/.local/share/pnpm"
+fi
+
+if test -n "$PNPM_HOME"; then
     PATH="$PNPM_HOME:$PATH"
     export PNPM_HOME
 fi
 
-if test -d "$HOME/Library/Python/3.12/bin"; then
-    PATH="$HOME/Library/Python/3.12/bin:$PATH"
-fi
-
-if [ -f "$HOME/.cargo/env" ]; then
+if test -f "$HOME/.cargo/env"; then
     . "$HOME/.cargo/env"
-fi
-
-if [ -d "$HOME/.cargo/bin" ]; then
+elif test -d "$HOME/.cargo/bin"; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
-if [ -S "$SSH_AUTH_SOCK" ]; then
+if test -S "$SSH_AUTH_SOCK"; then
     ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/last-auth.sock"
 fi
 
-if [ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
-    source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+if which systemctl 2>/dev/null >/dev/null; then
+    systemctl --user import-environment PATH
 fi
 
 export LD_LIBRARY_PATH

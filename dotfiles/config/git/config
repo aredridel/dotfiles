@@ -107,5 +107,5 @@
 	gpgsign = true
 [tag]
 	gpgSign = true
-[gpg "ssh"]
-	program = /opt/1Password/op-ssh-sign
+#[gpg "ssh"]
+#	program = /opt/1Password/op-ssh-sign
