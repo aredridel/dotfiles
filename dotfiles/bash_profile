@@ -56,6 +56,10 @@ if [ -r ~/.bash_profile.local ]; then
     . ~/.bash_profile.local
 fi
 
+if which `git-machete` 2>/dev/null >/dev/null; then
+   eval "$(git machete completion bash)"
+fi
+
 if which starship > /dev/null 2>&1; then
    function set_win_title(){
       echo -ne "\033]0; $(basename "$PWD") \007"
