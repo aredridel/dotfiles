@@ -95,7 +95,7 @@ if [ -d "$HOME/.local/share/coursier/bin" ]; then
 fi
 
 if which cs > /dev/null; then
-    export JAVA_HOME="$(cs java-home)"
+    eval "$(cs java --env --jvm temurin:21)"
 fi
 
 if [ -n "$JAVA_HOME" -a -d "$JAVA_HOME/bin" ]; then
