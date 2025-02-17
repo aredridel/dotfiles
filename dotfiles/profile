@@ -105,3 +105,21 @@ fi
 if [ -e "$HOME/.1password/agent.sock" ]; then
     export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 fi
+
+for DIR in "$HOME/.local/opt/"*"/bin"; do
+    export PATH="$PATH:$DIR"
+done
+
+if which nvim > /dev/null 2>&1; then
+    export EDITOR=nvim
+fi
+
+if [ -f "$HOME/.profile.local" ]; then
+    source "$HOME/.profile.local"
+fi
+
+export NIXPKGS_ALLOW_UNFREE=1
+
+PROFILE_LOADED=1
+
+umask 0022

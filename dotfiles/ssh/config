@@ -32,6 +32,5 @@ Host git.pierre.co
   IgnoreUnknown UseKeychain
   IdentityFile /Users/aredridel/.ssh/pierre_rsa.pub
 
-
 Host eb5058.nexus.usbx.me
   User eb5058
