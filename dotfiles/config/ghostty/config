@@ -1,0 +1,10 @@
+keybind = super+c=copy_to_clipboard
+keybind = super+v=paste_from_clipboard
+keybind = super+shift+v=paste_from_selection
+keybind = super+t=new_tab
+keybind = super+comma=open_config
+keybind = super+right_bracket=next_tab
+keybind = super+left_bracket=previous_tab
+command = exec $SHELL -l
+font-family = 0xProto
+font-feature = +calt
