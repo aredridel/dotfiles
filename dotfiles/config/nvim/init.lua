@@ -1,13 +1,15 @@
 vim.g.javascript_plugin_jsdoc = 1
 vim.opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
 
-vim.g.mapleader = " "
+vim.g.mapleader = ","
 vim.g.maplocalleader = "\\"
+
+vim.opt.winheight = 40
 
 require("config.lazy")
 
 vim.cmd([[
-    set expandtab " Spaces, not tabs.  
+    set expandtab " Spaces, not tabs.
     set shiftwidth=4
     set tabstop=4
     set nohlsearch
@@ -26,7 +28,6 @@ vim.cmd([[
     set formatoptions+=ro
 
     set noerrorbells "This removes vim's default error bell, turning it off so that it doesn't annoy us
-    set winheight=40
     set cmdheight=4
     set laststatus=2
     set autoread
@@ -34,9 +35,6 @@ vim.cmd([[
     set completeopt=menu,menuone,preview,noselect,noinsert
 
     colorscheme challenger_deep
-
-    au VimEnter * set winheight=3
-    au VimEnter * set winminheight=3
 
     autocmd BufNewFile,BufRead *.js set foldmethod=manual foldlevel=3
     autocmd BufNewFile,BufRead *.sql set foldmethod=indent foldlevel=3
@@ -83,7 +81,7 @@ vim.cmd([[
 
     " You will have bad experience for diagnostic messages when it's default 4000.
     set updatetime=500
-    
+
     " Some servers have issues with backup files, see #649
     set nobackup
     set nowritebackup
