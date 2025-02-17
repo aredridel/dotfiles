@@ -66,3 +66,7 @@ fi
 
 # bun completions
 [ -s "/home/astewart/.bun/_bun" ] && source "/home/astewart/.bun/_bun"
+
+if [ -z "$PROFILE_LOADED" ]; then
+    source "$HOME/.profile"
+fi
