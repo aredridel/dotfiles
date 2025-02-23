@@ -2,6 +2,10 @@
 export TIME_STYLE=long-iso
 alias ll="exa -lh --git"
 
+if test -d "/opt/homebrew/bin"; then
+    PATH="/opt/homebrew/bin:$PATH"
+fi
+
 if test -d "$HOME/.local/state/nix/profile/bin"; then
     NIX_PROFILE="$HOME/.local/state/nix/profile"
     PATH="$NIX_PROFILE/bin:$PATH"
