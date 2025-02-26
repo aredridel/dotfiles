@@ -5,13 +5,19 @@
 	ui = auto
 [rerere]
 	enabled = true
+	autoupdate = true
 [gist]
 	private = yes
 [diff]
 	noprefix = on
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
 [branch]
 	autosetupmerge = always
 	autosetuprebase = always
+	sort = -committerdate
 [alias]
 	graph = log --format=damn-awesome --graph --date-order
 	deploy = "!bash -c '[ -z \"$1\" -o -z \"$2\" ] && echo use: git deploy environment tree-ish 1>&2 && exit 1 || git push origin +\"$2:deploy-$1\"' -- "
@@ -39,10 +45,11 @@
 [push]
 	default = simple
 	followTags = true
+	autoSetupRemote = true
 [mergetool]
 	keepBackup = true
 [merge]
-	conflictstyle = diff3
+	conflictstyle = zdiff3
 	ff = false
 	guitool = opendiff
 [color "status"]
@@ -107,6 +114,7 @@
 	gpgsign = true
 [tag]
 	gpgSign = true
+	sort = version:refname
 #[gpg "ssh"]
 #	program = /opt/1Password/op-ssh-sign
 [filter "lfs"]
@@ -114,3 +122,9 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[rebase]
+	updateRefs = true
