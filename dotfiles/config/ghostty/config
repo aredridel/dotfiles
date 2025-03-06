@@ -6,4 +6,5 @@ keybind = super+comma=open_config
 keybind = super+right_bracket=next_tab
 keybind = super+left_bracket=previous_tab
 font-family = 0xProto
+#font-family = Fairfax Hax HD
 font-feature = +calt
