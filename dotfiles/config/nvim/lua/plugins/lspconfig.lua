@@ -24,6 +24,18 @@ return {
         end
 
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
+        capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+        lsp.pylsp.setup {
+            capabilities = capabilities,
+        }
+        lsp.cssls.setup {
+            capabilities = capabilities,
+        }
+
+        lsp.ts_ls.setup {
+            capabilities = capabilities,
+        }
 
         lsp.metals.setup {
             capabilities = capabilities,

@@ -46,28 +46,28 @@ vim.cmd([[
     autocmd BufNewFile,BufRead *.html set iskeyword=@,_,-,48-57
     autocmd BufNewFile,BufRead *.blade.php set iskeyword=@,_,-,48-57
 
-    function! Prose()
-        let g:textobj#quote#educate = 1
-        let g:textobj#quote#matchit = 1
-        let g:pencil#conceallevel = 3
-        let g:pencil#concealcursor = 'c'
-        call pencil#init()
-        call textobj#quote#init({'educate': 1})
-        set nocindent smartindent linebreak spell backspace=indent,eol,start showbreak=+++
-        DittoOn  " Turn on Ditto's autocmds
+"    function! Prose()
+"        let g:textobj#quote#educate = 1
+"        let g:textobj#quote#matchit = 1
+"        let g:pencil#conceallevel = 3
+"        let g:pencil#concealcursor = 'c'
+"        call pencil#init()
+"        call textobj#quote#init({'educate': 1})
+"        set nocindent smartindent linebreak spell backspace=indent,eol,start showbreak=+++
+"        DittoOn  " Turn on Ditto's autocmds
+"
+"        nmap <leader>di <Plug>ToggleDitto      " Turn Ditto on and off
+"        nmap =d <Plug>DittoNext                " Jump to the next word
+"        nmap -d <Plug>DittoPrev                " Jump to the previous word
+"        nmap +d <Plug>DittoGood                " Ignore the word under the cursor
+"        nmap _d <Plug>DittoBad                 " Stop ignoring the word under the cursor
+"        nmap ]d <Plug>DittoMore                " Show the next matches
+"        nmap [d <Plug>DittoLess                " Show the previous matches
+"
+"    endfunction
 
-        nmap <leader>di <Plug>ToggleDitto      " Turn Ditto on and off
-        nmap =d <Plug>DittoNext                " Jump to the next word
-        nmap -d <Plug>DittoPrev                " Jump to the previous word
-        nmap +d <Plug>DittoGood                " Ignore the word under the cursor
-        nmap _d <Plug>DittoBad                 " Stop ignoring the word under the cursor
-        nmap ]d <Plug>DittoMore                " Show the next matches
-        nmap [d <Plug>DittoLess                " Show the previous matches
-
-    endfunction
-
-    autocmd FileType markdown,mkd,text call Prose()
-    command! -nargs=0 Prose call Prose()
+"    autocmd FileType markdown,mkd,text call Prose()
+"    command! -nargs=0 Prose call Prose()
 
     "autocmd BufWritePost *.js silent ![ -x ./node_modules/.bin/esformatter ] && ./node_modules/.bin/esformatter % -i
     autocmd BufReadPost * DetectIndent
