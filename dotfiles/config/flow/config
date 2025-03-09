@@ -1,0 +1,23 @@
+# frame_rate 60
+# theme "default"
+input_mode "vim"
+# gutter_line_numbers true
+# gutter_line_numbers_relative false
+# gutter_line_numbers_style "ascii"
+# gutter_symbols true
+# enable_terminal_cursor true
+# enable_terminal_color_scheme true
+# highlight_current_line true
+# highlight_current_line_gutter true
+# whitespace_mode "none"
+# inline_diagnostics true
+# animation_min_lag 0
+# animation_max_lag 150
+# enable_format_on_save false
+# default_cursor "default"
+# indent_size 4
+# tab_width 8
+# top_bar "tabs"
+# bottom_bar "mode file log selection diagnostics keybind linenumber clock spacer"
+# lsp_request_timeout 10
+# include_files ""
