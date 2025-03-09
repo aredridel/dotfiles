@@ -49,11 +49,14 @@
 /dotfiles/config/zed/embeddings/
 /dotfiles/config/zed/prompts/
 /dotfiles/gnupg/*.db
+/dotfiles/gnupg/.gpg-v21-migrated
 /dotfiles/gnupg/crls.d/*
 /dotfiles/gnupg/openpgp-revocs.d/
 /dotfiles/gnupg/private-keys-v1.d/
+/dotfiles/gnupg/pubring.gpg
 /dotfiles/gnupg/pubring.kbx
 /dotfiles/gnupg/random_seed
+/dotfiles/gnupg/root-auth.gpg
 /dotfiles/gnupg/secring.gpg
 /dotfiles/gnupg/trustdb.gpg
 /dotfiles/ssh/*.key
@@ -63,5 +66,6 @@
 /dotfiles/ssh/id_*
 /dotfiles/ssh/known_hosts
 /dotfiles/ssh/known_hosts.old
+/dotfiles/ssh/last-auth.sock
 /dotfiles/ssh/random_seed
 node_modules
