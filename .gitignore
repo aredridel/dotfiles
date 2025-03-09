@@ -4,6 +4,7 @@
 .tmp*
 /dotfiles/cargo/.*
 /dotfiles/cargo/bin
+/dotfiles/cargo/binstall/
 /dotfiles/cargo/git
 /dotfiles/cargo/registry
 /dotfiles/config/**/*.log
@@ -22,14 +23,17 @@
 /dotfiles/config/configstore/
 /dotfiles/config/configstore/nodemon.json
 /dotfiles/config/configstore/update-notifier-*
+/dotfiles/config/darktable/
 /dotfiles/config/exoscale.ini
 /dotfiles/config/gh/
 /dotfiles/config/git/config.local
+/dotfiles/config/helix/runtime/
 /dotfiles/config/iTerm2/AppSupport
 /dotfiles/config/internetarchive/ia.ini
 /dotfiles/config/licensezero/developer.json
 /dotfiles/config/lite-xl/ws/
 /dotfiles/config/meli
+/dotfiles/config/mozilla/
 /dotfiles/config/mpv/
 /dotfiles/config/nvim/plugged
 /dotfiles/config/nvim/sessions
