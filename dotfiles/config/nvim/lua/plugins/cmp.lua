@@ -1,44 +1,15 @@
 return {
-	{ 'elixir-editors/vim-elixir' },
-	{ 'haya14busa/vim-edgemotion' },
-	{ 'stevearc/oil.nvim' },
-	{ 'tpope/vim-markdown' },
-	{ 'jceb/vim-orgmode' },
-	{ 'kylechui/nvim-surround' },
-	{ 'preservim/vim-pencil' },
-	{ 'dbmrq/vim-ditto' },
-	{ 'kana/vim-textobj-user' },
-	{ 'preservim/vim-textobj-quote' },
-	{ 'preservim/vim-textobj-sentence' },
-	{ 'tommcdo/vim-exchange' },
-	{ 'pangloss/vim-javascript' },
-	{ 'tpope/vim-commentary' },
-	{ 'mattn/emmet-vim' },
-	{ 'challenger-deep-theme/vim',     lazy = false },
-	{ 'evanleck/vim-svelte' },
-	{ 'ciaranm/detectindent',          lazy = false },
-	{ 'leafgarland/typescript-vim' },
-	{ 'udalov/kotlin-vim' },
-	{ 'jwalton512/vim-blade' },
-	{ 'vim-crystal/vim-crystal' },
-	{
-		'nvim-treesitter/nvim-treesitter',
-		config = function()
-			vim.cmd([[TSUpdate]])
-		end
-	},
-	{ 'nvim-telescope/telescope.nvim' },
-	{
-		'hrsh7th/nvim-cmp',
-		dependencies = {
-			'hrsh7th/cmp-nvim-lsp',
-			'hrsh7th/cmp-buffer',
-			'hrsh7th/cmp-path',
-			'hrsh7th/cmp-cmdline',
-		},
-		config = function()
-			-- Set up nvim-cmp.
-			local cmp = require 'cmp'
+    {
+        'hrsh7th/nvim-cmp',
+        dependencies = {
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+        },
+        config = function()
+            -- Set up nvim-cmp.
+            local cmp = require 'cmp'
 
             cmp.setup({
                 window = {
