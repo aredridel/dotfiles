@@ -128,3 +128,5 @@
 	all = true
 [rebase]
 	updateRefs = true
+[advice]
+	macheteEditorSelection = false
