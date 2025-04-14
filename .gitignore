@@ -70,4 +70,7 @@
 /dotfiles/ssh/random_seed
 /dotfiles/config/Slack/
 !/dotfiles/config/Slack/Custom Dictionary.txt
+/dotfiles/config/jupyterlab-desktop/
+/dotfiles/config/yelp/
+/dotfiles/config/1Password/
 node_modules
