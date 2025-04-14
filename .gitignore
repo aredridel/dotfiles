@@ -68,4 +68,6 @@
 /dotfiles/ssh/known_hosts.old
 /dotfiles/ssh/last-auth.sock
 /dotfiles/ssh/random_seed
+/dotfiles/config/Slack/
+!/dotfiles/config/Slack/Custom Dictionary.txt
 node_modules
