@@ -64,6 +64,10 @@ if which himalaya > /dev/null; then
     eval `himalaya completion zsh`
 fi
 
+if which kubectl > /dev/null; then 
+    eval `kubectl completion zsh`
+fi
+
 # bun completions
 [ -s "/home/astewart/.bun/_bun" ] && source "/home/astewart/.bun/_bun"
 

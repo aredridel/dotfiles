@@ -9,7 +9,7 @@ fi
 if test -d "$HOME/.local/state/nix/profile/bin"; then
     NIX_PROFILE="$HOME/.local/state/nix/profile"
     PATH="$NIX_PROFILE/bin:$PATH"
-elif test -f ~/.nix-profile/etc/profile.d/nix.sh; then
+elif test -d ~/.nix-profile/etc/profile.d/nix.sh; then
     NIX_PROFILE="$HOME/.nix-profile"
     . ~/.nix-profile/etc/profile.d/nix.sh
 fi
@@ -106,7 +106,7 @@ if [ -n "$JAVA_HOME" -a -d "$JAVA_HOME/bin" ]; then
     export PATH="$JAVA_HOME/bin:$PATH"
 fi
 
-if [ -e "$HOME/.1password/agent.sock" ]; then
+if [ -e "$HOME/.1password/agent.sock" -a -z "$SSH_CONNECTION" ]; then
     export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 fi
 
