@@ -44,9 +44,11 @@
 /dotfiles/config/gtk-3.0/
 /dotfiles/config/gtk-4.0/
 /dotfiles/config/helix/runtime/
+/dotfiles/config/helm/
 /dotfiles/config/ibus/
 /dotfiles/config/internetarchive/ia.ini
 /dotfiles/config/iTerm2/AppSupport
+/dotfiles/config/jgit/
 /dotfiles/config/jupyterlab-desktop/
 /dotfiles/config/licensezero/developer.json
 /dotfiles/config/*.list
