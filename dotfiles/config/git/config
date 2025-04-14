@@ -128,5 +128,7 @@
 	all = true
 [rebase]
 	updateRefs = true
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed-signers
 [advice]
 	macheteEditorSelection = false
