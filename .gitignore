@@ -41,6 +41,8 @@
 /dotfiles/config/google-chrome-beta/
 /dotfiles/config/google-chrome-unstable/
 /dotfiles/config/.gsd-keyboard.settings-ported
+/dotfiles/config/systemd/user/vault.service
+/dotfiles/config/systemd/user/**/snap*
 /dotfiles/config/gtk-3.0/
 /dotfiles/config/gtk-4.0/
 /dotfiles/config/helix/runtime/
