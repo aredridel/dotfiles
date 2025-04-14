@@ -73,4 +73,12 @@
 /dotfiles/config/jupyterlab-desktop/
 /dotfiles/config/yelp/
 /dotfiles/config/1Password/
+/dotfiles/config/Rygel/
+/dotfiles/config/autostart/
+/dotfiles/config/chromium/
+/dotfiles/config/cosmic/
+/dotfiles/config/dconf/
+/dotfiles/config/enchant/
+/dotfiles/config/forge/
+/dotfiles/config/github-copilot/
 node_modules
