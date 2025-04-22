@@ -21,25 +21,34 @@ return {
                     end,
                 })
             end
+
+            if client.name == "svelte" then
+                vim.api.nvim_create_autocmd("BufWritePost", {
+                    pattern = { ".js", ".ts" },
+                    group = vim.api.nvim_create_augroup("svelte_ondidchangetsorjsfile", { clear = true }),
+                    callback = function(ctx)
+                        -- Here use ctx.match instead of ctx.file
+                        client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
+                    end,
+                })
+            end
+
         end
 
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
         capabilities.textDocument.completion.completionItem.snippetSupport = true
 
         lsp.pylsp.setup {
-            capabilities = capabilities,
+          capabilities = capabilities,
         }
+
         lsp.cssls.setup {
-            capabilities = capabilities,
+          capabilities = capabilities,
         }
 
         lsp.ts_ls.setup {
-            capabilities = capabilities,
-        }
-
-        lsp.ts_ls.setup {
-            capabilities = capabilities,
-            on_attach = on_attach,
+          capabilities = capabilities,
+          on_attach = on_attach,
         }
 
         lsp.metals.setup {
@@ -55,6 +64,13 @@ return {
         lsp.rust_analyzer.setup {
             capabilities = capabilities,
             on_attach = on_attach,
+            settings = {
+                ["rust-analyzer"] = {
+                    cargo = {
+                        features = { "wickedinsecure" }
+                    }
+                }
+            }
         }
 
         lsp.lua_ls.setup {
@@ -68,6 +84,34 @@ return {
                 }
             }
         }
+
+        local prettier = {
+            formatCommand = 'prettierd "${INPUT}"',
+            formatStdin = true,
+        }
+
+        lsp.efm.setup({
+            init_options = { documentFormatting = true },
+            rootMarkers = { '.git/' },
+            settings = {
+                languages = {
+                    typescript = { prettier },
+                    typescriptreact = { prettier },
+                    javascript = { prettier },
+                    javascriptreact = { prettier },
+                    svelte = { prettier },
+                    vue = { prettier },
+                    markdown = { prettier },
+                },
+            },
+            on_attach = on_attach,
+            capabilities = capabilities
+        })
+
+        lsp.eslint.setup({
+            on_attach = on_attach,
+            capabilities = capabilities
+        })
 
         lsp.harper_ls.setup {
             capabilities = capabilities,
