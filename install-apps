@@ -2,3 +2,7 @@ npm install -g json
 npm install -g eslint
 npm install -g node-bin-gen
 npm install -g typescript-language-server
+
+brew install vscode-langservers-extracted
+brew install efm-langserver
+
