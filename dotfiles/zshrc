@@ -22,7 +22,7 @@ antigen apply
 
 zstyle ':completion:*:*' ignored-patterns '*ORIG_HEAD'
 
-autoload -U compinit && compinit
+autoload -U compinit && compinit -u
 
 if which starship 2> /dev/null >/dev/null; then
     source <(starship init zsh --print-full-init)
