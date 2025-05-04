@@ -110,9 +110,13 @@ if [ -e "$HOME/.1password/agent.sock" -a -z "$SSH_CONNECTION" ]; then
     export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 fi
 
+[ -n "$BASH_VERSION" ] && shopt -s nullglob
+[ -n "$ZSH_VERSION" ] && setopt -G
 for DIR in "$HOME/.local/opt/"*"/bin"; do
     export PATH="$PATH:$DIR"
 done
+[ -n "$BASH_VERSION" ] && shopt -u nullglob
+[ -n "$ZSH_VERSION" ] && unsetopt -G
 
 if which nvim > /dev/null 2>&1; then
     export EDITOR=nvim
