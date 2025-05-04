@@ -115,8 +115,8 @@
 [tag]
 	gpgSign = true
 	sort = version:refname
-#[gpg "ssh"]
-#	program = /opt/1Password/op-ssh-sign
+[gpg "ssh"]
+	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
