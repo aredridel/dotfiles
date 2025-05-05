@@ -105,10 +105,10 @@
 /dotfiles/ssh/authorized_keys*
 /dotfiles/ssh/config.local
 /dotfiles/ssh/id_*
+!/dotfiles/ssh/*.pub
 /dotfiles/ssh/*.key
 /dotfiles/ssh/known_hosts
 /dotfiles/ssh/known_hosts.old
 /dotfiles/ssh/last-auth.sock
-/dotfiles/ssh/*.pub
 /dotfiles/ssh/random_seed
 node_modules
