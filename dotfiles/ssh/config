@@ -30,7 +30,11 @@ Host *.local
 Host git.pierre.co
   AddKeysToAgent yes
   IgnoreUnknown UseKeychain
-  IdentityFile /Users/aredridel/.ssh/pierre_rsa.pub
+  IdentityFile ~/.ssh/pierre_rsa.pub
 
 Host eb5058.nexus.usbx.me
   User eb5058
+
+Host 162.241.24.221
+	User mtoddgal
+	IdentityFile ~/.ssh/id_ed25519.pub
