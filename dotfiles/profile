@@ -73,8 +73,7 @@ fi
 if test -f "$HOME/.cargo/env"; then
     . "$HOME/.cargo/env"
 elif test -d "$HOME/.cargo/bin"; then
-    export PATH="$HOME/.cargo/bin:$PATH"
-fi
+    fi
 
 if test -S "$SSH_AUTH_SOCK"; then
     ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/last-auth.sock"
