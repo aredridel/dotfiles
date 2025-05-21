@@ -3,3 +3,4 @@
 config/ignition.php
 .vscode/*.log
 .watchman-*
+.aider*

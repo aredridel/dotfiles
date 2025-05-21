@@ -74,3 +74,19 @@ fi
 if [ -z "$PROFILE_LOADED" ]; then
     source "$HOME/.profile"
 fi
+
+unsetopt nomatch
+
+function zellij_refresh_ssh_sock {
+  if [ -n "$ZELLIJ" ]; then
+    local FOUND="$([ -n "$(echo /tmp/ssh*(N))" ] && find /tmp/ssh*/ -type s -name "*agent.*" 2>/dev/null | head -1)"
+    if [ -n "$FOUND" ]; then
+      export SSH_AUTH_SOCK="$FOUND"
+    elif [ -s "/home/astewart/.1password/agent.sock" ]; then
+      export SSH_AUTH_SOCK="/home/astewart/.1password/agent.sock"
+    fi
+  fi
+}
+
+add-zsh-hook precmd zellij_refresh_ssh_sock
+

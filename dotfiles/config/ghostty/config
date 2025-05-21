@@ -8,3 +8,4 @@ keybind = super+left_bracket=previous_tab
 font-family = 0xProto
 #font-family = Fairfax Hax HD
 font-feature = +calt
+font-size = 10
