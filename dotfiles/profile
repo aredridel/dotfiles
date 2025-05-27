@@ -125,6 +125,11 @@ if [ -f "$HOME/.profile.local" ]; then
     source "$HOME/.profile.local"
 fi
 
+if [ -z "$SSH_CONNECTION" -a -S "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock" ]; then
+    SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+    export SSH_AUTH_SOCK
+fi
+
 export NIXPKGS_ALLOW_UNFREE=1
 
 PROFILE_LOADED=1
