@@ -7,5 +7,14 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+    "agent": {
+        "model_parameters": [],
+        "default_model": {
+            "provider": "lmstudio",
+            "model": "gemma-3n-e4b-it-text"
+        },
+        "version": "2"
+    },
+    "vim_mode": true,
     "buffer_font_size": 15
 }
