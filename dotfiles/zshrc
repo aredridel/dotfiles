@@ -4,6 +4,10 @@ if which brew 2>/dev/null >/dev/null; then
     BREW=yes
 fi
 
+if [ -z "$PROFILE_LOADED" ]; then
+    source "$HOME/.profile"
+fi
+
 if [ -n "$BREW" ]; then
     source $(brew --prefix)/share/antigen/antigen.zsh
     fpath=($(brew --prefix)/share/zsh-completions $fpath)
@@ -36,29 +40,8 @@ if which zoxide 2>/dev/null >/dev/null; then
     source <(zoxide init zsh)
 fi
 
-#if which powerline-go 2> /dev/null >/dev/null; then
-#    function powerline_precmd() {
-#        PS1="$(powerline-go -error $? -shell zsh)"
-#    }
-#
-#    function install_powerline_precmd() {
-#        for s in "${precmd_functions[@]}"; do
-#            if [ "$s" = "powerline_precmd" ]; then
-#            return
-#            fi
-#        done
-#        precmd_functions+=(powerline_precmd)
-#    }
-#
-#    if [ "$TERM" != "linux" ]; then
-#        install_powerline_precmd
-#    fi
-#fi
-
 setopt no_share_history
 autoload -U +X bashcompinit && bashcompinit
-
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
 if which himalaya > /dev/null; then
     eval `himalaya completion zsh`
@@ -70,10 +53,6 @@ fi
 
 # bun completions
 [ -s "/home/astewart/.bun/_bun" ] && source "/home/astewart/.bun/_bun"
-
-if [ -z "$PROFILE_LOADED" ]; then
-    source "$HOME/.profile"
-fi
 
 unsetopt nomatch
 
