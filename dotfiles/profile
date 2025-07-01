@@ -2,54 +2,55 @@
 export TIME_STYLE=long-iso
 alias ll="exa -lh --git"
 
+function pathx {
+    local WHERE="$1"
+    local VAR="$2"
+    local VAL="$3"
+    test -n "$VAL" -a -d "$VAL" || return 1
+
+    eval "local OLD=\"\$$VAR\""
+
+    case ":$OLD:" in
+	*:"$VAL":*)
+	;;
+	*)
+	    if test -z "$OLD"; then 
+		declare -x "$VAR=$VAL"
+	    elif test "$WHERE" = "append"; then
+		declare -x "$VAR=$OLD:$VAL"
+	    elif test "$WHERE" = "prepend"; then
+		declare -x "$VAR=$VAL:$OLD"
+	    fi
+	;;
+    esac
+    return 0
+}
+
 if test -d "/opt/homebrew/bin"; then
-    PATH="/opt/homebrew/bin:$PATH"
+    pathx prepend PATH "/opt/homebrew/bin"
 fi
 
 if test -d "$HOME/.local/state/nix/profile/bin"; then
     NIX_PROFILE="$HOME/.local/state/nix/profile"
-    PATH="$NIX_PROFILE/bin:$PATH"
-elif test -d ~/.nix-profile/etc/profile.d/nix.sh; then
+    pathx prepend PATH "$NIX_PROFILE/bin"
+elif test -d "$HOME/.nix-profile/etc/profile.d/nix.sh"; then
     NIX_PROFILE="$HOME/.nix-profile"
-    . ~/.nix-profile/etc/profile.d/nix.sh
+    . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi
 
 if test -f "$NIX_PROFLE/etc/profile.d/hm-session-vars.sh"; then
     source "$NIX_PROFILE/etc/profile.d/hm-session-vars.sh"
 fi
 
-if test -d "$HOME/System"; then
-    PATH="$HOME/System/bin:$PATH"
-    MANPATH="$HOME/System/share/man:$MANPATH"
-fi
+pathx prepend PATH "$HOME/.composer/vendor/bin"
 
-if test -d "$HOME/.local/bin"; then
-    PATH="$HOME/.local/bin:$PATH"
-    LD_LIBRARY_PATH="$HOME/.local/lib"
-    MANPATH="$HOME/.local/share/man:$MANPATH"
-fi
-
-if test -d ~/.composer/vendor/bin; then
-    PATH=~/.composer/vendor/bin:"$PATH"
-fi
-
-if test -d /usr/pkg/bin; then
-    PATH="/usr/pkg/sbin:/usr/pkg/bin:$PATH"
-    MANPATH="/usr/pkg/man:$MANPATH"
-fi
-
-if test -d /usr/local/plan9; then
-    PLAN9=/usr/local/plan9
-    PATH="$PATH:$PLAN9/bin"
-    export PLAN9
-fi
+pathx prepend PATH "/usr/pkg/sbin"
+pathx prepend PATH "/usr/pkg/bin"
+pathx prepend MANPATH "/usr/pkg/man"
 
 if which brew >/dev/null 2>&1; then
-    PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
-fi
-
-if test -r "$HOME/.profile.local"; then
-    . "$HOME/.profile.local"
+    pathx prepend PATH "$(brew --prefix)/bin"
+    pathx prepend PATH "$(brew --prefix)/sbin"
 fi
 
 if which vim 2>/dev/null >/dev/null; then
@@ -63,17 +64,14 @@ export VISUAL
 
 if test -d "$HOME/.local/share/pnpm"; then
     PNPM_HOME="$HOME/.local/share/pnpm"
-fi
-
-if test -n "$PNPM_HOME"; then
-    PATH="$PNPM_HOME:$PATH"
     export PNPM_HOME
 fi
 
+pathx prepend PATH "$PNPM_HOME"
+
 if test -f "$HOME/.cargo/env"; then
     . "$HOME/.cargo/env"
-elif test -d "$HOME/.cargo/bin"; then
-    fi
+fi
 
 if test -S "$SSH_AUTH_SOCK"; then
     ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/last-auth.sock"
@@ -89,36 +87,41 @@ export MANPATH
 GRAB_HOME="$HOME/Projects/"
 export GRAB_HOME
 
-if [ -d "$HOME/Library/Application Support/Coursier/bin" ]; then
-    export PATH="$PATH:$HOME/Library/Application Support/Coursier/bin"
-fi
-
-if [ -d "$HOME/.local/share/coursier/bin" ]; then
-    export PATH="$PATH:$HOME/.local/share/coursier/bin"
-fi
+pathx append PATH "$HOME/Library/Application Support/Coursier/bin"
+pathx append PATH "$HOME/.local/share/coursier/bin"
 
 if which cs > /dev/null; then
     eval "$(cs java --env --jvm temurin:21)"
 fi
 
-if [ -n "$JAVA_HOME" -a -d "$JAVA_HOME/bin" ]; then
-    export PATH="$JAVA_HOME/bin:$PATH"
+if [ -n "$JAVA_HOME" ]; then
+    pathx append PATH "$JAVA_HOME/bin"
 fi
 
 if [ -e "$HOME/.1password/agent.sock" -a -z "$SSH_CONNECTION" ]; then
     export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 fi
+if [ -e "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock" -a -z "$SSH_CONNECTION" ]; then
+    export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+fi
 
 [ -n "$BASH_VERSION" ] && shopt -s nullglob
 [ -n "$ZSH_VERSION" ] && setopt -G
-for DIR in "$HOME/.local/opt/"*"/bin"; do
-    export PATH="$PATH:$DIR"
+for DIR in "$HOME/.local/opt/"*; do
+    pathx append PATH "$DIR/bin"
+    pathx append MANPATH "$DIR/man"
 done
 [ -n "$BASH_VERSION" ] && shopt -u nullglob
 [ -n "$ZSH_VERSION" ] && unsetopt -G
 
 if which nvim > /dev/null 2>&1; then
     export EDITOR=nvim
+fi
+
+if test -d "$HOME/.local/bin"; then
+    pathx append PATH "$HOME/.local/bin"
+    pathx append LD_LIBRARY_PATH "$HOME/.local/lib"
+    pathx append MANPATH "$HOME/.local/share/man"
 fi
 
 if [ -f "$HOME/.profile.local" ]; then
@@ -130,8 +133,15 @@ if [ -z "$SSH_CONNECTION" -a -S "$HOME/Library/Group Containers/2BUA8C4S2C.com.1
     export SSH_AUTH_SOCK
 fi
 
-export NIXPKGS_ALLOW_UNFREE=1
-
-PROFILE_LOADED=1
+NIXPKGS_ALLOW_UNFREE=1
+export NIXPKGS_ALLOW_UNFREE
 
 umask 0022
+
+pathx append PATH "$HOME/.lmstudio/bin"
+
+if test -r "$HOME/.profile.local"; then
+    . "$HOME/.profile.local"
+fi
+
+PROFILE_LOADED=1

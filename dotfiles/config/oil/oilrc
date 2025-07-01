@@ -1,4 +1,0 @@
-shopt -s parse_sh_assign parse_sloppy_case { source $HOME/.profile }
-setvar PROMPT_COMMAND='starship prompt'
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
-source <(carapace _carapace)
