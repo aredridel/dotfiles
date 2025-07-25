@@ -1,2 +1,7 @@
-eval "$(osh -c 'source ~/.profile; export' | sed -e 's/^declare -x /set /g')"
+for line in (@(osh -c 'source ~/.profile; export')) {
+	if (line ~ / 'declare -x ' <capture word* as var> '=' <capture u'\''? as quot> <capture dot * as val> !!REF quot /) {
+		setglobal ENV[_group('var')] = _group('val')
+	}
+}
+
 eval "$(starship init ysh)"

@@ -6,7 +6,7 @@ function pathx {
     local WHERE="$1"
     local VAR="$2"
     local VAL="$3"
-    test -n "$VAL" -a -d "$VAL" || return 1
+    test -n "$VAR" && test -d "$VAL" || return 1
 
     eval "local OLD=\"\$$VAR\""
 
@@ -15,11 +15,11 @@ function pathx {
 	;;
 	*)
 	    if test -z "$OLD"; then 
-		declare -x "$VAR=$VAL"
+		eval "export $VAR=$VAL"
 	    elif test "$WHERE" = "append"; then
-		declare -x "$VAR=$OLD:$VAL"
+		eval "export $VAR=$OLD:$VAL"
 	    elif test "$WHERE" = "prepend"; then
-		declare -x "$VAR=$VAL:$OLD"
+		eval "export $VAR=$VAL:$OLD"
 	    fi
 	;;
     esac
