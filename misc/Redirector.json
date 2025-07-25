@@ -1,0 +1,40 @@
+{
+    "createdBy": "Redirector v3.5.3",
+    "createdAt": "2025-07-25T00:29:36.267Z",
+    "redirects": [
+        {
+            "description": "YT-L",
+            "exampleUrl": "https://www.youtube.com/watch?v=yH_I5dgFlFc",
+            "exampleResult": "https://ytl.taildc153.ts.net/https://www.youtube.com/watch?v=yH_I5dgFlFc",
+            "error": null,
+            "includePattern": "(https://(m|music|www).youtube.com/.*)",
+            "excludePattern": "",
+            "patternDesc": "",
+            "redirectUrl": "https://ytl.taildc153.ts.net/$1",
+            "patternType": "R",
+            "processMatches": "noProcessing",
+            "disabled": false,
+            "grouped": false,
+            "appliesTo": [
+                "main_frame"
+            ]
+        },
+        {
+            "description": "XCancel",
+            "exampleUrl": "https://x.com/Rothmus/status/1927903008743948772",
+            "exampleResult": "https://xcancel.com/Rothmus/status/1927903008743948772",
+            "error": null,
+            "includePattern": "https://x.com/(.*)",
+            "excludePattern": "",
+            "patternDesc": "",
+            "redirectUrl": "https://xcancel.com/$1",
+            "patternType": "R",
+            "processMatches": "noProcessing",
+            "disabled": false,
+            "grouped": false,
+            "appliesTo": [
+                "main_frame"
+            ]
+        }
+    ]
+}

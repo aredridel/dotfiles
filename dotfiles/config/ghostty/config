@@ -10,3 +10,4 @@ font-family = 0xProto
 font-feature = +calt
 font-size = 10
 #custom-shader = ~/.config/ghostty/shader.glsl
+#initial-command = /opt/homebrew/bin/ysh

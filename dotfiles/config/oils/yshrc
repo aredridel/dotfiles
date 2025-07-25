@@ -1,3 +1,2 @@
-func renderPrompt(io) {
-	return (":; ")
-}
+eval "$(osh -c 'source ~/.profile; export' | sed -e 's/^declare -x /set /g')"
+eval "$(starship init ysh)"
