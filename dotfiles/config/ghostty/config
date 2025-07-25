@@ -5,9 +5,10 @@ keybind = super+t=new_tab
 keybind = super+comma=open_config
 keybind = super+right_bracket=next_tab
 keybind = super+left_bracket=previous_tab
-font-family = 0xProto
+#font-family = 0xProto
 #font-family = Fairfax Hax HD
-font-feature = +calt
-font-size = 10
+font-family = Triplicate T4c
+font-feature = +calt 
+font-size = 11
 #custom-shader = ~/.config/ghostty/shader.glsl
 #initial-command = /opt/homebrew/bin/ysh
