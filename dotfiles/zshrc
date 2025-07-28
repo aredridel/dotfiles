@@ -69,3 +69,9 @@ function zellij_refresh_ssh_sock {
 
 add-zsh-hook precmd zellij_refresh_ssh_sock
 
+function ssh {
+	command ssh "$@"
+	X=$?
+	stty sane
+	return $X
+}
