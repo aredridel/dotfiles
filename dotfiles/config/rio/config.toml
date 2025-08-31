@@ -1,361 +1,195 @@
+[downloads]
+# Folder where tracks are downloaded to
+folder = "/Users/aredridel/StreamripDownloads"
+# Put Qobuz albums in a 'Qobuz' folder, Tidal albums in 'Tidal' etc.
+source_subdirectories = false
+# Put tracks in an album with 2 or more discs into a subfolder named `Disc N` 
+disc_subdirectories = true
+# Download (and convert) tracks all at once, instead of sequentially. 
+# If you are converting the tracks, or have fast internet, this will 
+# substantially improve processing speed.
+concurrency = true
+# The maximum number of tracks to download at once
+# If you have very fast internet, you will benefit from a higher value,
+# A value that is too high for your bandwidth may cause slowdowns
+# Set to -1 for no limit
+max_connections = 6
+# Max number of API requests per source to handle per minute
+# Set to -1 for no limit
+requests_per_minute = 60
+# Verify SSL certificates for API connections
+# Set to false if you encounter SSL certificate verification errors (not recommended)
+verify_ssl = true
 
-# Hide the cursor while typing
-#
-# Default is `false`
-#
-# hide-cursor-when-typing = false
+[qobuz]
+# 1: 320kbps MP3, 2: 16/44.1, 3: 24/<=96, 4: 24/>=96
+quality = 3
+# This will download booklet pdfs that are included with some albums
+download_booklets = true
 
-# Ignore theme selection foreground color
-#
-# Default is false
-#
-# Example:
-# ignore-selection-foreground-color = false
+# Authenticate to Qobuz using auth token? Value can be true/false only
+use_auth_token = false
+# Enter your userid if the above use_auth_token is set to true, else enter your email
+email_or_userid = ""
+# Enter your auth token if the above use_auth_token is set to true, else enter the md5 hash of your plaintext password
+password_or_token = ""
+# Do not change
+app_id = ""
+# Do not change
+secrets = []
 
-# Theme
-#
-# It makes Rio look for the specified theme in the themes folder
-# (macos and linux: ~/.config/rio/themes/dracula.toml)
-# (windows: C:\Users\USER\AppData\Local\rio\themes\dracula.toml)
-#
-# Example:
-# theme = "dracula"
+[tidal]
+# 0: 256kbps AAC, 1: 320kbps AAC, 2: 16/44.1 "HiFi" FLAC, 3: 24/44.1 "MQA" FLAC
+quality = 3
+# This will download videos included in Video Albums.
+download_videos = true
 
-# Padding-x
-#
-# define x axis padding (default is 0)
-#
-# Example:
-# padding-x = 10
+# Do not change any of the fields below
+user_id = ""
+country_code = ""
+access_token = ""
+refresh_token = ""
+# Tokens last 1 week after refresh. This is the Unix timestamp of the expiration
+# time. If you haven't used streamrip in more than a week, you may have to log
+# in again using `rip config --tidal`
+token_expiry = ""
 
-# Padding-y
-#
-# define y axis padding based on a format [top, left]
-# (default is [0, 0])
-#
-# Example:
-# padding-y = [30, 10]
+[deezer]
+# 0, 1, or 2
+# This only applies to paid Deezer subscriptions. Those using deezloader
+# are automatically limited to quality = 1
+quality = 2
+# An authentication cookie that allows streamrip to use your Deezer account
+# See https://github.com/nathom/streamrip/wiki/Finding-Your-Deezer-ARL-Cookie
+# for instructions on how to find this
+arl = ""
+# This allows for free 320kbps MP3 downloads from Deezer
+# If an arl is provided, deezloader is never used
+use_deezloader = true
+# This warns you when the paid deezer account is not logged in and rip falls
+# back to deezloader, which is unreliable
+deezloader_warnings = true
 
-# Option as Alt
-#
-# This config only works on MacOS.
-# Possible choices: 'both', 'left' and 'right'.
-#
-# Example:
-# option-as-alt = 'left'
+[soundcloud]
+# Only 0 is available for now
+quality = 0
+# This changes periodically, so it needs to be updated
+client_id = ""
+app_version = ""
 
-# Line height
-#
-# This option will apply an modifier to line-height
-# Default is `1.0`
-#
-# Example:
-# line-height = 1.2
+[youtube]
+# Only 0 is available for now
+quality = 0
+# Download the video along with the audio
+download_videos = false
+# The path to download the videos to
+video_downloads_folder = "/Users/aredridel/StreamripDownloads/YouTubeVideos"
 
-# Startup directory
-#
-# Directory the shell is started in. If this is unset the working
-# directory of the parent process will be used.
-#
-# This configuration only has effect if use-fork is disabled.
-#
-# Example:
-# working-dir = "/Users/raphael/Documents/"
+[database]
+# Create a database that contains all the track IDs downloaded so far
+# Any time a track logged in the database is requested, it is skipped
+# This can be disabled temporarily with the --no-db flag
+downloads_enabled = true
+# Path to the downloads database 
+downloads_path = "/Users/aredridel/Library/Application Support/streamrip/downloads.db"
+# If a download fails, the item ID is stored here. Then, `rip repair` can be
+# called to retry the downloads
+failed_downloads_enabled = true
+failed_downloads_path = "/Users/aredridel/Library/Application Support/streamrip/failed_downloads.db"
 
-# Environment variables
-#
-# Example:
-# env-vars = []
+# Convert tracks to a codec after downloading them.
+[conversion]
+enabled = false
+# FLAC, ALAC, OPUS, MP3, VORBIS, or AAC
+codec = "ALAC"
+# In Hz. Tracks are downsampled if their sampling rate is greater than this. 
+# Value of 48000 is recommended to maximize quality and minimize space
+sampling_rate = 48000
+# Only 16 and 24 are available. It is only applied when the bit depth is higher
+# than this value.
+bit_depth = 24
+# Only applicable for lossy codecs
+lossy_bitrate = 320
 
-# Use fork
-#
-# Defaults for POSIX-based systems (Windows is not configurable):
-# MacOS: spawn processes
-# Linux/BSD: fork processes
-#
-# Example:
-# use-fork = false
+# Filter a Qobuz artist's discography. Set to 'true' to turn on a filter.
+# This will also be applied to other sources, but is not guaranteed to work correctly
+[qobuz_filters]
+# Remove Collectors Editions, live recordings, etc.
+extras = false
+# Picks the highest quality out of albums with identical titles.
+repeats = false
+# Remove EPs and Singles
+non_albums = false
+# Remove albums whose artist is not the one requested
+features = false
+# Skip non studio albums
+non_studio_albums = false
+# Only download remastered albums
+non_remaster = false
 
-# Confirm before exiting Rio
-# Default is `true`
-#
-# confirm-before-quit = false
+[artwork]
+# Write the image to the audio file
+embed = true
+# The size of the artwork to embed. Options: thumbnail, small, large, original.
+# "original" images can be up to 30MB, and may fail embedding. 
+# Using "large" is recommended.
+embed_size = "large"
+# If this is set to a value > 0, max(width, height) of the embedded art will be set to this value in pixels
+# Proportions of the image will remain the same
+embed_max_width = -1
+# Save the cover image at the highest quality as a seperate jpg file
+save_artwork = true
+# If this is set to a value > 0, max(width, height) of the saved art will be set to this value in pixels
+# Proportions of the image will remain the same
+saved_max_width = -1
 
-# Cursor
-#
-# shape - Default cursor shape is 'block'
-# Other available options are: 'underline', 'beam' or 'hidden'
-#
-# blinking - Whether the cursor blinks. The default is false
-#
-# blinking-interval - Cursor update on milliseconds interval
-#
-# [cursor]
-# shape = 'block'
-# blinking = false
-# blinking-interval = 800
 
-# Editor
-#
-# Default editor on Linux and MacOS is "vi",
-# on Windows it is "notepad".
-#
-# Whenever the key binding `OpenConfigEditor` is triggered it will
-# use the value of the editor along with the rio configuration path.
-# [editor]
-# program = "vi"
-# args = []
+[metadata]
+# Sets the value of the 'ALBUM' field in the metadata to the playlist's name. 
+# This is useful if your music library software organizes tracks based on album name.
+set_playlist_to_album = true
+# If part of a playlist, sets the `tracknumber` field in the metadata to the track's 
+# position in the playlist instead of its position in its album
+renumber_playlist_tracks = true
+# The following metadata tags won't be applied
+# See https://github.com/nathom/streamrip/wiki/Metadata-Tag-Names for more info
+exclude = []
 
-# Window configuration
-#
-# • width - define the initial window width.
-#   Default: 600
-#
-# • height - define the initial window height.
-#   Default: 400
-#
-# • mode - define how the window will be created
-#     - "Windowed" (default) is based on width and height
-#     - "Maximized" window is created with maximized
-#     - "Fullscreen" window is created with fullscreen
-#
-# • opacity - Set window opacity
-#
-# • blur - Set blur on the window background. Changing this config requires restarting Rio to take effect.
-#
-# • decorations - Set window decorations, options: "Enabled", "Disabled", "Transparent", "Buttonless"
-#
-# Example:
-# [window]
-# width = 600
-# height = 400
-# mode = "windowed"
-# opacity = 1.0
-# blur = false
-# decorations = "enabled"
+# Changes the folder and file names generated by streamrip.
+[filepaths]
+# Create folders for single tracks within the downloads directory using the folder_format
+# template
+add_singles_to_folder = false
+# Available keys: "albumartist", "title", "year", "bit_depth", "sampling_rate",
+# "id", and "albumcomposer"
+folder_format = "{albumartist} - {title} ({year}) [{container}] [{bit_depth}B-{sampling_rate}kHz]"
+# Available keys: "tracknumber", "artist", "albumartist", "composer", "title",
+# and "albumcomposer", "explicit"
+track_format = "{tracknumber:02}. {artist} - {title}{explicit}"
+# Only allow printable ASCII characters in filenames.
+restrict_characters = false
+# Truncate the filename if it is greater than this number of characters
+# Setting this to false may cause downloads to fail on some systems
+truncate_to = 120
 
-# Renderer
-#
-# • Performance: Set WGPU rendering performance
-#   - High: Adapter that has the highest performance. This is often a discrete GPU.
-#   - Low: Adapter that uses the least possible power. This is often an integrated GPU.
-#
-# • Backend: Set WGPU rendering backend
-#   - Automatic: Leave Sugarloaf/WGPU to decide
-#   - GL: Supported on Linux/Android, and Windows and macOS/iOS via ANGLE
-#   - Vulkan: Supported on Windows, Linux/Android
-#   - DX12: Supported on Windows 10
-#   - Metal: Supported on macOS/iOS
-#
-# • disable-unfocused-render: This property disable renderer processes while Rio is unfocused.
-#
-# • level: Configure renderer level
-#   - Available options: 0 and 1.
-#       Higher the level more rendering features and computations
-#       will be done like enable font ligatures or emoji support.
-#       For more information please check the docs.
-#
-# • filters: A list of paths to RetroArch slang shaders. Might not work with OpenGL.
-#
-# Example:
-# [renderer]
-# performance = "high"
-# backend = "automatic"
-# disable-unfocused-render = false
-# level = 1
-# filters = []
+# Last.fm playlists are downloaded by searching for the titles of the tracks
+[lastfm]
+# The source on which to search for the tracks.
+source = "qobuz"
+# If no results were found with the primary source, the item is searched for 
+# on this one.
+fallback_source = ""
 
-# Keyboard
-#
-# use-kitty-keyboard-protocol - Enable Kitty Keyboard protocol
-#
-# disable-ctlseqs-alt - Disable ctlseqs with ALT keys
-#   - For example: Terminal.app does not deal with ctlseqs with ALT keys
-#
-# Example:
-# [keyboard]
-# use-kitty-keyboard-protocol = false
-# disable-ctlseqs-alt = false
+[cli]
+# Print "Downloading {Album name}" etc. to screen
+text_output = true
+# Show resolve, download progress bars
+progress_bars = true
+# The maximum number of search results to show in the interactive menu
+max_search_results = 100
 
-# Fonts
-#
-# Configure fonts used by the terminal
-#
-# Note: You can set different font families but Rio terminal
-# will always look for regular font bounds whene
-#
-# You can also set family on root to overwrite all fonts.
-# [fonts]
-# family = "cascadiamono"
-#
-# You can also specify extra fonts to load
-# [fonts]
-# extras = [{ family = "Microsoft JhengHei" }]
-#
-# In case you want to specify any font feature:
-# [fonts]
-# features = ["ss02", "ss03", "ss05", "ss19"]
-#
-# Note: Font features do not have support to live reload on configuration,
-# so to reflect your changes, you will need to close and reopen Rio.
-#
-# You can also disable font hinting. Font hinting is enabled by default.
-# [fonts]
-# hinting = false
-#
-# Example:
-# [fonts]
-# size = 18
-#
-# [fonts.regular]
-# family = "cascadiamono"
-# style = "normal"
-# weight = 400
-#
-# [fonts.bold]
-# family = "cascadiamono"
-# style = "normal"
-# weight = 800
-#
-# [fonts.italic]
-# family = "cascadiamono"
-# style = "italic"
-# weight = 400
-#
-# [fonts.bold-italic]
-# family = "cascadiamono"
-# style = "italic"
-# weight = 800
-
-# Scroll
-#
-# You can change how many lines are scrolled each time by setting this option.
-#
-# Scroll calculation for canonical mode will be based on `lines = (accumulated scroll * multiplier / divider)`,
-# If you want a quicker scroll, keep increasing the multiplier.
-# If you want to reduce scroll speed you will need to increase the divider.
-# You can use both properties also to find the best scroll for you.
-#
-# Multiplier default is 3.0.
-# Divider default is 1.0.
-# Example:
-# [scroll]
-# multiplier = 3.0
-# divider = 1.0
-
-# Navigation
-#
-# "mode" - Define navigation mode
-#   • NativeTab (MacOS only)
-#   • Bookmark
-#   • BottomTab
-#   • TopTab
-#   • Plain
-#
-# "hide-if-single" - Hide navigation UI if is single.
-# "clickable" - Enable click on tabs to switch.
-# "use-current-path" - Use same path whenever a new tab is created (Note: requires `use-fork` to be set to false).
-# "color-automation" - Set a specific color for the tab whenever a specific program is running, or in a specific directory.
-#
-# Example:
-# [navigation]
-# mode = "bookmark"
-# clickable = false
-# hide-if-single = true
-# use-current-path = false
-# color-automation = []
-
-# Shell
-#
-# You can set `shell.program` to the path of your favorite shell, e.g. `/bin/fish`.
-# Entries in `shell.args` are passed unmodified as arguments to the shell.
-#
-# Default:
-#   - (macOS) user login shell
-#   - (Linux/BSD) user login shell
-#   - (Windows) powershell
-#
-# Example 1 using fish shell from bin path:
-#
-# [shell]
-# program = "/bin/fish"
-# args = ["--login"]
-#
-# Example 2 for Windows using powershell
-#
-# [shell]
-# program = "pwsh"
-# args = []
-#
-# Example 3 for Windows using powershell with login
-#
-# [shell]
-# program = "pwsh"
-# args = ["-l"]
-#
-# Example 4 for MacOS with tmux installed by homebrew
-#
-# [shell]
-# program = "/opt/homebrew/bin/tmux"
-# args = ["new-session", "-c", "/var/www"]
-
-# Colors
-#
-# Colors definition will overwrite any property in theme
-# (considering if theme folder does exists and is being used)
-#
-# Example:
-# [colors]
-# background = '#0F0D0E'
-# foreground = '#F9F4DA'
-# cursor = '#F38BA3'
-# tabs = '#443d40'
-# tabs-active = '#F38BA3'
-# green = '#0BA95B'
-# red = '#ED203D'
-# blue = '#12B5E5'
-# yellow = '#FCBA28'
-
-# Bindings
-#
-# Create custom Key bindings for Rio terminal
-# More information in: https://raphamorim.io/rio/docs/config/bindings
-#
-# Example:
-# [bindings]
-# keys = [
-#   { key = "q", with = "super", action = "Quit" },
-#   # Bytes[27, 91, 53, 126] is equivalent to "\x1b[5~"
-#   { key = "home", with = "super | shift", bytes = [27, 91, 53, 126] }
-# ]
-
-# Platform
-#
-# Rio now allows you to have different configurations per OS
-# You can write ovewrite properties like `Shell`, `Navigation`
-# and `Window`.
-#
-# Example:
-# [shell]
-# # default (in this case will be used only on MacOS)
-# program = "/bin/fish"
-# args = ["--login"]
-#
-# [platform]
-# # Microsoft Windows overwrite
-# windows.shell.program = "pwsh"
-# windows.shell.args = ["-l"]
-#
-# # Linux overwrite
-# linux.shell.program = "tmux"
-# linux.shell.args = ["new-session", "-c", "/var/www"]
-
-# Log level
-#
-# This property enables log level filter and file. The default level is "OFF" and the logs are not logged to a file as default.
-#
-# Example:
-# [developer]
-# log-level = "OFF"
-# enable-log-file = false
-
+[misc]
+# Metadata to identify this config file. Do not change.
+version = "2.0.6"
+# Print a message if a new version of streamrip is available 
+check_for_updates = true

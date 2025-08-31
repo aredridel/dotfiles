@@ -7,9 +7,6 @@ StrictHostKeyChecking accept-new
 Host homeassistant.local homeassistant.taildc153.ts.net
 	User ubuntu
 
-Host upstairs.taildc153.ts.net downstairs.taildc153.ts.net
-	User root
-
 Host protocol.club
     User aredridel
 

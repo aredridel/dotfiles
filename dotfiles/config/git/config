@@ -73,6 +73,12 @@
 	user = aredridel
 [ghi]
 	token = !security find-internet-password -a aredridel -s github.com -l 'ghi token' -w
+[url "git@gitlab.com:"]
+	insteadOf = git://gitlab.com/
+[url "git@gitlab.com:"]
+	insteadOf = https://gitlab.com/
+[url "git@gitlab.com:"]
+	insteadOf = http://gitlab.com/
 [url "git@github.com:"]
 	insteadOf = git://github.com/
 [url "git@github.com:"]

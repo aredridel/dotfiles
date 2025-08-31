@@ -66,3 +66,8 @@ if which starship > /dev/null 2>&1; then
    }
    starship_precmd_user_func="set_win_title"
 fi
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/aredridel/.lmstudio/bin"
+# End of LM Studio CLI section
+

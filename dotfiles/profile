@@ -143,3 +143,8 @@ umask 0022
 pathx append PATH "$HOME/.lmstudio/bin"
 
 PROFILE_LOADED=1
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/aredridel/.lmstudio/bin"
+# End of LM Studio CLI section
+
