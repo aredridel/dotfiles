@@ -2,7 +2,7 @@
 export TIME_STYLE=long-iso
 alias ll="exa -lh --git"
 
-function pathx {
+pathx() {
     local WHERE="$1"
     local VAR="$2"
     local VAL="$3"
@@ -138,9 +138,9 @@ fi
 NIXPKGS_ALLOW_UNFREE=1
 export NIXPKGS_ALLOW_UNFREE
 
-umask 0022
-
-pathx append PATH "$HOME/.lmstudio/bin"
+if [ -d "$HOME/.krew/bin" ]; then
+    export PATH="$PATH:$HOME/.krew/bin"
+fi
 
 PROFILE_LOADED=1
 

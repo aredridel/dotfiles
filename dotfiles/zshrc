@@ -40,7 +40,36 @@ if which zoxide 2>/dev/null >/dev/null; then
     source <(zoxide init zsh)
 fi
 
-setopt no_share_history
+#if which powerline-go 2> /dev/null >/dev/null; then
+#    function powerline_precmd() {
+#        PS1="$(powerline-go -error $? -shell zsh)"
+#    }
+#
+#    function install_powerline_precmd() {
+#        for s in "${precmd_functions[@]}"; do
+#            if [ "$s" = "powerline_precmd" ]; then
+#            return
+#            fi
+#        done
+#        precmd_functions+=(powerline_precmd)
+#    }
+#
+#    if [ "$TERM" != "linux" ]; then
+#        install_powerline_precmd
+#    fi
+#fi
+
+setopt EXTENDED_HISTORY         # include timestamp
+setopt HIST_BEEP                # beep if attempting to access a history entry which isn’t there
+setopt HIST_EXPIRE_DUPS_FIRST   # trim dupes first if history is full
+setopt HIST_FIND_NO_DUPS        # do not display previously found command
+setopt HIST_IGNORE_DUPS         # do not save duplicate of prior command
+setopt HIST_IGNORE_SPACE        # do not save if line starts with space
+setopt HIST_NO_STORE            # do not save history commands
+setopt HIST_REDUCE_BLANKS       # strip superfluous blanks
+setopt INC_APPEND_HISTORY       # don’t wait for shell to exit to save history lines
+setopt HIST_VERIFY
+
 autoload -U +X bashcompinit && bashcompinit
 
 if which himalaya > /dev/null; then

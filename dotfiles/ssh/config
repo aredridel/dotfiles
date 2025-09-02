@@ -1,6 +1,6 @@
 Include ~/.ssh/config.local
 
-VerifyHostKeyDNS yes
+# VerifyHostKeyDNS yes
 StrictHostKeyChecking accept-new
 #IdentityFile SHA256:APNBDduY7Wz2GYjHV9OJlRl4SegLIJinpdKwb7rqTSM
 
