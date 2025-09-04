@@ -104,3 +104,9 @@ function ssh {
 	stty sane
 	return $X
 }
+
+
+if which scw > /dev/null; then
+  # Scaleway CLI autocomplete initialization.
+  eval "$(scw autocomplete script shell=zsh)"
+fi
