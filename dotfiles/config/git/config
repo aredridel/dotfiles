@@ -139,3 +139,5 @@
 	allowedSignersFile = ~/.ssh/allowed-signers
 [advice]
 	macheteEditorSelection = false
+[safe]
+	directory = /opt/bork

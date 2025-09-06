@@ -29,7 +29,7 @@ Host git.pierre.co
   IgnoreUnknown UseKeychain
   IdentityFile ~/.ssh/pierre_rsa.pub
 
-Host eb5058.nexus.usbx.me
+Host eb5058.*.usbx.me
   User eb5058
 
 Host 162.241.24.221
