@@ -142,9 +142,12 @@ if [ -d "$HOME/.krew/bin" ]; then
     export PATH="$PATH:$HOME/.krew/bin"
 fi
 
+if [ -d "$HOME/.mint/bin" ]; then
+    export PATH="$PATH:$HOME/.mint/bin"
+fi
+
 PROFILE_LOADED=1
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/aredridel/.lmstudio/bin"
-# End of LM Studio CLI section
-
+if [ -f "$HOME/.atuin/bin/env" ]; then
+    . "$HOME/.atuin/bin/env"
+fi

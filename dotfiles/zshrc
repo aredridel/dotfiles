@@ -105,8 +105,9 @@ function ssh {
 	return $X
 }
 
-
 if which scw > /dev/null; then
   # Scaleway CLI autocomplete initialization.
   eval "$(scw autocomplete script shell=zsh)"
 fi
+
+if [ -x "$(command -v atuin)" ]; then eval "$(atuin init zsh)"; fi
