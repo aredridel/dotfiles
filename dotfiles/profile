@@ -76,7 +76,8 @@ if test -f "$HOME/.cargo/env"; then
 fi
 
 if test -S "$SSH_AUTH_SOCK"; then
-    ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/last-auth.sock"
+    rm "$HOME/.ssh/last-auth.sock"
+    ln -s "$SSH_AUTH_SOCK" "$HOME/.ssh/last-auth.sock"
 fi
 
 if which systemctl 2>/dev/null >/dev/null; then
@@ -138,13 +139,9 @@ fi
 NIXPKGS_ALLOW_UNFREE=1
 export NIXPKGS_ALLOW_UNFREE
 
-if [ -d "$HOME/.krew/bin" ]; then
-    export PATH="$PATH:$HOME/.krew/bin"
-fi
-
-if [ -d "$HOME/.mint/bin" ]; then
-    export PATH="$PATH:$HOME/.mint/bin"
-fi
+pathx append PATH "$HOME/.krew/bin"
+pathx append PATH "$HOME/.mint/bin"
+pathx append PATH "$HOME/.lmstudio/bin"
 
 PROFILE_LOADED=1
 
