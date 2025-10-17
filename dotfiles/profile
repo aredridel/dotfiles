@@ -148,3 +148,6 @@ PROFILE_LOADED=1
 if [ -f "$HOME/.atuin/bin/env" ]; then
     . "$HOME/.atuin/bin/env"
 fi
+
+KUBECTL_KYAML=true
+export KUBECTL_KYAML
