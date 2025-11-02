@@ -10,3 +10,5 @@ keybind = super+left_bracket=previous_tab
 font-family = Triplicate T4c
 font-feature = +calt 
 font-size = 11
+background = black
+foreground = #ffeedd

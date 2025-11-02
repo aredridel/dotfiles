@@ -14,7 +14,6 @@
 	colorMoved = plain
 	mnemonicPrefix = true
 	renames = true
-	external = difft
 [branch]
 	autosetupmerge = always
 	autosetuprebase = always
