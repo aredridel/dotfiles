@@ -111,3 +111,8 @@ if which scw > /dev/null; then
 fi
 
 if [ -x "$(command -v atuin)" ]; then eval "$(atuin init zsh)"; fi
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/astewart/.lmstudio/bin"
+# End of LM Studio CLI section
+
