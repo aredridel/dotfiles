@@ -112,3 +112,4 @@
 /dotfiles/ssh/last-auth.sock
 /dotfiles/ssh/random_seed
 node_modules
+/dotfiles/config/scw/
